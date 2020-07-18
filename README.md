@@ -1,15 +1,16 @@
-# TP2 Algoritmos 3: {nombre}
+# TP2 Algoritmos 3: Kahoot
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo T18
 
-* **Integrante 1** - [integrante1](https://github.com/integrante1)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Thomas Broderick** - [TBroderick99](https://github.com/TBroderick99)
+* **Juan Duzac** - [JDuzy](https://github.com/JDuzy)
+* **Cristian Queirolo Domínguez** - [cqueirolo](https://github.com/cqueirolo)
+* **Facundo de la Plata** - [FaCu97](https://github.com/FaCu97)
+* **Pablo Brocca** - [pablbob](https://github.com/pablbob)
 
-Corrector: **{Corrector}**
+Corrector: **Martín Picco**
 
 ### Pre-requisitos
 
