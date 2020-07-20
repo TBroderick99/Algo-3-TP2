@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.Respuesta;
 
 import java.util.ArrayList;
 
-public class RespuestaSimple implements IRespuesta{
+public class RespuestaSimple{
 
     private String opcion;
 
@@ -12,9 +12,14 @@ public class RespuestaSimple implements IRespuesta{
         this.opcion = opcion_;
     }
 
-    @Override
-    public ArrayList<Boolean> esCorrecta(IRespuesta respuesta) {
-        /*TODO*/
-        return null;
+    public String getOpcion() {
+        return this.opcion;
+    }
+
+    //@Override
+    public ArrayList<Boolean> esCorrecta(String respuesta) {
+        ArrayList<Boolean> returnValue = new ArrayList<>();
+        returnValue.add(respuesta.equals(this.opcion));
+        return returnValue;
     }
 }

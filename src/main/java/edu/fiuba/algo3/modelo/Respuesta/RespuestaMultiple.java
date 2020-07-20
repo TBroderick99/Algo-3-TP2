@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.modelo.Respuesta;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class RespuestaMultiple implements IRespuesta{
+public class RespuestaMultiple{
 
     private ArrayList<String> opciones;
 
@@ -12,9 +14,18 @@ public class RespuestaMultiple implements IRespuesta{
         this.opciones = opciones_;
     }
 
-    @Override
-    public ArrayList<Boolean> esCorrecta(IRespuesta respuesta) {
-        /*TODO*/
-        return null;
+    public ArrayList<String> getOpciones() {
+        return this.opciones;
+    }
+
+    //@Override
+    public ArrayList<Boolean> esCorrecta(ArrayList<String> respuestas) {
+        ArrayList<Boolean> returnValue = new ArrayList<>();
+        /*FIXME*/
+        /*Hay que ver la forma de pasar de este for loop a lago utilizando streams + lambda expressions*/
+        for (int i = 0; i < this.opciones.size(); i++) {
+            returnValue.add(this.opciones.get(i).equals(respuestas.get(i)));
+        }
+        return returnValue;
     }
 }
