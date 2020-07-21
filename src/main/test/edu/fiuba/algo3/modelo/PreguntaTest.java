@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Respuesta.IRespuesta;
+import edu.fiuba.algo3.modelo.Respuesta.RespuestaSimple;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,11 +12,13 @@ public class PreguntaTest {
     public void test01PreguntaVerdaderoFalsoSeCreaCorrectamente(){
         //Arrange
         String textoPregunta = "La UBA fue fundada en el año 1821";
-        Pregunta pregunta = new Pregunta( textoPregunta, true);
+        String[] opciones = {"True","False"};
+        IRespuesta respuestaCorrecta = new RespuestaSimple("True");
+        Pregunta pregunta = new Pregunta( textoPregunta, opciones, respuestaCorrecta);
         String valor;
 
         //Act
-        valor = pregunta.getTexto();
+        valor = pregunta.getTextoPregunta();
 
         //Assert
         assertEquals(textoPregunta, valor);
@@ -23,13 +28,14 @@ public class PreguntaTest {
     public void test02PreguntaVerdaderoFalsoTieneRespuestaCorrecta(){
         //Arrange
         String textoPregunta = "La UBA fue fundada en el año 1821";
-        Pregunta pregunta = new Pregunta( textoPregunta, true);
-        boolean respuesta;
+        String[] opciones = {"True","False"};
+        IRespuesta respuestaCorrecta = new RespuestaSimple("True");
+        Pregunta pregunta = new Pregunta( textoPregunta, opciones, respuestaCorrecta);
 
         //Act
-        respuesta = pregunta.getRespuesta();
+        IRespuesta respuesta = pregunta.getRespuestaCorrecta();
 
         //Assert
-        assertEquals(true, respuesta);
+        assertEquals(respuesta, respuestaCorrecta);
     }
 }
