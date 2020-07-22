@@ -3,6 +3,14 @@ package edu.fiuba.algo3.modelo.Respuesta;
 
 public class Respuesta {
 
+    /*
+    * Consideraciones de I/O:
+    * Las respuestas reciben un único parametro de tipo String[], y devuelven Boolean[].
+    * Las respuestas grupales reciben grupoA y grupoB concatenados, luego se parsean internamente.
+    * Se pone como presuposicion que ambos grupos tienen el mismo tamaño.
+    *
+    * */
+
     private TipoRespuesta respuesta;
 
     public Respuesta() {}
