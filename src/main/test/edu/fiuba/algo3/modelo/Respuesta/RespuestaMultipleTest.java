@@ -5,36 +5,42 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RespuestaMultipleTest {
     @Test
-    public void test01CrearUnaRespuestaMultipleRecibeUnArrayListDeStringsYLoAlmacenaCorrectamente() {
-        ArrayList<String> opciones = new ArrayList<>(Arrays.asList("Opcion 1", "Opcion 2", "Opcion 3"));
+    public void test01CrearUnaRespuestaMultipleRecibeOpcionesComoStringsYLasAlmacenaCorrectamente() {
+        String[] opciones = new String[]{"Opcion 1", "Opcion 2"};
         RespuestaMultiple respuestaMultiple = new RespuestaMultiple(opciones);
-        assertEquals(opciones, respuestaMultiple.getOpciones());
+        assertEquals(opciones, respuestaMultiple.getOpcion());
     }
     @Test
-    public void test02CrearUnaRespuestaMultipleYPreguntarSiUnaListaDeOpcionesEsCorrectaCuandoSonTodasIncorrectasDevuelveUnArrayListConTodosSusElementosFalse() {
-        ArrayList<String> opcionesCorrectas = new ArrayList<>(Arrays.asList("Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4"));
-        ArrayList<String> opcionesIncorrectas = new ArrayList<>(Arrays.asList("Falso", "Falso", "Falso", "Falso"));
-        ArrayList<Boolean> respuestaEsperada = new ArrayList<>(Arrays.asList(false, false, false, false));
-        RespuestaMultiple respuestaMultiple = new RespuestaMultiple(opcionesCorrectas);
-        assertEquals(respuestaEsperada, respuestaMultiple.esCorrecta(opcionesIncorrectas));
+    public void test02CrearUnaRespuestaMultipleYPreguntarSiUnaRespuestaEsCorrectaCuandoEsIncorrectaDevuelveUnArrayDeBooleanConFalse() {
+        String[] opcionesCorrectas = new String[]{"Opcion Correcta 1", "Opcion Correcta 2"};
+        String[] opcionesPrueba = new String[]{"Opcion Incorrecta 1", "Opcion Incorrecta 2"};
+        Respuesta respuestaMultipleCorrecta = Respuesta.crearRespuestaMultiple(opcionesCorrectas);
+        Respuesta respuestaMultiplePrueba = Respuesta.crearRespuestaMultiple(opcionesPrueba);
+        Boolean[] valorEsperado = new Boolean[]{false, false};
+        assertArrayEquals(valorEsperado, respuestaMultipleCorrecta.esCorrecta(respuestaMultiplePrueba));
     }
     @Test
-    public void test03CrearUnaRespuestaMultipleYPreguntarSiUnaListaDeOpcionesEsCorrectaCuandoSonTodasCorrectasDevuelveUnArrayListConTodosSusElementosTrue() {
-        ArrayList<String> opcionesCorrectas = new ArrayList<>(Arrays.asList("Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4"));
-        ArrayList<Boolean> respuestaEsperada = new ArrayList<>(Arrays.asList(true, true, true, true));
-        RespuestaMultiple respuestaMultiple = new RespuestaMultiple(opcionesCorrectas);
-        assertEquals(respuestaEsperada, respuestaMultiple.esCorrecta(opcionesCorrectas));
+    public void test03CrearUnaRespuestaMultipleYPreguntarSiUnaRespuestaEsCorrectaCuandoLoEsDevuelveUnArrayDeBooleanConTrue() {
+        String[] opcionesCorrectas = new String[]{"Opcion Correcta 1", "Opcion Correcta 2"};
+        String[] opcionesPrueba = new String[]{"Opcion Correcta 1", "Opcion Correcta 2"};
+        Respuesta respuestaMultipleCorrecta = Respuesta.crearRespuestaMultiple(opcionesCorrectas);
+        Respuesta respuestaMultiplePrueba = Respuesta.crearRespuestaMultiple(opcionesPrueba);
+        Boolean[] valorEsperado = new Boolean[]{true, true};
+        assertArrayEquals(valorEsperado, respuestaMultipleCorrecta.esCorrecta(respuestaMultiplePrueba));
     }
+
     @Test
-    public void test04CrearUnaRespuestaMultipleYPreguntarSiUnaListaDeOpcionesEsCorrectaCuandoHayCorrectasEIncorrectasDevuelveUnArrayListConTrueYFalseEnLosIndicesCorrespondientes() {
-        ArrayList<String> opcionesCorrectas = new ArrayList<>(Arrays.asList("Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4"));
-        ArrayList<String> opcionesElegidas = new ArrayList<>(Arrays.asList("Opcion 1", "Opcion 5", "Opcion 3", "Opcion 7"));
-        ArrayList<Boolean> respuestaEsperada = new ArrayList<>(Arrays.asList(true, false, true, false));
-        RespuestaMultiple respuestaMultiple = new RespuestaMultiple(opcionesCorrectas);
-        assertEquals(respuestaEsperada, respuestaMultiple.esCorrecta(opcionesElegidas));
+    public void test04CrearUnaRespuestaMultipleYPreguntarSiUnaRespuestaEsCorrectaCuandoParcialmenteLoEsDevuelveUnArrayDeBooleanConTrueYFalseSegunCorresponde() {
+        String[] opcionesCorrectas = new String[]{"Opcion Correcta 1", "Opcion Correcta 2", "Opcion Correcta 3"};
+        String[] opcionesPrueba = new String[]{"Opcion Correcta 1", "Opcion Incorrecta 2", "Opcion Correcta 3"};
+        Respuesta respuestaMultipleCorrecta = Respuesta.crearRespuestaMultiple(opcionesCorrectas);
+        Respuesta respuestaMultiplePrueba = Respuesta.crearRespuestaMultiple(opcionesPrueba);
+        Boolean[] valorEsperado = new Boolean[]{true, false, true};
+        assertArrayEquals(valorEsperado, respuestaMultipleCorrecta.esCorrecta(respuestaMultiplePrueba));
     }
 }

@@ -1,25 +1,15 @@
 package edu.fiuba.algo3.modelo.Respuesta;
 
-import java.util.ArrayList;
-
-public class RespuestaSimple{
-
-    private String opcion;
+public class RespuestaSimple extends TipoRespuesta{
 
     public RespuestaSimple() {}
 
-    public RespuestaSimple(String opcion_) {
+    public RespuestaSimple(String[] opcion_) {
         this.opcion = opcion_;
     }
 
-    public String getOpcion() {
-        return this.opcion;
+    public Boolean[] esCorrecta(TipoRespuesta respuestaSimple) {
+        return new Boolean[] {respuestaSimple.getOpcion()[0].equals(this.opcion[0])};
     }
 
-    //@Override
-    public ArrayList<Boolean> esCorrecta(String respuesta) {
-        ArrayList<Boolean> returnValue = new ArrayList<>();
-        returnValue.add(respuesta.equals(this.opcion));
-        return returnValue;
-    }
 }
