@@ -24,4 +24,6 @@ public class Jugador {
     public void sumarPuntos(int cantidadPuntos){
         puntos += cantidadPuntos;
     }
+
+    public int get Puntaje() { return puntaje; }
 }
