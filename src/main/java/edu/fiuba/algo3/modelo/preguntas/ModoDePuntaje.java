@@ -5,5 +5,5 @@ import java.util.ArrayList;
 
 public interface ModoDePuntaje {
 
-    public abstract void asignarPuntaje(ArrayList<Boolean> aciertos, Jugador unJugador);
+    public abstract void asignarPuntaje(Boolean[] aciertos, Jugador unJugador);
 }

@@ -3,10 +3,11 @@ package edu.fiuba.algo3.modelo;
 public class Jugador {
     private String nombre;
     private Jugador oponente;
-    private int puntos;
+    private int puntaje;
 
     public Jugador(String nombre){
         this.nombre = nombre;
+        this.puntaje = 0;
     }
 
     public void setOponente(Jugador oponente) {
@@ -22,8 +23,8 @@ public class Jugador {
     }
 
     public void sumarPuntos(int cantidadPuntos){
-        puntos += cantidadPuntos;
+        puntaje += cantidadPuntos;
     }
 
-    public int get Puntaje() { return puntaje; }
+    public int getPuntaje() { return puntaje; }
 }

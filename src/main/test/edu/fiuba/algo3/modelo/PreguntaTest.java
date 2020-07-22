@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Respuesta.IRespuesta;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.Respuesta.RespuestaSimple;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,8 @@ public class PreguntaTest {
         //Arrange
         String textoPregunta = "La UBA fue fundada en el año 1821";
         String[] opciones = {"True","False"};
-        IRespuesta respuestaCorrecta = new RespuestaSimple("True");
+        String[] opcionCorrecta = {"true"};
+        RespuestaSimple respuestaCorrecta = new RespuestaSimple(opcionCorrecta);
         Pregunta pregunta = new Pregunta( textoPregunta, opciones, respuestaCorrecta);
         String valor;
 
@@ -29,11 +30,12 @@ public class PreguntaTest {
         //Arrange
         String textoPregunta = "La UBA fue fundada en el año 1821";
         String[] opciones = {"True","False"};
-        IRespuesta respuestaCorrecta = new RespuestaSimple("True");
+        String[] opcionCorrecta = {"true"};
+        RespuestaSimple respuestaCorrecta = new RespuestaSimple(opcionCorrecta);
         Pregunta pregunta = new Pregunta( textoPregunta, opciones, respuestaCorrecta);
 
         //Act
-        IRespuesta respuesta = pregunta.getRespuestaCorrecta();
+        RespuestaSimple respuesta = pregunta.getRespuestaCorrecta();
 
         //Assert
         assertEquals(respuesta, respuestaCorrecta);
