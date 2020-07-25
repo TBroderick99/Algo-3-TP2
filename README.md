@@ -33,3 +33,8 @@ Explicación de como ejecutar la aplicación
 ## Licencia
 
 Este repositorio está bajo la Licencia MIT
+
+## INFORME ENTREGA 0
+
+https://drive.google.com/file/d/11US6tvD1ZQdruYw8dRxeFFemHLUTAChf/view?usp=sharing
+
