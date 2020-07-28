@@ -2,10 +2,7 @@ package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Excepciones.FalloAlLeerRespuestaArchivoError;
 import edu.fiuba.algo3.modelo.Excepciones.FalloLaInicializacionDelArchivoError;
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaGrupal;
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaMultiple;
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaSimple;
-import edu.fiuba.algo3.modelo.Respuesta.TipoRespuesta;
+import edu.fiuba.algo3.modelo.Respuesta.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -35,7 +32,7 @@ public class CreadorDePreguntas {
 
                     //Leo el TipoTespuesta
                     if (separadoPorComas[5].equals("simple")){
-                        respuesta = new RespuestaSimple(opciones);
+                        respuesta =  new RespuestaSimple(opciones);
                     }
                     else if (separadoPorComas[5].equals("multiple")){
                         respuesta = new RespuestaMultiple(opciones);
@@ -48,7 +45,7 @@ public class CreadorDePreguntas {
                     }
 
                     // Está casteado porque todavia no se implementó la interfaz TipoRespuesta en Pregunta.
-                    pregunta = new Pregunta(separadoPorComas[1], opciones, (RespuestaSimple) respuesta);
+                    pregunta = new Pregunta(separadoPorComas[1], opciones, respuesta);
 
                     preguntas.add(pregunta);
                 }
