@@ -1,50 +1,35 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Respuesta.TipoRespuesta;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
 
-/*TO DO: hacer abstracto, sacar constructor*/
-public class Pregunta{
+import java.util.ArrayList;
 
-    private String textoPregunta;
-    private String[] opciones;
-    private ModoDePuntaje modoDePuntaje;
-    private TipoRespuesta respuestaCorrecta;
 
-   /**/
-    public Pregunta(String textoPregunta, String[] opciones , TipoRespuesta respuestaCorrecta){
-        this.textoPregunta = textoPregunta;
-        this.opciones = opciones;
-        this.respuestaCorrecta = respuestaCorrecta;
-        this.modoDePuntaje = new PuntajeClasico();
+public abstract class Pregunta{
 
-    }
+    protected String textoPregunta;
+    protected ModoDePuntaje modoDePuntaje;
 
     public String getTextoPregunta(){
         return textoPregunta;
     }
 
+    public abstract RespuestaVerdaderoFalso crearRespuesta();
 
-    public String[] getOpciones(){
-        return opciones;
-    }
+    public abstract ArrayList<OpcionVerdaderoFalso> getOpcionesCorrectas();
 
-
-    public TipoRespuesta getRespuestaCorrecta(){
-        return respuestaCorrecta;
-    }
-
-
-    public void asignarPuntajes(TipoRespuesta[] respuestasUsuarios, Jugador[] jugadores){
+    public void asignarPuntajes(RespuestaVerdaderoFalso[] respuestasUsuarios, Jugador[] jugadores){
 
         for (int i = 0; i < respuestasUsuarios.length; i++){
             _asignarPuntaje(respuestasUsuarios[i], jugadores[i]);
         }
     }
 
-    private void _asignarPuntaje(TipoRespuesta respuestaUsuario, Jugador unJugador){
-        Boolean[] aciertos = respuestaUsuario.esCorrecta(respuestaCorrecta);
-        modoDePuntaje.asignarPuntaje(aciertos, unJugador);
+    private void _asignarPuntaje(RespuestaVerdaderoFalso respuestaUsuario, Jugador unJugador){
+        modoDePuntaje.asignarPuntaje(respuestaUsuario, unJugador);
     }
 
 }
