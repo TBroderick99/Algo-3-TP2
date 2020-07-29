@@ -1,28 +1,24 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaSimple;
+import edu.fiuba.algo3.modelo.Respuesta.TipoRespuesta;
 
-import java.util.ArrayList;
-
-//PREGUNTA VERDADERO Y FALSO
-
+/*TO DO: hacer abstracto, sacar constructor*/
 public class Pregunta{
 
     private String textoPregunta;
     private String[] opciones;
     private ModoDePuntaje modoDePuntaje;
-    private RespuestaSimple respuestaCorrecta;
+    private TipoRespuesta respuestaCorrecta;
 
-    //recibe respuestasimple, esta es solo verdadero y falso
-    public Pregunta(String textoPregunta, String[] opciones , RespuestaSimple respuestaCorrecta){
+   /**/
+    public Pregunta(String textoPregunta, String[] opciones , TipoRespuesta respuestaCorrecta){
         this.textoPregunta = textoPregunta;
         this.opciones = opciones;
         this.respuestaCorrecta = respuestaCorrecta;
-        this.modoDePuntaje = new Clasico();
+        this.modoDePuntaje = new PuntajeClasico();
 
     }
-
 
     public String getTextoPregunta(){
         return textoPregunta;
@@ -34,19 +30,19 @@ public class Pregunta{
     }
 
 
-    public RespuestaSimple getRespuestaCorrecta(){
+    public TipoRespuesta getRespuestaCorrecta(){
         return respuestaCorrecta;
     }
 
 
-    public void asignarPuntajes(RespuestaSimple[] respuestasUsuarios, Jugador[] jugadores){
+    public void asignarPuntajes(TipoRespuesta[] respuestasUsuarios, Jugador[] jugadores){
 
         for (int i = 0; i < respuestasUsuarios.length; i++){
             _asignarPuntaje(respuestasUsuarios[i], jugadores[i]);
         }
     }
 
-    private void _asignarPuntaje(RespuestaSimple respuestaUsuario, Jugador unJugador){
+    private void _asignarPuntaje(TipoRespuesta respuestaUsuario, Jugador unJugador){
         Boolean[] aciertos = respuestaUsuario.esCorrecta(respuestaCorrecta);
         modoDePuntaje.asignarPuntaje(aciertos, unJugador);
     }
