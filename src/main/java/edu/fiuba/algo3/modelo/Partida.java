@@ -9,6 +9,8 @@ import java.util.Iterator;
 
 public class Partida {
     private static Partida INSTANCE = new Partida();
+    private ArrayList<Jugador> jugadores;
+    private Iterator<Jugador> iteradorJugadores;
     private Jugador jugadorActual;
     private ArrayList<Pregunta> preguntas;
     private Iterator<Pregunta> iteradorPreguntas;
@@ -25,12 +27,15 @@ public class Partida {
     public void agregarJugadores(String nombreJugador1, String nombreJugador2){
         Jugador jugador1 = new Jugador(nombreJugador1);
         Jugador jugador2 = new Jugador(nombreJugador2);
-        jugador1.setOponente(jugador2);
-        jugador2.setOponente(jugador1);
-        this.jugadorActual = jugador1;
-        this.respuestasRonda = new ArrayList<RespuestaVerdaderoFalso>();
+        this. jugadores = new ArrayList<Jugador>();
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
+        this.iteradorJugadores = this.jugadores.iterator();
+        this.jugadorActual = iteradorJugadores.next();
 
+        this.respuestasRonda = new ArrayList<RespuestaVerdaderoFalso>();
         this.preguntas = inicializarPreguntas();
+
         this.iteradorPreguntas = this.preguntas.iterator();
         this.preguntaActual = iteradorPreguntas.next();
     }
@@ -40,14 +45,18 @@ public class Partida {
     }
 
     public void siguienteJugador(){
-        jugadorActual = jugadorActual.getOponente();
+        if(iteradorJugadores.hasNext())
+            jugadorActual = iteradorJugadores.next();
     }
     public Jugador getJugadorActual() {
         return jugadorActual;
     }
     public void siguinteRonda(){
         asignarPuntajes();
-        jugadorActual = jugadorActual.getOponente();
+
+        this.iteradorJugadores = this.jugadores.iterator();
+        this.jugadorActual = iteradorJugadores.next();
+
         if(iteradorPreguntas.hasNext())
             preguntaActual = iteradorPreguntas.next();
         else;
@@ -57,7 +66,7 @@ public class Partida {
     private void asignarPuntajes() {
         // Esto se evita en un futuro refactor.
         RespuestaVerdaderoFalso[] respuestas = new RespuestaVerdaderoFalso[]{respuestasRonda.get(0), respuestasRonda.get(1)};
-        Jugador[] jugadores = new Jugador[]{jugadorActual, jugadorActual.getOponente()};
+        Jugador[] jugadores = new Jugador[]{this.jugadores.get(0), this.jugadores.get(1)};
         preguntaActual.asignarPuntajes(respuestas, jugadores);
     }
 

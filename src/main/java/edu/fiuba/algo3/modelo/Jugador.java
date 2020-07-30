@@ -10,14 +10,6 @@ public class Jugador {
         this.puntaje = 0;
     }
 
-    public void setOponente(Jugador oponente) {
-        this.oponente = oponente;
-    }
-
-    public Jugador getOponente() {
-        return oponente;
-    }
-
     public String getNombre() {
         return nombre;
     }
