@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class Partida {
     private Iterator<Pregunta> iteradorPreguntas;
     private Pregunta preguntaActual;
 
-    /*private ArrayList<RespuestaSimple> respuestasRonda;
+    private ArrayList<RespuestaVerdaderoFalso> respuestasRonda;
 
     private Partida(){}
 
@@ -27,7 +28,7 @@ public class Partida {
         jugador1.setOponente(jugador2);
         jugador2.setOponente(jugador1);
         this.jugadorActual = jugador1;
-        this.respuestasRonda = new ArrayList<RespuestaSimple>();
+        this.respuestasRonda = new ArrayList<RespuestaVerdaderoFalso>();
 
         this.preguntas = inicializarPreguntas();
         this.iteradorPreguntas = this.preguntas.iterator();
@@ -55,7 +56,7 @@ public class Partida {
 
     private void asignarPuntajes() {
         // Esto se evita en un futuro refactor.
-        RespuestaSimple[] respuestas = new RespuestaSimple[]{respuestasRonda.get(0), respuestasRonda.get(1)};
+        RespuestaVerdaderoFalso[] respuestas = new RespuestaVerdaderoFalso[]{respuestasRonda.get(0), respuestasRonda.get(1)};
         Jugador[] jugadores = new Jugador[]{jugadorActual, jugadorActual.getOponente()};
         preguntaActual.asignarPuntajes(respuestas, jugadores);
     }
@@ -68,7 +69,7 @@ public class Partida {
         return preguntaActual;
     }
 
-    public void guardarRespuesta(RespuestaSimple respuesta){
+    public void guardarRespuesta(RespuestaVerdaderoFalso respuesta){
         respuestasRonda.add(respuesta);
-    }*/
+    }
 }

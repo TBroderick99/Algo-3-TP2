@@ -26,16 +26,20 @@ public class PreguntaVyF extends Pregunta {
         return respuesta;
     }
 
-    public ArrayList<OpcionVerdaderoFalso> getOpcionesCorrectas(){
+    public ArrayList<OpcionVerdaderoFalso> getOpcionesCorrectas() {
 
         ArrayList<OpcionVerdaderoFalso> opcionesCorrectas = new ArrayList<OpcionVerdaderoFalso>();
 
-        for (OpcionVerdaderoFalso opcion: this.opciones){
-            if (opcion.esCorrecta()){
+        for (OpcionVerdaderoFalso opcion : this.opciones) {
+            if (opcion.esCorrecta()) {
                 opcionesCorrectas.add(opcion);
             }
         }
-
         return opcionesCorrectas;
     }
+
+    public ArrayList<OpcionVerdaderoFalso> getOpciones(){
+            return opciones;
+        }
+
 }

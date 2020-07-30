@@ -21,6 +21,8 @@ public abstract class Pregunta{
 
     public abstract ArrayList<OpcionVerdaderoFalso> getOpcionesCorrectas();
 
+    public abstract ArrayList<OpcionVerdaderoFalso> getOpciones();
+
     public void asignarPuntajes(RespuestaVerdaderoFalso[] respuestasUsuarios, Jugador[] jugadores){
 
         for (int i = 0; i < respuestasUsuarios.length; i++){
@@ -31,5 +33,4 @@ public abstract class Pregunta{
     private void _asignarPuntaje(RespuestaVerdaderoFalso respuestaUsuario, Jugador unJugador){
         modoDePuntaje.asignarPuntaje(respuestaUsuario, unJugador);
     }
-
 }

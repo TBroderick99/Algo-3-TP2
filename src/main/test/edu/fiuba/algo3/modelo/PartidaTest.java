@@ -5,10 +5,12 @@ import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PartidaTest {
-   /* @Test
+    @Test
     public void test01PartidaSeCreaConJugadorActualJuan(){
         //Arrange
         Partida partida = Partida.getInstance();
@@ -45,20 +47,23 @@ public class PartidaTest {
         Jugador jugador2;
         Pregunta pregunta = partida.getPreguntaActual();
 
-        RespuestaVerdaderoFalso[] respuesta;
-        OpcionVerdaderoFalso[] opciones;
+        RespuestaVerdaderoFalso respuesta;
+        ArrayList<OpcionVerdaderoFalso> opciones;
 
         //Act
         jugador1 = partida.getJugadorActual();
-        opciones = pregunta.getOpciones(); //Las opciones tendrian que ser un conjunto de respuestas.
-        respuesta = new String[]{opciones[0]};
-        partida.guardarRespuesta(new RespuestaSimple(respuesta));
+        opciones = pregunta.getOpciones(); // Aca el jugador lee las opciones.
+        respuesta = pregunta.crearRespuesta();
+        respuesta.marcar(3);
+        partida.guardarRespuesta(respuesta);
 
         partida.siguienteJugador();
+
         jugador2 = partida.getJugadorActual();
-        opciones = pregunta.getOpciones();
-        respuesta = new String[]{opciones[0]};
-        partida.guardarRespuesta(new RespuestaSimple(respuesta));
+        opciones = pregunta.getOpciones(); // Aca el jugador lee las opciones.
+        respuesta = pregunta.crearRespuesta();
+        respuesta.marcar(3);
+        partida.guardarRespuesta(respuesta);
 
         partida.siguinteRonda();
 
@@ -67,5 +72,5 @@ public class PartidaTest {
 
         assertEquals(1, jugador1.getPuntaje());
         assertEquals(1, jugador2.getPuntaje());
-    }*/
+    }
 }
