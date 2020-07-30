@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaSimple;
 import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import java.util.ArrayList;
@@ -15,7 +13,7 @@ public class Partida {
     private Iterator<Pregunta> iteradorPreguntas;
     private Pregunta preguntaActual;
 
-    private ArrayList<RespuestaSimple> respuestasRonda;
+    /*private ArrayList<RespuestaSimple> respuestasRonda;
 
     private Partida(){}
 
@@ -72,5 +70,5 @@ public class Partida {
 
     public void guardarRespuesta(RespuestaSimple respuesta){
         respuestasRonda.add(respuesta);
-    }
+    }*/
 }

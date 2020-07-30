@@ -1,24 +1,34 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaSimple;
-import edu.fiuba.algo3.modelo.Respuesta.TipoRespuesta;
+import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.ModoDePuntaje;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.PreguntaVyF;
+import edu.fiuba.algo3.modelo.preguntas.PuntajeClasico;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PreguntaTest {
     @Test
     public void test01PreguntaVerdaderoFalsoSeCreaCorrectamente(){
+
         //Arrange
+        ModoDePuntaje modoDePuntaje = new PuntajeClasico();
+        ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<OpcionVerdaderoFalso>();
+
+        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("falso", false);
+        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("verdadero", true);
+
+        opciones.add(opcion1);
+        opciones.add(opcion2);
         String textoPregunta = "La UBA fue fundada en el año 1821";
-        String[] opciones = {"True","False"};
-        String[] opcionCorrecta = {"true"};
-        TipoRespuesta respuestaCorrecta = new RespuestaSimple(opcionCorrecta);
-        Pregunta pregunta = new Pregunta( textoPregunta, opciones, respuestaCorrecta);
+
+        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, modoDePuntaje);
         String valor;
 
         //Act
@@ -31,17 +41,28 @@ public class PreguntaTest {
     @Test
     public void test02PreguntaVerdaderoFalsoTieneRespuestaCorrecta(){
         //Arrange
+        ModoDePuntaje modoDePuntaje = new PuntajeClasico();
+        ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<OpcionVerdaderoFalso>();
+
+        OpcionVerdaderoFalso opcionIncorrecta = new OpcionVerdaderoFalso("falso", false);
+        OpcionVerdaderoFalso opcionCorrecta = new OpcionVerdaderoFalso("verdadero", true);
+
+        opciones.add(opcionIncorrecta);
+        opciones.add(opcionCorrecta);
         String textoPregunta = "La UBA fue fundada en el año 1821";
-        String[] opciones = {"True","False"};
-        String[] opcionCorrecta = {"true"};
-        TipoRespuesta respuestaCorrecta = new RespuestaSimple(opcionCorrecta);
-        Pregunta pregunta = new Pregunta( textoPregunta, opciones, respuestaCorrecta);
+
+        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, modoDePuntaje);
+
+        ArrayList<OpcionVerdaderoFalso> opcionesCorrectas = pregunta.getOpcionesCorrectas();
+
 
         //Act
-        TipoRespuesta respuesta = pregunta.getRespuestaCorrecta();
+        boolean opcionEstaEnLasCorrectas = opcionesCorrectas.contains(opcionCorrecta);
 
         //Assert
-        assertEquals(respuesta, respuestaCorrecta);  //ToFix: assertArrayEquals y fijarse respuesta.esCorrecta() devuelva {True}
+        assertTrue(opcionEstaEnLasCorrectas);
+
+
     }
 
     @Test
@@ -51,60 +72,37 @@ public class PreguntaTest {
         Jugador jugador2 = new Jugador("Lucas");
         Jugador[] jugadores = {jugador1, jugador2};
 
+        ModoDePuntaje modoDePuntaje = new PuntajeClasico();
+        ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<OpcionVerdaderoFalso>();
+
+        OpcionVerdaderoFalso opcionIncorrecta = new OpcionVerdaderoFalso("falso", false);
+        OpcionVerdaderoFalso opcionCorrecta = new OpcionVerdaderoFalso("verdadero", true);
+
+        opciones.add(opcionIncorrecta);
+        opciones.add(opcionCorrecta);
         String textoPregunta = "La UBA fue fundada en el año 1821";
-        String[] opciones = {"True", "False"};
 
-        String[] opcionJugador1 = {"True"};
-        TipoRespuesta respuestaJugador1 = new RespuestaSimple(opcionJugador1);
+        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, modoDePuntaje);
 
-        String[] opcionJugador2 = {"False"};
-        TipoRespuesta respuestaJugador2 = new RespuestaSimple(opcionJugador2);
+        ArrayList<OpcionVerdaderoFalso> opcionesCorrectas = pregunta.getOpcionesCorrectas();
 
-        TipoRespuesta[] respuestasJugadores = {respuestaJugador1, respuestaJugador2};
+        RespuestaVerdaderoFalso respuestaJugador1 = pregunta.crearRespuesta();
+        respuestaJugador1.marcar(0);
 
-        String[] opcionCorrecta = {"True"};
-        TipoRespuesta respuestaCorrecta = new RespuestaSimple(opcionCorrecta);
+        RespuestaVerdaderoFalso respuestaJugador2 = pregunta.crearRespuesta();
+        respuestaJugador2.marcar(1);
 
-        Pregunta unaPregunta = new Pregunta(textoPregunta, opciones, respuestaCorrecta);
+        RespuestaVerdaderoFalso[] respuestasJugadores = new RespuestaVerdaderoFalso[]{respuestaJugador1, respuestaJugador2};
+
 
         //Act
-        unaPregunta.asignarPuntajes(respuestasJugadores, jugadores);
+        pregunta.asignarPuntajes(respuestasJugadores, jugadores);
+
 
         //Assert
-        assertEquals(jugador1.getPuntaje(), 1);
-        assertEquals(jugador2.getPuntaje(), 0);
+        assertEquals(jugador1.getPuntaje(), 0);
+        assertEquals(jugador2.getPuntaje(), 1);
 
     }
 
-    @Test
-    public void test03PreguntaVerdaderoFalsoPenalidadRecibeRespuestasYAsignaPuntajeALosJugadores() {
-        //Arrange
-        Jugador jugador1 = new Jugador("Jose");
-        Jugador jugador2 = new Jugador("Lucas");
-        Jugador[] jugadores = {jugador1, jugador2};
-
-        String textoPregunta = "La UBA fue fundada en el año 1821";
-        String[] opciones = {"True", "False"};
-
-        String[] opcionJugador1 = {"True"};
-        TipoRespuesta respuestaJugador1 = new RespuestaSimple(opcionJugador1);
-
-        String[] opcionJugador2 = {"False"};
-        TipoRespuesta respuestaJugador2 = new RespuestaSimple(opcionJugador2);
-
-        TipoRespuesta[] respuestasJugadores = {respuestaJugador1, respuestaJugador2};
-
-        String[] opcionCorrecta = {"True"};
-        TipoRespuesta respuestaCorrecta = new RespuestaSimple(opcionCorrecta);
-
-        Pregunta unaPregunta = new Pregunta(textoPregunta, opciones, respuestaCorrecta);
-
-        //Act
-        unaPregunta.asignarPuntajes(respuestasJugadores, jugadores);
-
-        //Assert
-        assertEquals(jugador1.getPuntaje(), 1);
-        assertEquals(jugador2.getPuntaje(), 0);
-
-    }
 }

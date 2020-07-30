@@ -1,18 +1,27 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.selecciones.SeleccionVerdaderoFalso;
+
+import java.util.ArrayList;
 
 public class PuntajeClasico implements ModoDePuntaje{
 
     @Override
-    public void asignarPuntaje(Boolean[] aciertos, Jugador unJugador){
+    public void asignarPuntaje(RespuestaVerdaderoFalso respuesta, Jugador unJugador){
 
         int puntajeASumar = 1;
 
-        for (int i = 0; i < aciertos.length; i++){
+        ArrayList<SeleccionVerdaderoFalso> selecciones = respuesta.getSelecciones();
 
-            if(!aciertos[i]){
+        for (int i = 0; i < selecciones.size(); i++){
+            SeleccionVerdaderoFalso seleccion = selecciones.get(i);
+
+            if( (!seleccion.esCorrecta() && seleccion.fueMarcada()) || seleccion.esCorrecta() && !seleccion.fueMarcada() ){
                 puntajeASumar = 0;
+                break;
             }
         }
 

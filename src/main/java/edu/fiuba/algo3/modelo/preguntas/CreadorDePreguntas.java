@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.preguntas;
 import edu.fiuba.algo3.modelo.Excepciones.FalloAlLeerRespuestaArchivoError;
 import edu.fiuba.algo3.modelo.Excepciones.FalloLaInicializacionDelArchivoError;
 import edu.fiuba.algo3.modelo.Respuesta.*;
+import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,6 +17,26 @@ public class CreadorDePreguntas {
         FileReader archivo = null;
         BufferedReader lector = null;
 
+
+        ModoDePuntaje modoDePuntaje = new PuntajeClasico();
+
+        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("Rojo", false);
+        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("Verde", false);
+        OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("Amarillo", false);
+        OpcionVerdaderoFalso opcion4 = new OpcionVerdaderoFalso("Negro", true);
+
+        ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<OpcionVerdaderoFalso>();
+        opciones.add(opcion1);
+        opciones.add(opcion2);
+        opciones.add(opcion3);
+        opciones.add(opcion4);
+
+        PreguntaVyF pregunta = new PreguntaVyF("Cual color es mas ocuro", opciones,modoDePuntaje);
+
+        preguntas.add(pregunta);
+
+
+        /*
         try {
             archivo = new FileReader("preguntas.txt");
 
@@ -31,8 +52,8 @@ public class CreadorDePreguntas {
                     String[] opciones = parsearOpciones(separadoPorComas[3]);
 
                     //Leo el TipoTespuesta
-                    if (separadoPorComas[5].equals("simple")){
-                        respuesta =  new RespuestaSimple(opciones);
+                    if (separadoPorComas[5].equals("verdaderoYFalso")){
+                        PreguntaVyF pregunta = new PreguntaVyF();
                     }
                     else if (separadoPorComas[5].equals("multiple")){
                         respuesta = new RespuestaMultiple(opciones);
@@ -54,10 +75,16 @@ public class CreadorDePreguntas {
         } catch (IOException | FalloAlLeerRespuestaArchivoError e) {
             throw new FalloLaInicializacionDelArchivoError();
         }
+
+         */
+
         return preguntas;
     }
 
     private static String[] parsearOpciones(String opciones) {
         return opciones.split("-");
     }
+
+
+
 }
