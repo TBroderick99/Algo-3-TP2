@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
 
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 public abstract class Pregunta{
 
     protected String textoPregunta;
-    protected ModoDePuntaje modoDePuntaje;
+    protected Puntaje puntaje;
 
     public String getTextoPregunta(){
         return textoPregunta;
@@ -31,6 +30,6 @@ public abstract class Pregunta{
     }
 
     private void _asignarPuntaje(RespuestaVerdaderoFalso respuestaUsuario, Jugador unJugador){
-        modoDePuntaje.asignarPuntaje(respuestaUsuario, unJugador);
+        puntaje.asignarPuntaje(respuestaUsuario, unJugador);
     }
 }

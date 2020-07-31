@@ -6,28 +6,23 @@ import edu.fiuba.algo3.modelo.selecciones.SeleccionVerdaderoFalso;
 
 import java.util.ArrayList;
 
-
-public class PuntajeParcial implements ModoDePuntaje{
+public class PuntajeParcial extends Puntaje {
 
     @Override
-    public void asignarPuntaje(RespuestaVerdaderoFalso respuesta, Jugador unJugador) {
-
+    public int asignarPuntaje(RespuestaVerdaderoFalso respuesta) {
         int puntajeASumar = 0;
 
         ArrayList<SeleccionVerdaderoFalso> selecciones = respuesta.getSelecciones();
 
-        for (int i = 0; i < selecciones.size(); i++){
-            SeleccionVerdaderoFalso seleccion = selecciones.get(i);
+        for (SeleccionVerdaderoFalso seleccion : selecciones){
+            if(!seleccion.esCorrecta() && seleccion.fueMarcada()){
+                return puntajeASumar = 0;
 
-            if( (!seleccion.esCorrecta() && seleccion.fueMarcada()) ){
-                puntajeASumar = 0;
-                break;
             }
             else if(seleccion.esCorrecta() && seleccion.fueMarcada()){
                 puntajeASumar += 1;
             }
         }
-
-        unJugador.sumarPuntos(puntajeASumar);
+        return puntajeASumar;
     }
 }

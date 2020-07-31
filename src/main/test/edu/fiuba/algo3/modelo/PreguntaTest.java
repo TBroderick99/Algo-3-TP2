@@ -16,7 +16,7 @@ public class PreguntaTest {
     public void test01PreguntaVerdaderoFalsoSeCreaCorrectamente(){
 
         //Arrange
-        ModoDePuntaje modoDePuntaje = new PuntajeClasico();
+        Puntaje puntaje = new PuntajeClasico();
         ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<>();
 
         OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("falso", false);
@@ -26,7 +26,7 @@ public class PreguntaTest {
         opciones.add(opcion2);
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, modoDePuntaje);
+        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, puntaje);
         String valor;
 
         //Act
@@ -39,7 +39,7 @@ public class PreguntaTest {
     @Test
     public void test02PreguntaVerdaderoFalsoTieneRespuestaCorrecta(){
         //Arrange
-        ModoDePuntaje modoDePuntaje = new PuntajeClasico();
+        Puntaje puntaje = new PuntajeClasico();
         ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<>();
 
         OpcionVerdaderoFalso opcionIncorrecta = new OpcionVerdaderoFalso("falso", false);
@@ -49,7 +49,7 @@ public class PreguntaTest {
         opciones.add(opcionCorrecta);
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, modoDePuntaje);
+        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, puntaje);
 
         ArrayList<OpcionVerdaderoFalso> opcionesCorrectas = pregunta.getOpcionesCorrectas();
 
@@ -69,7 +69,7 @@ public class PreguntaTest {
         Jugador jugador2 = new Jugador("Lucas");
         Jugador[] jugadores = {jugador1, jugador2};
 
-        ModoDePuntaje modoDePuntaje = new PuntajeClasico();
+        Puntaje puntaje = new PuntajeClasico();
         ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<>();
 
         OpcionVerdaderoFalso opcionIncorrecta = new OpcionVerdaderoFalso("falso", false);
@@ -79,7 +79,7 @@ public class PreguntaTest {
         opciones.add(opcionCorrecta);
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, modoDePuntaje);
+        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, puntaje);
 
                 RespuestaVerdaderoFalso respuestaJugador1 = pregunta.crearRespuesta();
         respuestaJugador1.marcar(0);
@@ -102,7 +102,7 @@ public class PreguntaTest {
     @Test
     public void test04PreguntaMultipleChoiceConPuntajeParcialSeCreaCorrectamente() {
         //Arrange
-        ModoDePuntaje modoDePuntaje = new PuntajeParcial();
+        Puntaje puntaje = new PuntajeParcial();
         ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<>();
 
         OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("falso", false);
@@ -112,7 +112,7 @@ public class PreguntaTest {
         opciones.add(opcion2);
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, modoDePuntaje);
+        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, puntaje);
         String valor;
 
         //Act
@@ -129,7 +129,7 @@ public class PreguntaTest {
         Jugador jugador2 = new Jugador("Lucas");
         Jugador[] jugadores = {jugador1, jugador2};
 
-        ModoDePuntaje modoDePuntaje = new PuntajeClasico();
+        Puntaje puntaje = new PuntajeClasico();
         OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("1", false);
         OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("2", true);
         OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("3", true);
@@ -143,7 +143,7 @@ public class PreguntaTest {
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
 
-        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, modoDePuntaje);
+        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, puntaje);
 
         RespuestaVerdaderoFalso respuestaJugador1 = pregunta.crearRespuesta();
         respuestaJugador1.marcar(0);
@@ -170,7 +170,7 @@ public class PreguntaTest {
         Jugador jugador2 = new Jugador("Lucas");
         Jugador[] jugadores = {jugador1, jugador2};
 
-        ModoDePuntaje modoDePuntaje = new PuntajeParcial();
+        Puntaje puntaje = new PuntajeParcial();
         OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("1", false);
         OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("2", true);
         OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("3", true);
@@ -184,7 +184,7 @@ public class PreguntaTest {
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
 
-        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, modoDePuntaje);
+        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, puntaje);
 
         RespuestaVerdaderoFalso respuestaJugador1 = pregunta.crearRespuesta();
         respuestaJugador1.marcar(1);
@@ -211,7 +211,7 @@ public class PreguntaTest {
         Jugador jugador2 = new Jugador("Lucas");
         Jugador[] jugadores = {jugador1, jugador2};
 
-        ModoDePuntaje modoDePuntaje = new PuntajePenalidad();
+        Puntaje puntaje = new PuntajePenalidad();
         ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<>();
 
         OpcionVerdaderoFalso opcionIncorrecta = new OpcionVerdaderoFalso("falso", false);
@@ -221,7 +221,7 @@ public class PreguntaTest {
         opciones.add(opcionCorrecta);
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, modoDePuntaje);
+        PreguntaVyF pregunta = new PreguntaVyF(textoPregunta, opciones, puntaje);
 
         RespuestaVerdaderoFalso respuestaJugador1 = pregunta.crearRespuesta();
         respuestaJugador1.marcar(0);

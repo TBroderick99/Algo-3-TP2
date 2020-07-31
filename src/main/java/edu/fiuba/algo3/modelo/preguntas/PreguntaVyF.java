@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
 import java.util.ArrayList;
 
@@ -10,10 +8,10 @@ public class PreguntaVyF extends Pregunta {
 
     protected ArrayList<OpcionVerdaderoFalso> opciones;
 
-    public PreguntaVyF(String textoPregunta, ArrayList<OpcionVerdaderoFalso> opciones, ModoDePuntaje modoDePuntaje){
+    public PreguntaVyF(String textoPregunta, ArrayList<OpcionVerdaderoFalso> opciones, Puntaje puntaje){
         this.textoPregunta = textoPregunta;
         this.opciones = opciones;
-        this.modoDePuntaje = modoDePuntaje;
+        this.puntaje = puntaje;
 
     }
 

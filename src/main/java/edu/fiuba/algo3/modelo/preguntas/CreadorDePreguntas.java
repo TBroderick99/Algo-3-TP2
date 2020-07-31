@@ -1,13 +1,9 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.Excepciones.FalloAlLeerRespuestaArchivoError;
-import edu.fiuba.algo3.modelo.Excepciones.FalloLaInicializacionDelArchivoError;
-import edu.fiuba.algo3.modelo.Respuesta.*;
 import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class CreadorDePreguntas {
@@ -18,7 +14,7 @@ public class CreadorDePreguntas {
         BufferedReader lector = null;
 
 
-        ModoDePuntaje modoDePuntaje = new PuntajeClasico();
+        Puntaje puntaje = new PuntajeClasico();
 
         OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("Rojo", false);
         OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("Verde", false);
@@ -31,7 +27,7 @@ public class CreadorDePreguntas {
         opciones.add(opcion3);
         opciones.add(opcion4);
 
-        PreguntaVyF pregunta = new PreguntaVyF("Cual color es mas ocuro", opciones,modoDePuntaje);
+        PreguntaVyF pregunta = new PreguntaVyF("Cual color es mas ocuro", opciones, puntaje);
 
         preguntas.add(pregunta);
 
