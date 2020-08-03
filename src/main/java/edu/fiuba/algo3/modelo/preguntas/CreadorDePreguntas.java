@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class CreadorDePreguntas {
 
     public static ArrayList<Pregunta> crearPreguntas() {
-        ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
+        ArrayList<Pregunta> preguntas = new ArrayList<>();
         FileReader archivo = null;
         BufferedReader lector = null;
 
