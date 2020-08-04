@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.selecciones;
 
 import edu.fiuba.algo3.modelo.Valor;
+import edu.fiuba.algo3.modelo.Excepciones.SeleccionNoEstaMarcadaError;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 
 public class Seleccion {
@@ -16,6 +17,7 @@ public class Seleccion {
     }
 
     public Boolean esCorrecta(){
+        if (!fueMarcada){ throw new SeleccionNoEstaMarcadaError(); }
         return valorMarcado.esIgual(opcion.getValor());
     }
 
@@ -33,6 +35,8 @@ public class Seleccion {
         fueMarcada = false;
         cantidadDeSeleccionadas -= 1;
     }
+
+    public Valor getValor(){ return this.valorMarcado; }
 
 
     public void asignarValor(Valor valorAMarcar){
