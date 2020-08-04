@@ -17,22 +17,15 @@ public class PreguntaVyF extends Pregunta {
 
     public RespuestaVerdaderoFalso crearRespuesta(){
         RespuestaVerdaderoFalso respuesta = new RespuestaVerdaderoFalso();
-        for(int i = 0; i < opciones.size() ; i++){
-            respuesta.agregarSeleccion(opciones.get(i));
-        }
-
+        opciones.forEach(opcion -> respuesta.agregarSeleccion(opcion));
         return respuesta;
     }
 
     public ArrayList<OpcionVerdaderoFalso> getOpcionesCorrectas() {
-
-        ArrayList<OpcionVerdaderoFalso> opcionesCorrectas = new ArrayList<OpcionVerdaderoFalso>();
-
-        for (OpcionVerdaderoFalso opcion : this.opciones) {
-            if (opcion.esCorrecta()) {
-                opcionesCorrectas.add(opcion);
-            }
-        }
+        ArrayList<OpcionVerdaderoFalso> opcionesCorrectas = new ArrayList<>();
+        opciones.stream()
+                .filter(opcion -> opcion.esCorrecta())
+                .forEach(opcionCorrecta -> opcionesCorrectas.add(opcionCorrecta));
         return opcionesCorrectas;
     }
 

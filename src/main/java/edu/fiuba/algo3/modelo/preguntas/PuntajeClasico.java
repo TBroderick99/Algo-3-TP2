@@ -10,18 +10,19 @@ public class PuntajeClasico extends Puntaje {
 
     @Override
     public int asignarPuntaje(RespuestaVerdaderoFalso respuesta){
-
-        int puntajeASumar = 1;
-
-        ArrayList<SeleccionVerdaderoFalso> selecciones = respuesta.getSelecciones();
-
-        for ( SeleccionVerdaderoFalso seleccion : selecciones){
-            if( (!seleccion.esCorrecta() && seleccion.fueMarcada()) || (seleccion.esCorrecta() && !seleccion.fueMarcada()) ){
-                return puntajeASumar = 0;
-
-            }
-        }
-        return puntajeASumar;
+        long incorrectasMarcadas = respuesta
+                .getSelecciones()
+                .stream()
+                .filter(seleccion -> !seleccion.esCorrecta())
+                .filter(seleccion -> seleccion.fueMarcada())
+                .count();
+        long correctasNoMarcadas = respuesta
+                .getSelecciones()
+                .stream()
+                .filter(seleccion -> seleccion.esCorrecta())
+                .filter(seleccion -> !seleccion.fueMarcada())
+                .count();
+        return (incorrectasMarcadas + correctasNoMarcadas) > 0 ? 0 : 1;
     }
 
 }
