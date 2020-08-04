@@ -1,3 +1,0 @@
-verdaderoFalso;clasico;La UBA fue fundada en el año 1821;Verdadero-Falso;Verdadero;simple
-verdaderoFalso;conPenalidad;La UBA no fue fundada en el año 1821;Verdadero-Falso;Falso;simple
-multipleChoice;clasico;En qué año fue fundada la UBA?;1876-1816-1821-1913;1821;simple

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PartidaTest {
+    // Para que esté bien testeado, habría que hacer un mock de CreadorDePreguntas
     @Test
     public void test01PartidaSeCreaConJugadorActualJuan(){
         //Arrange
@@ -54,7 +55,7 @@ public class PartidaTest {
         jugador1 = partida.getJugadorActual();
         opciones = pregunta.getOpciones(); // Aca el jugador lee las opciones.
         respuesta = pregunta.crearRespuesta();
-        respuesta.marcar(3);
+        respuesta.marcar(0);
         partida.guardarRespuesta(respuesta);
 
         partida.siguienteJugador();
@@ -62,11 +63,10 @@ public class PartidaTest {
         jugador2 = partida.getJugadorActual();
         opciones = pregunta.getOpciones(); // Aca el jugador lee las opciones.
         respuesta = pregunta.crearRespuesta();
-        respuesta.marcar(3);
+        respuesta.marcar(0);
         partida.guardarRespuesta(respuesta);
 
         partida.siguinteRonda();
-
 
         //Assert
 
