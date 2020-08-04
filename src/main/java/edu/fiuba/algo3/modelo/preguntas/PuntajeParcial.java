@@ -1,25 +1,24 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.selecciones.SeleccionVerdaderoFalso;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.selecciones.Seleccion;
 
 import java.util.ArrayList;
 
 public class PuntajeParcial extends Puntaje {
 
     @Override
-    public int asignarPuntaje(RespuestaVerdaderoFalso respuesta) {
+    public int calcularPuntaje(Respuesta respuesta) {
         int puntajeASumar = 0;
 
-        ArrayList<SeleccionVerdaderoFalso> selecciones = respuesta.getSelecciones();
+        ArrayList<Seleccion> selecciones = respuesta.getSelecciones();
 
-        for (SeleccionVerdaderoFalso seleccion : selecciones){
-            if(!seleccion.esCorrecta() && seleccion.fueMarcada()){
+        for (Seleccion seleccion : selecciones){
+            if(seleccion.fueMarcada() && !seleccion.esCorrecta()){
                 return puntajeASumar = 0;
 
             }
-            else if(seleccion.esCorrecta() && seleccion.fueMarcada()){
+            else if(seleccion.fueMarcada() && seleccion.esCorrecta()){
                 puntajeASumar += 1;
             }
         }

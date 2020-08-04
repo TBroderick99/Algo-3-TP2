@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 
@@ -16,7 +17,7 @@ public class Partida {
     private Iterator<Pregunta> iteradorPreguntas;
     private Pregunta preguntaActual;
 
-    private ArrayList<RespuestaVerdaderoFalso> respuestasRonda;
+    private ArrayList<Respuesta> respuestasRonda;
 
     private Partida(){}
 
@@ -33,7 +34,7 @@ public class Partida {
         this.iteradorJugadores = this.jugadores.iterator();
         this.jugadorActual = iteradorJugadores.next();
 
-        this.respuestasRonda = new ArrayList<RespuestaVerdaderoFalso>();
+        this.respuestasRonda = new ArrayList<Respuesta>();
         this.preguntas = inicializarPreguntas();
 
         this.iteradorPreguntas = this.preguntas.iterator();
@@ -65,9 +66,11 @@ public class Partida {
 
     private void asignarPuntajes() {
         // Esto se evita en un futuro refactor.
-        RespuestaVerdaderoFalso[] respuestas = new RespuestaVerdaderoFalso[]{respuestasRonda.get(0), respuestasRonda.get(1)};
+        Respuesta[] _respuestas =  new Respuesta[]{respuestasRonda.get(0), respuestasRonda.get(1)};
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>(Arrays.asList(_respuestas));
+
         Jugador[] jugadores = new Jugador[]{this.jugadores.get(0), this.jugadores.get(1)};
-        preguntaActual.asignarPuntajes(respuestas, jugadores);
+        preguntaActual.asignarPuntajes(respuestas);
     }
 
     public String getNombreJugadorActual() {
@@ -78,7 +81,7 @@ public class Partida {
         return preguntaActual;
     }
 
-    public void guardarRespuesta(RespuestaVerdaderoFalso respuesta){
+    public void guardarRespuesta(Respuesta respuesta){
         respuestasRonda.add(respuesta);
     }
 }

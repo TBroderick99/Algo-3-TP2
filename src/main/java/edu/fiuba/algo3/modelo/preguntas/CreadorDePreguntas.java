@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
+import edu.fiuba.algo3.modelo.Valor;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,18 +17,19 @@ public class CreadorDePreguntas {
 
         Puntaje puntaje = new PuntajeClasico();
 
-        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("Rojo", false);
-        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("Verde", false);
-        OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("Amarillo", false);
-        OpcionVerdaderoFalso opcion4 = new OpcionVerdaderoFalso("Negro", true);
+        Opcion opcion1 = new Opcion("Rojo", new Valor(false));
+        Opcion opcion2 = new Opcion("Verde", new Valor(false));
+        Opcion opcion3 = new Opcion("Amarillo", new Valor(false));
+        Opcion opcion4 = new Opcion("Negro", new Valor(true));
 
-        ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<OpcionVerdaderoFalso>();
+
+        ArrayList<Opcion> opciones = new ArrayList<Opcion>();
         opciones.add(opcion1);
         opciones.add(opcion2);
         opciones.add(opcion3);
         opciones.add(opcion4);
 
-        PreguntaVyF pregunta = new PreguntaVyF("Cual color es mas ocuro", opciones, puntaje);
+        Pregunta pregunta = new Pregunta("Cual color es mas ocuro", opciones, puntaje);
 
         preguntas.add(pregunta);
 
