@@ -23,7 +23,7 @@ public class ContenedorInicio extends VBox {
         Button botonInicio = new Button("Inicio");
 
         botonInicio.setOnAction(e-> {
-            stage.setScene(new Scene(new ContenedorIngresoJugadores(stage)));
+            stage.setScene(new Scene(new ContenedorPrincipal(stage)));
             stage.show();
         });
 
