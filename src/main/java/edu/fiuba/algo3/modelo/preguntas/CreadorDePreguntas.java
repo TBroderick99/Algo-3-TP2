@@ -1,13 +1,12 @@
-/*package edu.fiuba.algo3.modelo.preguntas;
+package edu.fiuba.algo3.modelo.preguntas;
 
-<<<<<<< HEAD
+
 import edu.fiuba.algo3.modelo.Excepciones.FalloAlLeerRespuestaArchivoError;
 import edu.fiuba.algo3.modelo.Excepciones.FalloLaInicializacionDelArchivoError;
-import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
-=======
+
 import edu.fiuba.algo3.modelo.Valor;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
->>>>>>> ModelTest
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -23,21 +22,20 @@ public class CreadorDePreguntas {
     public static ArrayList<Pregunta> crearPreguntas() {
         ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
 
-        preguntas.addAll(cargarPreguntasVoF());
+//        preguntas.addAll(cargarPreguntasVoF());
 //      preguntas.addAll(cargarPreguntasOrdered());
 //      preguntas.addAll(cargarPreguntasGroup());
 
-<<<<<<< HEAD
         return preguntas;
     }
 
-    private static ArrayList<OpcionVerdaderoFalso> parsearOpcionesVoF(String textoOpciones, String textoOpcionesCorrectas) {
+ /*   private static ArrayList<OpcionVerdaderoFalso> parsearOpcionesVoF(String textoOpciones, String textoOpcionesCorrectas) {
         ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<OpcionVerdaderoFalso>();
         OpcionVerdaderoFalso opcion;
 
         List<String> arrayTextoOpciones= Arrays.asList(textoOpciones.split("-"));
     //  List<String> arrayTextoOpcionesCorrectas = Arrays.asList(textoOpcionesCorrectas.split("-"));
-=======
+
         Puntaje puntaje = new PuntajeClasico();
 
         Opcion opcion1 = new Opcion("Rojo", new Valor(false));
@@ -61,9 +59,9 @@ public class CreadorDePreguntas {
         }
 
         return opciones;
-    }
+ */   }
 
-    private static ArrayList<PreguntaVyF> cargarPreguntasVoF(){*/
+ /*   private static ArrayList<PreguntaVyF> cargarPreguntasVoF(){
         /*  FORMATO ARCHIVO
             TipoPuntaje ; TextoPregunta ; Opciones ; OpcionesCorrectas
 
