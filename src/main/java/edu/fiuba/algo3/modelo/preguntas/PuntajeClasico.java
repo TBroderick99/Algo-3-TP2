@@ -9,6 +9,8 @@ public class PuntajeClasico extends Puntaje {
 
     @Override
     public int calcularPuntaje(Respuesta respuesta){
+        //TO DO: ESTE CODIGO SE PUEDE REEMPLAZAR CON ESTA LINEA, HACE LO MISMO PERO EN RESPUESTA
+        /*respuesta.esPefecta() ? return 1: return 0;*/
 
         int puntajeASumar = 1;
 
@@ -20,6 +22,7 @@ public class PuntajeClasico extends Puntaje {
 
             }
         }
+
         return puntajeASumar;
     }
 

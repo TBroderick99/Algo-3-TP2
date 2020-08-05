@@ -67,4 +67,16 @@ public class Respuesta {
         return null;
     }
 
+    public Boolean esPerfecta(){
+
+        //CODIGO REPETIDO DE PUNTAJE CLASICO
+        for ( Seleccion seleccion : selecciones){
+            if( (seleccion.fueMarcada() && !seleccion.esCorrecta()) || (!seleccion.fueMarcada() && seleccion.debeSerMarcada()) ){
+                return false;
+
+            }
+        }
+        return true;
+    }
+
 }
