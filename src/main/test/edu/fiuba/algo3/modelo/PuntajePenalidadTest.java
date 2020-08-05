@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.PuntajePenalidad;
 import org.junit.jupiter.api.Test;
 
@@ -14,23 +14,23 @@ public class PuntajePenalidadTest {
         PuntajePenalidad puntaje = new PuntajePenalidad();
         Jugador jugador = new Jugador("Juan");
 
-        RespuestaVerdaderoFalso respuesta = new RespuestaVerdaderoFalso();
-        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("1", false);
-        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("2", true);
-        OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("3", true);
-        OpcionVerdaderoFalso opcion4 = new OpcionVerdaderoFalso("4", false);
-        OpcionVerdaderoFalso opcion5 = new OpcionVerdaderoFalso("5", true);
-        OpcionVerdaderoFalso opcion6 = new OpcionVerdaderoFalso("6", false);
+        Respuesta respuesta = new Respuesta(jugador);
+        Opcion opcion1 = new Opcion("1", new Valor(false));
+        Opcion opcion2 = new Opcion("2", new Valor(true));
+        Opcion opcion3 = new Opcion("3", new Valor(true));
+        Opcion opcion4 = new Opcion("4", new Valor(false));
+        Opcion opcion5 = new Opcion("5", new Valor(true));
+        Opcion opcion6 = new Opcion("6", new Valor(false));
         respuesta.agregarSeleccion(opcion1);
         respuesta.agregarSeleccion(opcion2);
         respuesta.agregarSeleccion(opcion3);
         respuesta.agregarSeleccion(opcion4);
         respuesta.agregarSeleccion(opcion5);
         respuesta.agregarSeleccion(opcion6);
-        respuesta.marcar(1);
+        respuesta.marcar(opcion2, new Valor(true));
 
         //Act
-        puntaje.asignarPuntaje(respuesta, jugador);
+        puntaje.asignarPuntaje(respuesta);
 
         //Assert
         assertEquals(1, jugador.getPuntaje());
@@ -41,23 +41,23 @@ public class PuntajePenalidadTest {
         PuntajePenalidad puntaje = new PuntajePenalidad();
         Jugador jugador = new Jugador("Juan");
 
-        RespuestaVerdaderoFalso respuesta = new RespuestaVerdaderoFalso();
-        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("1", false);
-        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("2", true);
-        OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("3", true);
-        OpcionVerdaderoFalso opcion4 = new OpcionVerdaderoFalso("4", false);
-        OpcionVerdaderoFalso opcion5 = new OpcionVerdaderoFalso("5", true);
-        OpcionVerdaderoFalso opcion6 = new OpcionVerdaderoFalso("6", false);
+        Respuesta respuesta = new Respuesta(jugador);
+        Opcion opcion1 = new Opcion("1", new Valor(false));
+        Opcion opcion2 = new Opcion("2", new Valor(true));
+        Opcion opcion3 = new Opcion("3", new Valor(true));
+        Opcion opcion4 = new Opcion("4", new Valor(false));
+        Opcion opcion5 = new Opcion("5", new Valor(true));
+        Opcion opcion6 = new Opcion("6", new Valor(false));
         respuesta.agregarSeleccion(opcion1);
         respuesta.agregarSeleccion(opcion2);
         respuesta.agregarSeleccion(opcion3);
         respuesta.agregarSeleccion(opcion4);
         respuesta.agregarSeleccion(opcion5);
         respuesta.agregarSeleccion(opcion6);
-        respuesta.marcar(5);
+        respuesta.marcar(opcion6, new Valor(true));
 
         //Act
-        puntaje.asignarPuntaje(respuesta, jugador);
+        puntaje.asignarPuntaje(respuesta);
 
         //Assert
         assertEquals(-1, jugador.getPuntaje());
@@ -69,24 +69,24 @@ public class PuntajePenalidadTest {
         PuntajePenalidad puntaje = new PuntajePenalidad();
         Jugador jugador = new Jugador("Juan");
 
-        RespuestaVerdaderoFalso respuesta = new RespuestaVerdaderoFalso();
-        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("1", false);
-        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("2", true);
-        OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("3", true);
-        OpcionVerdaderoFalso opcion4 = new OpcionVerdaderoFalso("4", false);
-        OpcionVerdaderoFalso opcion5 = new OpcionVerdaderoFalso("5", true);
-        OpcionVerdaderoFalso opcion6 = new OpcionVerdaderoFalso("6", false);
+        Respuesta respuesta = new Respuesta(jugador);
+        Opcion opcion1 = new Opcion("1", new Valor(false));
+        Opcion opcion2 = new Opcion("2", new Valor(true));
+        Opcion opcion3 = new Opcion("3", new Valor(true));
+        Opcion opcion4 = new Opcion("4", new Valor(false));
+        Opcion opcion5 = new Opcion("5", new Valor(true));
+        Opcion opcion6 = new Opcion("6", new Valor(false));
         respuesta.agregarSeleccion(opcion1);
         respuesta.agregarSeleccion(opcion2);
         respuesta.agregarSeleccion(opcion3);
         respuesta.agregarSeleccion(opcion4);
         respuesta.agregarSeleccion(opcion5);
         respuesta.agregarSeleccion(opcion6);
-        respuesta.marcar(0);
-        respuesta.marcar(1);
+        respuesta.marcar(opcion1, new Valor(true));
+        respuesta.marcar(opcion2, new Valor(true));
 
         //Act
-        puntaje.asignarPuntaje(respuesta, jugador);
+        puntaje.asignarPuntaje(respuesta);
 
         //Assert
         assertEquals(0, jugador.getPuntaje());
@@ -97,28 +97,28 @@ public class PuntajePenalidadTest {
         PuntajePenalidad puntaje = new PuntajePenalidad();
         Jugador jugador = new Jugador("Juan");
 
-        RespuestaVerdaderoFalso respuesta = new RespuestaVerdaderoFalso();
-        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("1", false);
-        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("2", true);
-        OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("3", true);
-        OpcionVerdaderoFalso opcion4 = new OpcionVerdaderoFalso("4", true);
-        OpcionVerdaderoFalso opcion5 = new OpcionVerdaderoFalso("5", true);
-        OpcionVerdaderoFalso opcion6 = new OpcionVerdaderoFalso("6", false);
+        Respuesta respuesta = new Respuesta(jugador);
+        Opcion opcion1 = new Opcion("1", new Valor(false));
+        Opcion opcion2 = new Opcion("2", new Valor(true));
+        Opcion opcion3 = new Opcion("3", new Valor(true));
+        Opcion opcion4 = new Opcion("4", new Valor(true));
+        Opcion opcion5 = new Opcion("5", new Valor(true));
+        Opcion opcion6 = new Opcion("6", new Valor(false));
         respuesta.agregarSeleccion(opcion1);
         respuesta.agregarSeleccion(opcion2);
         respuesta.agregarSeleccion(opcion3);
         respuesta.agregarSeleccion(opcion4);
         respuesta.agregarSeleccion(opcion5);
         respuesta.agregarSeleccion(opcion6);
-        respuesta.marcar(0);
-        respuesta.marcar(1);
-        respuesta.marcar(2);
-        respuesta.marcar(3);
-        respuesta.marcar(4);
-        respuesta.marcar(5);
+        respuesta.marcar(opcion1, new Valor(true));
+        respuesta.marcar(opcion2, new Valor(true));
+        respuesta.marcar(opcion3, new Valor(true));
+        respuesta.marcar(opcion4, new Valor(true));
+        respuesta.marcar(opcion5, new Valor(true));
+        respuesta.marcar(opcion6, new Valor(true));
 
         //Act
-        puntaje.asignarPuntaje(respuesta, jugador);
+        puntaje.asignarPuntaje(respuesta);
 
         //Assert
         assertEquals(2, jugador.getPuntaje());
@@ -130,28 +130,28 @@ public class PuntajePenalidadTest {
         PuntajePenalidad puntaje = new PuntajePenalidad();
         Jugador jugador = new Jugador("Juan");
 
-        RespuestaVerdaderoFalso respuesta = new RespuestaVerdaderoFalso();
-        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("1", true);
-        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("2", true);
-        OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("3", true);
-        OpcionVerdaderoFalso opcion4 = new OpcionVerdaderoFalso("4", true);
-        OpcionVerdaderoFalso opcion5 = new OpcionVerdaderoFalso("5", true);
-        OpcionVerdaderoFalso opcion6 = new OpcionVerdaderoFalso("6", true);
+        Respuesta respuesta = new Respuesta(jugador);
+        Opcion opcion1 = new Opcion("1", new Valor(true));
+        Opcion opcion2 = new Opcion("2", new Valor(true));
+        Opcion opcion3 = new Opcion("3", new Valor(true));
+        Opcion opcion4 = new Opcion("4", new Valor(true));
+        Opcion opcion5 = new Opcion("5", new Valor(true));
+        Opcion opcion6 = new Opcion("6", new Valor(true));
         respuesta.agregarSeleccion(opcion1);
         respuesta.agregarSeleccion(opcion2);
         respuesta.agregarSeleccion(opcion3);
         respuesta.agregarSeleccion(opcion4);
         respuesta.agregarSeleccion(opcion5);
         respuesta.agregarSeleccion(opcion6);
-        respuesta.marcar(0);
-        respuesta.marcar(1);
-        respuesta.marcar(2);
-        respuesta.marcar(3);
-        respuesta.marcar(4);
-        respuesta.marcar(5);
+        respuesta.marcar(opcion1, new Valor(true));
+        respuesta.marcar(opcion2, new Valor(true));
+        respuesta.marcar(opcion3, new Valor(true));
+        respuesta.marcar(opcion4, new Valor(true));
+        respuesta.marcar(opcion5, new Valor(true));
+        respuesta.marcar(opcion6, new Valor(true));
 
         //Act
-        puntaje.asignarPuntaje(respuesta, jugador);
+        puntaje.asignarPuntaje(respuesta);
 
         //Assert
         assertEquals(6, jugador.getPuntaje());
@@ -163,28 +163,28 @@ public class PuntajePenalidadTest {
         PuntajePenalidad puntaje = new PuntajePenalidad();
         Jugador jugador = new Jugador("Juan");
 
-        RespuestaVerdaderoFalso respuesta = new RespuestaVerdaderoFalso();
-        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("1", false);
-        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("2", false);
-        OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("3", false);
-        OpcionVerdaderoFalso opcion4 = new OpcionVerdaderoFalso("4", false);
-        OpcionVerdaderoFalso opcion5 = new OpcionVerdaderoFalso("5", false);
-        OpcionVerdaderoFalso opcion6 = new OpcionVerdaderoFalso("6", false);
+        Respuesta respuesta = new Respuesta(jugador);
+        Opcion opcion1 = new Opcion("1", new Valor(false));
+        Opcion opcion2 = new Opcion("2", new Valor(false));
+        Opcion opcion3 = new Opcion("3", new Valor(false));
+        Opcion opcion4 = new Opcion("4", new Valor(false));
+        Opcion opcion5 = new Opcion("5", new Valor(false));
+        Opcion opcion6 = new Opcion("6", new Valor(false));
         respuesta.agregarSeleccion(opcion1);
         respuesta.agregarSeleccion(opcion2);
         respuesta.agregarSeleccion(opcion3);
         respuesta.agregarSeleccion(opcion4);
         respuesta.agregarSeleccion(opcion5);
         respuesta.agregarSeleccion(opcion6);
-        respuesta.marcar(0);
-        respuesta.marcar(1);
-        respuesta.marcar(2);
-        respuesta.marcar(3);
-        respuesta.marcar(4);
-        respuesta.marcar(5);
+        respuesta.marcar(opcion1, new Valor(true));
+        respuesta.marcar(opcion2, new Valor(true));
+        respuesta.marcar(opcion3, new Valor(true));
+        respuesta.marcar(opcion4, new Valor(true));
+        respuesta.marcar(opcion5, new Valor(true));
+        respuesta.marcar(opcion6, new Valor(true));
 
         //Act
-        puntaje.asignarPuntaje(respuesta, jugador);
+        puntaje.asignarPuntaje(respuesta);
 
         //Assert
         assertEquals(-6, jugador.getPuntaje());
@@ -196,27 +196,28 @@ public class PuntajePenalidadTest {
         PuntajePenalidad puntaje = new PuntajePenalidad();
         Jugador jugador = new Jugador("Juan");
 
-        RespuestaVerdaderoFalso respuesta = new RespuestaVerdaderoFalso();
-        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("1", false);
-        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("2", true);
-        OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("3", false);
-        OpcionVerdaderoFalso opcion4 = new OpcionVerdaderoFalso("4", false);
-        OpcionVerdaderoFalso opcion5 = new OpcionVerdaderoFalso("5", false);
-        OpcionVerdaderoFalso opcion6 = new OpcionVerdaderoFalso("6", true);
+        Respuesta respuesta = new Respuesta(jugador);
+        Opcion opcion1 = new Opcion("1", new Valor(false));
+        Opcion opcion2 = new Opcion("2", new Valor(true));
+        Opcion opcion3 = new Opcion("3", new Valor(false));
+        Opcion opcion4 = new Opcion("4", new Valor(false));
+        Opcion opcion5 = new Opcion("5", new Valor(false));
+        Opcion opcion6 = new Opcion("6", new Valor(true));
         respuesta.agregarSeleccion(opcion1);
         respuesta.agregarSeleccion(opcion2);
         respuesta.agregarSeleccion(opcion3);
         respuesta.agregarSeleccion(opcion4);
         respuesta.agregarSeleccion(opcion5);
         respuesta.agregarSeleccion(opcion6);
-        respuesta.marcar(0);
-        respuesta.marcar(1);
-        respuesta.marcar(2);
-        respuesta.marcar(3);
-        respuesta.marcar(4);
+        respuesta.marcar(opcion1, new Valor(true));
+        respuesta.marcar(opcion2, new Valor(true));
+        respuesta.marcar(opcion3, new Valor(true));
+        respuesta.marcar(opcion4, new Valor(true));
+        respuesta.marcar(opcion5, new Valor(true));
+
 
         //Act
-        puntaje.asignarPuntaje(respuesta, jugador);
+        puntaje.asignarPuntaje(respuesta);
 
         //Assert
         assertEquals(-3, jugador.getPuntaje());

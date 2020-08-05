@@ -1,27 +1,24 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.selecciones.SeleccionVerdaderoFalso;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.selecciones.Seleccion;
 
 import java.util.ArrayList;
 
 public class PuntajePenalidad extends Puntaje {
 
     @Override
-    public int asignarPuntaje(RespuestaVerdaderoFalso respuesta) {
-        long incorrectasMarcadas = respuesta
-                .getSelecciones()
-                .stream()
-                .filter(seleccion -> !seleccion.esCorrecta())
-                .filter(seleccion -> seleccion.fueMarcada())
-                .count();
-        long correctasMarcadas = respuesta
-                .getSelecciones()
-                .stream()
-                .filter(seleccion -> seleccion.esCorrecta())
-                .filter(seleccion -> seleccion.fueMarcada())
-                .count();
-        return (int) (correctasMarcadas - incorrectasMarcadas);
+    public int calcularPuntaje(Respuesta respuesta) {
+        int puntajeASumar = 0;
+
+        ArrayList<Seleccion> selecciones = respuesta.getSelecciones();
+
+        for (Seleccion seleccion : selecciones){
+            if(seleccion.fueMarcada() && seleccion.esCorrecta())
+                puntajeASumar +=1 ;
+            else if(seleccion.fueMarcada() && !seleccion.esCorrecta())
+                puntajeASumar -= 1;
+        }
+        return puntajeASumar;
     }
 }

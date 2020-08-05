@@ -1,35 +1,39 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Respuesta.RespuestaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
 
 import java.util.ArrayList;
 
 
-public abstract class Pregunta{
+public class Pregunta{
 
     protected String textoPregunta;
     protected Puntaje puntaje;
+    protected ArrayList<Opcion> opciones;
+
+    public Pregunta(String textoPregunta, ArrayList<Opcion> opciones, Puntaje modoDePuntaje){
+        this.textoPregunta = textoPregunta;
+        this.puntaje = modoDePuntaje;
+        this.opciones = opciones;
+    }
 
     public String getTextoPregunta(){
         return textoPregunta;
     }
 
-    public abstract RespuestaVerdaderoFalso crearRespuesta();
 
-    public abstract ArrayList<OpcionVerdaderoFalso> getOpcionesCorrectas();
+    public ArrayList<Opcion> getOpciones(){
+        return opciones;
+    }
 
-    public abstract ArrayList<OpcionVerdaderoFalso> getOpciones();
+    public void asignarPuntajes(ArrayList<Respuesta> respuestasUsuarios){
 
-    public void asignarPuntajes(RespuestaVerdaderoFalso[] respuestasUsuarios, Jugador[] jugadores){
-
-        for (int i = 0; i < respuestasUsuarios.length; i++){
-            _asignarPuntaje(respuestasUsuarios[i], jugadores[i]);
+        for (Respuesta respuesta: respuestasUsuarios){
+            puntaje.asignarPuntaje(respuesta);
         }
-    }
 
-    private void _asignarPuntaje(RespuestaVerdaderoFalso respuestaUsuario, Jugador unJugador){
-        puntaje.asignarPuntaje(respuestaUsuario, unJugador);
-    }
+   }
+
 }

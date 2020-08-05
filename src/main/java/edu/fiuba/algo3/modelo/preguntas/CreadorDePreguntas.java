@@ -1,8 +1,13 @@
-package edu.fiuba.algo3.modelo.preguntas;
+/*package edu.fiuba.algo3.modelo.preguntas;
 
+<<<<<<< HEAD
 import edu.fiuba.algo3.modelo.Excepciones.FalloAlLeerRespuestaArchivoError;
 import edu.fiuba.algo3.modelo.Excepciones.FalloLaInicializacionDelArchivoError;
 import edu.fiuba.algo3.modelo.opciones.OpcionVerdaderoFalso;
+=======
+import edu.fiuba.algo3.modelo.Valor;
+import edu.fiuba.algo3.modelo.opciones.Opcion;
+>>>>>>> ModelTest
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -22,6 +27,7 @@ public class CreadorDePreguntas {
 //      preguntas.addAll(cargarPreguntasOrdered());
 //      preguntas.addAll(cargarPreguntasGroup());
 
+<<<<<<< HEAD
         return preguntas;
     }
 
@@ -31,6 +37,23 @@ public class CreadorDePreguntas {
 
         List<String> arrayTextoOpciones= Arrays.asList(textoOpciones.split("-"));
     //  List<String> arrayTextoOpcionesCorrectas = Arrays.asList(textoOpcionesCorrectas.split("-"));
+=======
+        Puntaje puntaje = new PuntajeClasico();
+
+        Opcion opcion1 = new Opcion("Rojo", new Valor(false));
+        Opcion opcion2 = new Opcion("Verde", new Valor(false));
+        Opcion opcion3 = new Opcion("Amarillo", new Valor(false));
+        Opcion opcion4 = new Opcion("Negro", new Valor(true));
+
+
+        ArrayList<Opcion> opciones = new ArrayList<Opcion>();
+        opciones.add(opcion1);
+        opciones.add(opcion2);
+        opciones.add(opcion3);
+        opciones.add(opcion4);
+
+        Pregunta pregunta = new Pregunta("Cual color es mas ocuro", opciones, puntaje);
+>>>>>>> ModelTest
 
         for (String textoOpcion: arrayTextoOpciones){
             opcion = new OpcionVerdaderoFalso(textoOpcion, textoOpcionesCorrectas.contains(textoOpcion));
@@ -40,7 +63,7 @@ public class CreadorDePreguntas {
         return opciones;
     }
 
-    private static ArrayList<PreguntaVyF> cargarPreguntasVoF(){
+    private static ArrayList<PreguntaVyF> cargarPreguntasVoF(){*/
         /*  FORMATO ARCHIVO
             TipoPuntaje ; TextoPregunta ; Opciones ; OpcionesCorrectas
 
@@ -52,7 +75,7 @@ public class CreadorDePreguntas {
             conPenalidad;En qué año fue fundada la UBA?;1876-1816-1821-1913;1821
          */
 
-        FileReader archivo = null;
+        /*FileReader archivo = null;
         BufferedReader lector = null;
 
         ArrayList<PreguntaVyF> preguntas = new ArrayList<PreguntaVyF>();
@@ -95,7 +118,7 @@ public class CreadorDePreguntas {
         return preguntas;
     }
 
-    private static ArrayList<PreguntaVyF> cargarPreguntasOrdered(){
+    private static ArrayList<PreguntaVyF> cargarPreguntasOrdered(){*/
         /*  FORMATO ARCHIVO
             TextoPregunta ; Opciones
 
@@ -111,7 +134,7 @@ public class CreadorDePreguntas {
             conPenalidad;En qué año fue fundada la UBA?;1876-1816-1821-1913;1821
          */
 
-        FileReader archivo = null;
+        /*FileReader archivo = null;
         BufferedReader lector = null;
 
         ArrayList<PreguntaVyF> preguntas = new ArrayList<PreguntaVyF>();
@@ -145,7 +168,7 @@ public class CreadorDePreguntas {
         // TO DO
         return new ArrayList<OpcionVerdaderoFalso>();
     }
-}
+}*/
 
 
 /*

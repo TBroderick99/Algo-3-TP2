@@ -1,15 +1,27 @@
 package edu.fiuba.algo3.modelo.opciones;
 
-public abstract class Opcion {
+import edu.fiuba.algo3.modelo.Valor;
 
-    private String textoOpcion;
+public  class Opcion {
 
-    public Opcion(String textoOpcion){
+    protected String textoOpcion;    //cambiar a private
+    protected Valor valorCorrecto;
+
+    public Opcion(String textoOpcion, Valor valor){
         this.textoOpcion = textoOpcion;
+        this.valorCorrecto = valor;
     }
 
     public String getTexto(){
         return textoOpcion;
+    }
+
+    public Valor getValor(){
+        return this.valorCorrecto;
+    }
+
+    public Boolean debeSerMarcada(){
+        return valorCorrecto.debeSerMarcado();
     }
 
 }
