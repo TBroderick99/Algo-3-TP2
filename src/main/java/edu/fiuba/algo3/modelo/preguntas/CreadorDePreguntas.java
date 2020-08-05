@@ -3,10 +3,8 @@ package edu.fiuba.algo3.modelo.preguntas;
 
 import edu.fiuba.algo3.modelo.Excepciones.FalloAlLeerRespuestaArchivoError;
 import edu.fiuba.algo3.modelo.Excepciones.FalloLaInicializacionDelArchivoError;
-
 import edu.fiuba.algo3.modelo.Valor;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
-
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,52 +14,33 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-
 public class CreadorDePreguntas {
 
     public static ArrayList<Pregunta> crearPreguntas() {
         ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
 
-//        preguntas.addAll(cargarPreguntasVoF());
+        preguntas.addAll(cargarPreguntasVoF());
 //      preguntas.addAll(cargarPreguntasOrdered());
 //      preguntas.addAll(cargarPreguntasGroup());
 
         return preguntas;
     }
 
- /*   private static ArrayList<OpcionVerdaderoFalso> parsearOpcionesVoF(String textoOpciones, String textoOpcionesCorrectas) {
-        ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<OpcionVerdaderoFalso>();
-        OpcionVerdaderoFalso opcion;
+    private static ArrayList<Opcion> parsearOpcionesVoF(String textoOpciones, String textoOpcionesCorrectas) {
+        ArrayList<Opcion> opciones = new ArrayList<Opcion>();
+        Opcion opcion;
 
         List<String> arrayTextoOpciones= Arrays.asList(textoOpciones.split("-"));
-    //  List<String> arrayTextoOpcionesCorrectas = Arrays.asList(textoOpcionesCorrectas.split("-"));
-
-        Puntaje puntaje = new PuntajeClasico();
-
-        Opcion opcion1 = new Opcion("Rojo", new Valor(false));
-        Opcion opcion2 = new Opcion("Verde", new Valor(false));
-        Opcion opcion3 = new Opcion("Amarillo", new Valor(false));
-        Opcion opcion4 = new Opcion("Negro", new Valor(true));
-
-
-        ArrayList<Opcion> opciones = new ArrayList<Opcion>();
-        opciones.add(opcion1);
-        opciones.add(opcion2);
-        opciones.add(opcion3);
-        opciones.add(opcion4);
-
-        Pregunta pregunta = new Pregunta("Cual color es mas ocuro", opciones, puntaje);
->>>>>>> ModelTest
 
         for (String textoOpcion: arrayTextoOpciones){
-            opcion = new OpcionVerdaderoFalso(textoOpcion, textoOpcionesCorrectas.contains(textoOpcion));
+            opcion = new Opcion(textoOpcion, new Valor(textoOpcionesCorrectas.contains(textoOpcion)) );
             opciones. add(opcion);
         }
 
         return opciones;
- */   }
+    }
 
- /*   private static ArrayList<PreguntaVyF> cargarPreguntasVoF(){
+    private static ArrayList<Pregunta> cargarPreguntasVoF(){
         /*  FORMATO ARCHIVO
             TipoPuntaje ; TextoPregunta ; Opciones ; OpcionesCorrectas
 
@@ -73,10 +52,10 @@ public class CreadorDePreguntas {
             conPenalidad;En qué año fue fundada la UBA?;1876-1816-1821-1913;1821
          */
 
-        /*FileReader archivo = null;
+        FileReader archivo = null;
         BufferedReader lector = null;
 
-        ArrayList<PreguntaVyF> preguntas = new ArrayList<PreguntaVyF>();
+        ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
         try {
             archivo = new FileReader("preguntasEleccionSimple.txt");
 
@@ -88,7 +67,7 @@ public class CreadorDePreguntas {
                 while ((lineaEntera = lector.readLine()) != null) {
                     separadoPorComas = lineaEntera.split(";");
 
-                    ArrayList<OpcionVerdaderoFalso> opciones = parsearOpcionesVoF(separadoPorComas[2], separadoPorComas[3]);
+                    ArrayList<Opcion> opciones = parsearOpcionesVoF(separadoPorComas[2], separadoPorComas[3]);
                     Puntaje puntaje;
                     //Leo el TipoPuntaje
                     if (separadoPorComas[0].equals("clasico")){
@@ -104,7 +83,7 @@ public class CreadorDePreguntas {
                         throw new FalloAlLeerRespuestaArchivoError();
                     }
 
-                    PreguntaVyF pregunta = new PreguntaVyF(separadoPorComas[1], opciones, puntaje);
+                    Pregunta pregunta = new Pregunta(separadoPorComas[1], opciones, puntaje);
 
                     preguntas.add(pregunta);
                 }
@@ -116,7 +95,7 @@ public class CreadorDePreguntas {
         return preguntas;
     }
 
-    private static ArrayList<PreguntaVyF> cargarPreguntasOrdered(){*/
+    /*private static ArrayList<PreguntaVyF> cargarPreguntasOrdered(){*/
         /*  FORMATO ARCHIVO
             TextoPregunta ; Opciones
 
@@ -166,24 +145,4 @@ public class CreadorDePreguntas {
         // TO DO
         return new ArrayList<OpcionVerdaderoFalso>();
     }
-}*/
-
-
-/*
-        Puntaje puntaje = new PuntajeClasico();
-
-        OpcionVerdaderoFalso opcion1 = new OpcionVerdaderoFalso("Rojo", false);
-        OpcionVerdaderoFalso opcion2 = new OpcionVerdaderoFalso("Verde", false);
-        OpcionVerdaderoFalso opcion3 = new OpcionVerdaderoFalso("Amarillo", false);
-        OpcionVerdaderoFalso opcion4 = new OpcionVerdaderoFalso("Negro", true);
-
-        ArrayList<OpcionVerdaderoFalso> opciones = new ArrayList<OpcionVerdaderoFalso>();
-        opciones.add(opcion1);
-        opciones.add(opcion2);
-        opciones.add(opcion3);
-        opciones.add(opcion4);
-
-        PreguntaVyF pregunta = new PreguntaVyF("Cual color es mas ocuro", opciones, puntaje);
-
-        preguntas.add(pregunta);
-*/
+*/}

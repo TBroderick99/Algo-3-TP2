@@ -6,18 +6,24 @@ import edu.fiuba.algo3.modelo.Valor;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.selecciones.Seleccion;
+import edu.fiuba.algo3.modelo.Booster;
+import edu.fiuba.algo3.modelo.BoosterMultiplicador;
 
 import java.util.ArrayList;
 
 public class Respuesta {
 
-    protected ArrayList<Seleccion> selecciones;
-    protected Jugador jugadorAsociado;
+    private Pregunta preguntaAsociada;
+    private Booster booster;
+    private ArrayList<Seleccion> selecciones;
+    private Jugador jugadorAsociado;
 
 
     public Respuesta(Jugador jugadorAAsociar, Pregunta pregunta){  //tambien la pregunta podria crear la respuesta
         selecciones = new ArrayList<Seleccion>();
         this.jugadorAsociado = jugadorAAsociar;
+        this.preguntaAsociada = pregunta;
+        this.booster = new BoosterMultiplicador(1);
 
         for(Opcion opcion: pregunta.getOpciones()){
             this.agregarSeleccion(opcion);
@@ -27,6 +33,7 @@ public class Respuesta {
     public Respuesta(Jugador jugadorAsociado){    //Creada solamente para test Modos de puntaje
         selecciones = new ArrayList<Seleccion>();
         this.jugadorAsociado = jugadorAsociado;
+        this.booster = new BoosterMultiplicador(1);
     }
 
 
@@ -79,4 +86,18 @@ public class Respuesta {
         return true;
     }
 
+    public void sumarPuntajeAJugador(int puntajeASumar){
+        this.jugadorAsociado.sumarPuntos(this.booster.multiplicarPuntaje(puntajeASumar));
+    }
+
+    public void setBoost(Booster boosterASetear) {
+        boosterASetear.agregarBoost(this.booster);//RESPUESTA EMPIEZA SIN BOOSTER USAR NULL?
+        this.booster = boosterASetear;
+    }
+
+    public Booster getBooster(){
+        return this.booster;
+    }
+
+    public Pregunta getPregunta(){ return this.preguntaAsociada; }
 }
