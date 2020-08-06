@@ -110,7 +110,7 @@ public class PreguntaVyFTest {
     }
 
     @Test
-    public void test04PreguntaVerdaderoFalsoConPenalidadRecibeRespuestasYAsignaPuntajeALosJugadores() {
+    public void test04PreguntaVerdaderoFalsoPenalidadConMultiplicadoresRecibeRespuestasYAsignaPuntajeALosJugadores() {
         //Arrange
         Jugador jugador1 = new Jugador("Jose");
         Jugador jugador2 = new Jugador("Lucas");
@@ -130,7 +130,11 @@ public class PreguntaVyFTest {
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador1.marcar(opcionIncorrecta, new Valor(true));
 
+        jugador1.consumirMultiplicador(respuestaJugador1,2);
+
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
+        jugador2.consumirMultiplicador(respuestaJugador2,3);
+
         respuestaJugador2.marcar(opcionCorrecta, new Valor(true));
 
         ArrayList<Respuesta> respuestasJugadores = new ArrayList<Respuesta>();
@@ -142,7 +146,9 @@ public class PreguntaVyFTest {
 
 
         //Assert
-        assertEquals(jugador1.getPuntaje(), -1);
-        assertEquals(jugador2.getPuntaje(), 1);
+        assertEquals(-2, jugador1.getPuntaje() );  //puntaje -1 con multiplicadorx2 -2
+        assertEquals(3, jugador2.getPuntaje());   //puntaje 1 con multiplicadorx3 3
     }
+
+
 }
