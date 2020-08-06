@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/TBroderick99/Algo-3-TP2.svg?branch=master)](https://travis-ci.org/github/TBroderick99/Algo-3-TP2)
+
 # TP2 Algoritmos 3: Kahoot
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
