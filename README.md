@@ -24,12 +24,19 @@ maven 3.6.0
 
 ## Ejecutando las pruebas
 
-Explicación de como ejecutar las pruebas
+Para compilar y correr las pruebas, simplemente ubicarse en el mismo directorio que el archivo `pom.xml` e ingresar:
+
+```shell script
+mvn clean test
+```
 
 ## Ejecutando la aplicación
 
-Explicación de como ejecutar la aplicación
+Para compilar y correr la última versión del código, simplemente ubicarse en el mismo directorio que el archivo `pom.xml` e ingresar:
 
+```shell script
+mvn clean javafx:run
+```
 ## Licencia
 
 Este repositorio está bajo la Licencia MIT
