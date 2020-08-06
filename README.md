@@ -49,3 +49,7 @@ https://drive.google.com/file/d/11US6tvD1ZQdruYw8dRxeFFemHLUTAChf/view?usp=shari
 
 https://drive.google.com/file/d/1alB6elRB-ncBIblQVmogpdDNL3WZXrRO/view?usp=sharing
 
+## INFORME ENTREGA 2
+
+https://drive.google.com/file/d/1KFvwNK8cPsrgUHwVyXPQN7jbRjAQds3W/view?usp=sharing
+
