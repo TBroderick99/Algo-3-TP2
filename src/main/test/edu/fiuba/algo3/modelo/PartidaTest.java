@@ -38,7 +38,7 @@ public class PartidaTest {
         assertEquals("Marcelo", nombreJugadorActual);
     }
 
-    /*@Test
+    @Test
     public void test03JugadoresRespondenPreguntaYSeAsignaPuntaje(){
         //Arrange
         Partida partida = Partida.getInstance();
@@ -56,7 +56,7 @@ public class PartidaTest {
         opciones = pregunta.getOpciones(); // Aca el jugador lee las opciones.
 
         respuesta = new Respuesta(jugador1, pregunta);
-        respuesta.marcar(3);    //necesita una opcion y valor
+        respuesta.marcar(opciones.get(0), new Valor(true));
         partida.guardarRespuesta(respuesta);
 
         partida.siguienteJugador();
@@ -65,7 +65,7 @@ public class PartidaTest {
         opciones = pregunta.getOpciones(); // Aca el jugador lee las opciones.
 
         respuesta = new Respuesta(jugador2, pregunta);
-        respuesta.marcar(3);     //necesita una opcion y valor
+        respuesta.marcar(opciones.get(0), new Valor(true));
         partida.guardarRespuesta(respuesta);
 
         partida.siguinteRonda();
@@ -74,5 +74,5 @@ public class PartidaTest {
 
         assertEquals(1, jugador1.getPuntaje());
         assertEquals(1, jugador2.getPuntaje());
-    }*/
+    }
 }

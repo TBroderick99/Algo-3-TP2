@@ -3,13 +3,17 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
 
-public class Partida {
+public class Partida implements Observable{
     private static Partida INSTANCE = new Partida();
+
+    private ArrayList<Observer> observers;
+
     private ArrayList<Jugador> jugadores;
     private Iterator<Jugador> iteradorJugadores;
     private Jugador jugadorActual;
@@ -26,6 +30,7 @@ public class Partida {
     }
 
     public void agregarJugadores(String nombreJugador1, String nombreJugador2){
+        observers = new ArrayList<Observer>();
         Jugador jugador1 = new Jugador(nombreJugador1);
         Jugador jugador2 = new Jugador(nombreJugador2);
         this. jugadores = new ArrayList<Jugador>();
@@ -48,6 +53,7 @@ public class Partida {
     public void siguienteJugador(){
         if(iteradorJugadores.hasNext())
             jugadorActual = iteradorJugadores.next();
+        notifyObservers();
     }
     public Jugador getJugadorActual() {
         return jugadorActual;
@@ -62,6 +68,7 @@ public class Partida {
             preguntaActual = iteradorPreguntas.next();
         else;
             //se terminaron las preguntas¿?
+        notifyObservers();
     }
 
     private void asignarPuntajes() {
@@ -83,5 +90,15 @@ public class Partida {
 
     public void guardarRespuesta(Respuesta respuesta){
         respuestasRonda.add(respuesta);
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.stream().forEach(observer -> observer.change());
     }
 }

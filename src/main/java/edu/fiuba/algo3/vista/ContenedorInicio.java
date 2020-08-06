@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonInicioEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,12 +19,12 @@ public class ContenedorInicio extends VBox {
      //   this.set
         Text titulo = new Text("Ingrese el nombre de cada jugador:");
         titulo.setFill(Color.PURPLE);
-        titulo.setStrokeWidth(2);
+        titulo.setStrokeWidth(5);
         
         Button botonInicio = new Button("Inicio");
 
         botonInicio.setOnAction(e-> {
-            stage.setScene(new Scene(new ContenedorPrincipal(stage)));
+       //     stage.setScene(new Scene(new ContenedorPrincipal(stage)));
             stage.show();
         });
 
