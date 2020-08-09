@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Valor;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +10,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ValorTest{
-
+    @Test
     public void test01ValorSeCreaConBooleanoCorrectamente() {
         //Arrange
         Valor valorVerdadero = new Valor(true); //su valor es 1
@@ -24,6 +25,7 @@ public class ValorTest{
         assertEquals(0, valorNumericoFalso);
     }
 
+    @Test
     public void test02ValorSeCreaConOrdenCorrectamente() {
         //Arrange
         Valor primerValor = new Valor(1);
@@ -41,6 +43,7 @@ public class ValorTest{
         assertEquals(3, valorNumericoTercero);
     }
 
+    @Test
     public void test03ValorSeCreaConGrupoCorrecto() {
         //Arrange
         ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Autos", "Motos", "Aviones"));
@@ -67,6 +70,7 @@ public class ValorTest{
         assertEquals(grupoAviones.getNumero(), valorNumericoAviones);
     }
 
+    @Test
     public void test04ValorDeBooleanoSeComparanCorrectamente() {
         //Arrange
         Valor valorPruebaVerdadero = new Valor(true);
@@ -86,6 +90,7 @@ public class ValorTest{
         assert(valoresDistintosNoSonIguales);
     }
 
+    @Test
     public void test05ValorDeOrdenSeComparanCorrectamente() {
         //Arrange
         Valor valorPruebaOrden1 = new Valor(1);
@@ -105,6 +110,7 @@ public class ValorTest{
         assert(valoresDeOrdenDistintoNoSonIguales);
     }
 
+    // este test falla
     public void test06ValorSeCreaConGrupoCorrecto() {
         //Arrange
         ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Autos", "Motos"));
@@ -131,5 +137,4 @@ public class ValorTest{
         assert(valoresConGrupoMotosSonIguales);
         assert(valoresConGruposDistintosNoSonIguales);
     }
-
 }
