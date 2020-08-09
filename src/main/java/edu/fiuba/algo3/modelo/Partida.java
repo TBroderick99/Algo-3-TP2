@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 
-public class Partida implements Observable{
+public class Partida implements Observable {
     private static Partida INSTANCE = new Partida();
 
     private ArrayList<Observer> observers;
