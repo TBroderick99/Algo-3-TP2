@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 
 public class Turno {
 
@@ -8,21 +9,22 @@ public class Turno {
     private Jugador jugador;
     private Respuesta respuesta;
 
-
-    public void actualizar(){
-        Respuesta respuesta = new Respuesta(jugador);
-        //renovar el timer
-    }
-
-
     public Turno(Jugador jugador){
         this.jugador = jugador;
         //TO DO: inicializar el tiempo;
     }
 
+    public void actualizar(Pregunta pregunta){
+        this.respuesta = new Respuesta(jugador, pregunta);
+        //renovar el timer
+    }
 
     public Respuesta getRespuesta(){
         return respuesta;
+    }
+
+    public Jugador getJugador(){
+        return jugador;
     }
 
 }

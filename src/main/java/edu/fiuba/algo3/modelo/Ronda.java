@@ -34,7 +34,7 @@ public class Ronda {
 
         if(iteradorTurnos.hasNext()) {
             turnoActual = iteradorTurnos.next();
-            turnoActual.actualizar();
+            turnoActual.actualizar(preguntaActual);
         }
         //notifyObservers();        TO DO:  hacer el notify para ronda
     }
