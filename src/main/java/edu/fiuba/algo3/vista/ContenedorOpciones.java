@@ -69,7 +69,7 @@ public class ContenedorOpciones extends GridPane {
 
         Button botonSiguienteRonda = new Button("Siguiente Ronda");
         botonSiguienteRonda.setOnAction(e ->
-                Partida.getInstance().siguinteRonda()
+                Partida.getInstance().siguienteRonda()
         );
         botones.getChildren().add(botonSiguienteRonda);
 

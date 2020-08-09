@@ -68,7 +68,7 @@ public class PartidaTest {
         respuesta.marcar(opciones.get(0), new Valor(true));
         partida.guardarRespuesta(respuesta);
 
-        partida.siguinteRonda();
+        partida.siguienteRonda();
 
         //Assert
 
