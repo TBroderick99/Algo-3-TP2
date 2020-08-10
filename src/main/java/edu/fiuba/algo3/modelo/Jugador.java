@@ -20,8 +20,19 @@ public class Jugador {
     }
 
     public Boolean consumirMultiplicador(Respuesta respuesta, int factorMultiplicacion){
-        for (Booster booster: boosters){
+        for (Booster booster: this.boosters){
             if( !booster.esExclusivo() && booster.getFactor() == factorMultiplicacion){
+                booster.aplicarBoost(respuesta);
+                boosters.remove(booster);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Boolean consumirBooster(Respuesta respuesta, Booster boosterRecibido){
+        for (Booster booster: this.boosters){
+            if( booster == boosterRecibido){
                 booster.aplicarBoost(respuesta);
                 boosters.remove(booster);
                 return true;
