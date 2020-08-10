@@ -21,7 +21,7 @@ public class Pregunta{
         this.textoPregunta = textoPregunta;
         this.puntaje = modoDePuntaje;
         this.opciones = opciones;
-        this.booster = new BoosterMultiplicador(1);//2
+        this.booster = new BoosterMultiplicador(1);
     }
 
     public String getTextoPregunta(){
@@ -34,18 +34,7 @@ public class Pregunta{
     }
 
     public void asignarPuntajes(ArrayList<Respuesta> respuestasUsuarios){
-
-        /*Boolean todosRespondieronBien = true;
-
-        for (Respuesta respuesta: respuestasUsuarios){
-            if (respuesta.esPerfecta()) {
-                respuesta.getBooster().agregarBoost(this.booster);
-                continue;
-            }
-            todosRespondieronBien = false;
-        }
-
-        if (todosRespondieronBien && this.booster.esExclusivo()) {this.booster = 0}*/
+        this.booster.analizarRespuestas(respuestasUsuarios);
 
         for (Respuesta respuesta: respuestasUsuarios){
             puntaje.asignarPuntaje(respuesta);
@@ -53,7 +42,11 @@ public class Pregunta{
 
     }
 
-   public void setBoost(Booster boosterRecibido) {
+    public Booster getBooster() {
+        return booster;
+    }
+
+    public void setBoost(Booster boosterRecibido) {
         boosterRecibido.agregarBoost(this.booster);
         booster = boosterRecibido;
     }

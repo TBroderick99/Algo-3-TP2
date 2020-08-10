@@ -2,6 +2,9 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class BoosterMultiplicador extends Booster{
 
     public BoosterMultiplicador(int factor){ this.factorDeMultiplicacion = factor; }
@@ -9,6 +12,11 @@ public class BoosterMultiplicador extends Booster{
     @Override
     public Boolean esExclusivo(){
         return false;
+    }
+
+    @Override
+    public void analizarRespuestas(ArrayList<Respuesta> respuestasUsuarios){
+
     }
 
     @Override
