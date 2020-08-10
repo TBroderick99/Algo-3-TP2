@@ -10,13 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GrupoTest{
 
+    @Test
     public void test01GruposSeCreanConNombreCorrecto(){
         //Arrange
-        ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Hardcoders", "Procoders"));
-        ArrayList<Grupo> grupos = Grupo.crearGrupos(textosGrupos);
-
-        Grupo grupoHardcoders = grupos.get(0);
-        Grupo grupoProcoders = grupos.get(1);
+        Grupo grupoHardcoders = new Grupo("Hardcoders", 1);
+        Grupo grupoProcoders = new Grupo("Procoders", 2);
 
         //Act
         String nombreGrupoHardcoders = grupoHardcoders.getNombre();
@@ -28,13 +26,12 @@ public class GrupoTest{
 
     }
 
+    @Test
     public void test02GruposSeCreanConNumeroCorrecto(){
         //Arrange
-        ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Hardcoders", "Procoders"));
-        ArrayList<Grupo> grupos = Grupo.crearGrupos(textosGrupos);
 
-        Grupo grupoHardcoders = grupos.get(0); //es grupo 1
-        Grupo grupoProcoders = grupos.get(1);  //es grupo 2
+        Grupo grupoHardcoders = new Grupo("Hardcoders", 1);
+        Grupo grupoProcoders = new Grupo("Procoders", 2);
 
         //Act
         int numeroGrupoHardcoders = grupoHardcoders.getNumero();

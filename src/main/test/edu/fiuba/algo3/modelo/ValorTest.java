@@ -46,13 +46,10 @@ public class ValorTest{
     @Test
     public void test03ValorSeCreaConGrupoCorrecto() {
         //Arrange
-        ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Autos", "Motos", "Aviones"));
-        ArrayList<Grupo> grupos = Grupo.crearGrupos(textosGrupos);
 
-        /*a cada grupo se le asigna un numero*/
-        Grupo grupoAutos = grupos.get(0);
-        Grupo grupoMotos = grupos.get(1);
-        Grupo grupoAviones = grupos.get(2);
+        Grupo grupoAutos = new Grupo("Autos", 1);
+        Grupo grupoMotos = new Grupo("Motos", 2);
+        Grupo grupoAviones = new Grupo("Aviones", 3);
 
         Valor valorAutos = new Valor(grupoAutos);
         Valor valorMotos = new Valor(grupoMotos);
@@ -113,12 +110,8 @@ public class ValorTest{
     // este test falla
     public void test06ValorSeCreaConGrupoCorrecto() {
         //Arrange
-        ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Autos", "Motos"));
-        ArrayList<Grupo> grupos = Grupo.crearGrupos(textosGrupos);
-
-        /*a cada grupo se le asigna un numero*/
-        Grupo grupoAutos = grupos.get(0);
-        Grupo grupoMotos = grupos.get(1);
+        Grupo grupoAutos = new Grupo("Autos", 1);
+        Grupo grupoMotos = new Grupo("Motos", 2);
 
         Valor valorAutos = new Valor(grupoAutos);
         Valor valorAutosAComparar = new Valor(grupoAutos);

@@ -22,12 +22,8 @@ public class PreguntaGrupalTest {
         Puntaje puntaje = new PuntajeClasico();
         String textoPregunta = "A que grupo pertenecen las siguientes opciones?";
 
-
-        ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Frutas", "Vegetales"));
-        ArrayList<Grupo> grupos = Grupo.crearGrupos(textosGrupos);
-
-        Grupo grupoFrutas = grupos.get(0);
-        Grupo grupoVegetales = grupos.get(1);
+        Grupo grupoFrutas = new Grupo("Frutas", 1);
+        Grupo grupoVegetales = new Grupo("Vegetales", 2);
 
         Opcion opcionTomate = new Opcion("tomate", new Valor(grupoFrutas));
         Opcion opcionLechuga = new Opcion("lechuga", new Valor(grupoVegetales));
@@ -65,12 +61,8 @@ public class PreguntaGrupalTest {
         Puntaje puntaje = new PuntajeClasico();
         String textoPregunta = "A que grupo pertenecen las siguientes opciones?";
 
-
-        ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Frutas", "Vegetales"));
-        ArrayList<Grupo> grupos = Grupo.crearGrupos(textosGrupos);
-
-        Grupo grupoFrutas = grupos.get(0);
-        Grupo grupoVegetales = grupos.get(1);
+        Grupo grupoFrutas = new Grupo("Frutas", 1);
+        Grupo grupoVegetales = new Grupo("Vegetales", 2);
 
         Opcion opcionTomate = new Opcion("tomate", new Valor(grupoFrutas));
         Opcion opcionLechuga = new Opcion("lechuga", new Valor(grupoVegetales));
@@ -111,12 +103,8 @@ public class PreguntaGrupalTest {
         Puntaje puntaje = new PuntajeClasico();
         String textoPregunta = "A que grupo pertenecen las siguientes opciones?";
 
-
-        ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Frutas", "Vegetales"));
-        ArrayList<Grupo> grupos = Grupo.crearGrupos(textosGrupos);
-
-        Grupo grupoFrutas = grupos.get(0);
-        Grupo grupoVegetales = grupos.get(1);
+        Grupo grupoFrutas = new Grupo("Frutas", 1);
+        Grupo grupoVegetales = new Grupo("Vegetales", 2);
 
         Opcion opcionTomate = new Opcion("tomate", new Valor(grupoFrutas));
         Opcion opcionLechuga = new Opcion("lechuga", new Valor(grupoVegetales));
@@ -155,13 +143,9 @@ public class PreguntaGrupalTest {
         Puntaje puntaje = new PuntajeClasico();
         String textoPregunta = "A que grupo pertenecen las siguientes opciones?";
 
-
-        ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Frutas", "Vegetales", "chocolates"));
-        ArrayList<Grupo> grupos = Grupo.crearGrupos(textosGrupos);
-
-        Grupo grupoFrutas = grupos.get(0);
-        Grupo grupoVegetales = grupos.get(1);
-        Grupo grupoChocolates = grupos.get(2);
+        Grupo grupoFrutas = new Grupo("Frutas", 1);
+        Grupo grupoVegetales = new Grupo("Vegetales", 2);
+        Grupo grupoChocolates = new Grupo("Chocolates", 3);
 
         Opcion opcionTomate = new Opcion("tomate", new Valor(grupoFrutas));
         Opcion opcionLechuga = new Opcion("lechuga", new Valor(grupoVegetales));
