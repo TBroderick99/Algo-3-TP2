@@ -15,10 +15,15 @@ public abstract class Booster{
 
     public int getFactor(){ return factorDeMultiplicacion; }
 
+    public Boolean tieneFactor(int factorDeMultiplicacion){
+        return this.factorDeMultiplicacion == factorDeMultiplicacion;
+    }
+
     public abstract Boolean esExclusivo();
 
     public abstract void analizarRespuestas(ArrayList<Respuesta> respuestasUsuarios);
 
     public abstract void aplicarBoost(Respuesta respuesta);
+
 
 }

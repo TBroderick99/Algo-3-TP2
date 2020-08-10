@@ -10,69 +10,70 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PartidaTest {
+
     // Para que esté bien testeado, habría que hacer un mock de CreadorDePreguntas
+
     @Test
-    public void test01PartidaSeCreaConJugadorActualJuan(){
+    public void test01PartidaAgregaJugador(){
         //Arrange
         Partida partida = Partida.getInstance();
-        partida.agregarJugadores("Juan", "Marcelo");
 
         //Act
-        String nombreJugadorActual = partida.getNombreJugadorActual();
+        partida.agregarJugador("Juan");
+        partida.inicializarPartida();
+        Jugador jugador = partida.getJugadorActual();
+        String nombreJugador = jugador.getNombre();
 
         //Assert
-        assertEquals("Juan", nombreJugadorActual);
+        assertEquals("Juan", nombreJugador);
+
     }
 
+
     @Test
-    public void test02PartidaSiguienteJugadorEsMarcelo(){
+    public void test02TrasInicializarPartidaLaRondaEsLaNumero1yTienePreguntaInicial(){
         //Arrange
         Partida partida = Partida.getInstance();
-        partida.agregarJugadores("Juan", "Marcelo");
+        partida.agregarJugador("Juan");
+        partida.agregarJugador("Pedro");
+        Ronda ronda = partida.getRonda();
 
         //Act
-        partida.siguienteJugador();
-        String nombreJugadorActual = partida.getNombreJugadorActual();
+        partida.inicializarPartida();
+        int numeroDeRonda = ronda.getNumeroDeRonda();
+
 
         //Assert
-        assertEquals("Marcelo", nombreJugadorActual);
+        assertEquals(1, numeroDeRonda);
+        assertEquals( partida.getPreguntaActual(), ronda.getPreguntaActual());
+
     }
 
-    @Test
-    public void test03JugadoresRespondenPreguntaYSeAsignaPuntaje(){
+
+    //Partida es singleton, se deberia resetear para cada test
+    /*@Test
+    public void test03PartidaPasaDeRonda(){
         //Arrange
         Partida partida = Partida.getInstance();
-        partida.agregarJugadores("Juan", "Marcelo");
+        partida.agregarJugador("Juan");
+        partida.agregarJugador("Pedro");
+        partida.inicializarPartida();
+        Ronda ronda = partida.getRonda();
 
-        Jugador jugador1;
-        Jugador jugador2;
-        Pregunta pregunta = partida.getPreguntaActual();
+        assertEquals(1, ronda.getNumeroDeRonda());
 
-        Respuesta respuesta;
-        ArrayList<Opcion> opciones;
 
-        //Act
-        jugador1 = partida.getJugadorActual();
-        opciones = pregunta.getOpciones(); // Aca el jugador lee las opciones.
-
-        respuesta = new Respuesta(jugador1, pregunta);
-        respuesta.marcar(opciones.get(0), new Valor(true));
-        partida.guardarRespuesta(respuesta);
-
-        partida.siguienteJugador();
-
-        jugador2 = partida.getJugadorActual();
-        opciones = pregunta.getOpciones(); // Aca el jugador lee las opciones.
-
-        respuesta = new Respuesta(jugador2, pregunta);
-        respuesta.marcar(opciones.get(0), new Valor(true));
-        partida.guardarRespuesta(respuesta);
-
+        ronda.siguienteTurno();
+        ronda.siguienteTurno();
         partida.siguienteRonda();
 
-        //Assert
+        //Act
+        int numeroDeRonda = ronda.getNumeroDeRonda();
+        Pregunta preguntaActual = ronda.getPreguntaActual();
 
-        assertEquals(1, jugador1.getPuntaje());
-        assertEquals(1, jugador2.getPuntaje());
-    }
+        //Assert
+        assertEquals(2, numeroDeRonda);
+        assertEquals( partida.getPreguntaActual(), preguntaActual);
+    }*/
+
 }

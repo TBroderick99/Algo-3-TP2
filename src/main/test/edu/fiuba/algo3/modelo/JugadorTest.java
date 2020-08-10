@@ -17,6 +17,7 @@ public class JugadorTest {
         assertEquals("Juan", nombreJugador);
     }
 
+    @Test
     public void test02JugadorEmpiezaSinPuntos(){
         //Arrange
         Jugador jugador = new Jugador("Juan");
@@ -28,6 +29,7 @@ public class JugadorTest {
         assertEquals(0, puntosJugador);
     }
 
+    @Test
     public void test03JugadorSumaPuntosCorrectamente(){
         //Arrange
         Jugador jugador = new Jugador("Juan");

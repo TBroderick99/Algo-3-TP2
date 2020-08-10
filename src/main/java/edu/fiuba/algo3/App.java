@@ -17,8 +17,9 @@ public class App extends Application {
     public void start(Stage stage) {
 
         Partida partida = Partida.getInstance();
-        partida.agregarJugadores("jugador1", "jugador2");
-
+        partida.agregarJugador("jugador1");
+        partida.agregarJugador("jugador2");
+        partida.inicializarPartida();
 
         Scene escenaIngresoJugadores = new Scene(new ContenedorIngresoJugadores(stage),500,700);
         Scene escenaInicio = new Scene(new ContenedorInicio(stage, escenaIngresoJugadores), 500,700);

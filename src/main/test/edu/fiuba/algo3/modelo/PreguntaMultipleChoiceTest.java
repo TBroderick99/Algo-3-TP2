@@ -192,7 +192,8 @@ public class PreguntaMultipleChoiceTest {
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
 
-        jugador1.consumirMultiplicador(respuestaJugador1, 2);
+        Booster booster1 = jugador1.getBoosterMultiplicador(2);
+        jugador1.consumirBooster(respuestaJugador1, booster1);
 
 
         respuestaJugador1.marcar(opcion1, new Valor(true));
@@ -202,7 +203,8 @@ public class PreguntaMultipleChoiceTest {
 
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
 
-        jugador2.consumirMultiplicador(respuestaJugador2, 3);
+        Booster booster2 = jugador2.getBoosterMultiplicador(3);
+        jugador2.consumirBooster(respuestaJugador2, booster2);
 
         respuestaJugador2.marcar(opcion2, new Valor(true));
         respuestaJugador2.marcar(opcion3, new Valor(true));
