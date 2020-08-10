@@ -1,9 +1,13 @@
 package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.preguntas.PuntajeParcial;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,19 +18,17 @@ public class PuntajeParcialTest {
         PuntajeParcial puntaje = new PuntajeParcial();
         Jugador jugador = new Jugador("Juan");
 
-        Respuesta respuesta = new Respuesta(jugador);
         Opcion opcion1 = new Opcion("1", new Valor(false));
         Opcion opcion2 = new Opcion("2", new Valor(true));
         Opcion opcion3 = new Opcion("3", new Valor(true));
         Opcion opcion4 = new Opcion("4", new Valor(false));
         Opcion opcion5 = new Opcion("5", new Valor(true));
         Opcion opcion6 = new Opcion("6", new Valor(false));
-        respuesta.agregarSeleccion(opcion1);
-        respuesta.agregarSeleccion(opcion2);
-        respuesta.agregarSeleccion(opcion3);
-        respuesta.agregarSeleccion(opcion4);
-        respuesta.agregarSeleccion(opcion5);
-        respuesta.agregarSeleccion(opcion6);
+        ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
+
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
+
         respuesta.marcar(opcion2, new Valor(true));
 
         //Act
@@ -42,19 +44,17 @@ public class PuntajeParcialTest {
         PuntajeParcial puntaje = new PuntajeParcial();
         Jugador jugador = new Jugador("Juan");
 
-        Respuesta respuesta = new Respuesta(jugador);
         Opcion opcion1 = new Opcion("1", new Valor(false));
         Opcion opcion2 = new Opcion("2", new Valor(true));
         Opcion opcion3 = new Opcion("3", new Valor(true));
         Opcion opcion4 = new Opcion("4", new Valor(false));
         Opcion opcion5 = new Opcion("5", new Valor(true));
         Opcion opcion6 = new Opcion("6", new Valor(false));
-        respuesta.agregarSeleccion(opcion1);
-        respuesta.agregarSeleccion(opcion2);
-        respuesta.agregarSeleccion(opcion3);
-        respuesta.agregarSeleccion(opcion4);
-        respuesta.agregarSeleccion(opcion5);
-        respuesta.agregarSeleccion(opcion6);
+        ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
+
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
+
 
         //Act
         puntaje.asignarPuntaje(respuesta);
@@ -69,19 +69,17 @@ public class PuntajeParcialTest {
         PuntajeParcial puntaje = new PuntajeParcial();
         Jugador jugador = new Jugador("Juan");
 
-        Respuesta respuesta = new Respuesta(jugador);
         Opcion opcion1 = new Opcion("1", new Valor(false));
         Opcion opcion2 = new Opcion("2", new Valor(true));
         Opcion opcion3 = new Opcion("3", new Valor(true));
         Opcion opcion4 = new Opcion("4", new Valor(false));
         Opcion opcion5 = new Opcion("5", new Valor(true));
         Opcion opcion6 = new Opcion("6", new Valor(false));
-        respuesta.agregarSeleccion(opcion1);
-        respuesta.agregarSeleccion(opcion2);
-        respuesta.agregarSeleccion(opcion3);
-        respuesta.agregarSeleccion(opcion4);
-        respuesta.agregarSeleccion(opcion5);
-        respuesta.agregarSeleccion(opcion6);
+        ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
+
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
+
         respuesta.marcar(opcion2, new Valor(true));
         respuesta.marcar(opcion3, new Valor(true));
 
@@ -97,19 +95,17 @@ public class PuntajeParcialTest {
         PuntajeParcial puntaje = new PuntajeParcial();
         Jugador jugador = new Jugador("Juan");
 
-        Respuesta respuesta = new Respuesta(jugador);
         Opcion opcion1 = new Opcion("1", new Valor(false));
         Opcion opcion2 = new Opcion("2", new Valor(true));
         Opcion opcion3 = new Opcion("3", new Valor(true));
         Opcion opcion4 = new Opcion("4", new Valor(false));
         Opcion opcion5 = new Opcion("5", new Valor(true));
         Opcion opcion6 = new Opcion("6", new Valor(false));
-        respuesta.agregarSeleccion(opcion1);
-        respuesta.agregarSeleccion(opcion2);
-        respuesta.agregarSeleccion(opcion3);
-        respuesta.agregarSeleccion(opcion4);
-        respuesta.agregarSeleccion(opcion5);
-        respuesta.agregarSeleccion(opcion6);
+        ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
+
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
+
         respuesta.marcar(opcion2, new Valor(true));
         respuesta.marcar(opcion3, new Valor(true));
         respuesta.marcar(opcion6, new Valor(true));
@@ -126,19 +122,17 @@ public class PuntajeParcialTest {
         PuntajeParcial puntaje = new PuntajeParcial();
         Jugador jugador = new Jugador("Juan");
 
-        Respuesta respuesta = new Respuesta(jugador);
         Opcion opcion1 = new Opcion("1", new Valor(true));
         Opcion opcion2 = new Opcion("2", new Valor(true));
         Opcion opcion3 = new Opcion("3", new Valor(true));
         Opcion opcion4 = new Opcion("4", new Valor(true));
         Opcion opcion5 = new Opcion("5", new Valor(true));
         Opcion opcion6 = new Opcion("6", new Valor(false));
-        respuesta.agregarSeleccion(opcion1);
-        respuesta.agregarSeleccion(opcion2);
-        respuesta.agregarSeleccion(opcion3);
-        respuesta.agregarSeleccion(opcion4);
-        respuesta.agregarSeleccion(opcion5);
-        respuesta.agregarSeleccion(opcion6);
+        ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
+
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Respuesta respuesta = new Respuesta(jugador, pregunta);
+
         respuesta.marcar(opcion1, new Valor(true));
         respuesta.marcar(opcion2, new Valor(true));
         respuesta.marcar(opcion3, new Valor(true));

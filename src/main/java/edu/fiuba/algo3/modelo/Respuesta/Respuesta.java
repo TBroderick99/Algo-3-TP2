@@ -30,11 +30,13 @@ public class Respuesta {
         }
     }
 
+    /*
     public Respuesta(Jugador jugadorAsociado){    //Creada solamente para test Modos de puntaje
         selecciones = new ArrayList<>();
         this.jugadorAsociado = jugadorAsociado;
         this.booster = new BoosterMultiplicador(1);
     }
+    */
 
 
     public void marcar(Opcion opcion, Valor valorAMarcar){
