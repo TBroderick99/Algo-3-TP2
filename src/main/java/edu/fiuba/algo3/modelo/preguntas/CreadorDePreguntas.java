@@ -17,7 +17,7 @@ import java.util.List;
 public class CreadorDePreguntas {
 
     public static ArrayList<Pregunta> crearPreguntas() {
-        ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
+        ArrayList<Pregunta> preguntas = new ArrayList<>();
 
         preguntas.addAll(cargarPreguntasVoF());
 //      preguntas.addAll(cargarPreguntasOrdered());
@@ -27,7 +27,7 @@ public class CreadorDePreguntas {
     }
 
     private static ArrayList<Opcion> parsearOpcionesVoF(String textoOpciones, String textoOpcionesCorrectas) {
-        ArrayList<Opcion> opciones = new ArrayList<Opcion>();
+        ArrayList<Opcion> opciones = new ArrayList<>();
         Opcion opcion;
 
         List<String> arrayTextoOpciones= Arrays.asList(textoOpciones.split("-"));

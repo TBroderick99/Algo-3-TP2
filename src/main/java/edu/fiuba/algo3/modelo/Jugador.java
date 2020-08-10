@@ -16,7 +16,7 @@ public class Jugador {
     public Jugador(String nombre){
         this.nombre = nombre;
         this.puntaje = 0;
-        boosters = new ArrayList<Booster>(Arrays.asList(new BoosterMultiplicador(2), new BoosterMultiplicador(3), new BoosterExclusividad(2), new BoosterExclusividad(2)));
+        boosters = new ArrayList<>(Arrays.asList(new BoosterMultiplicador(2), new BoosterMultiplicador(3), new BoosterExclusividad(2), new BoosterExclusividad(2)));
     }
 
     public Boolean consumirMultiplicador(Respuesta respuesta, int factorMultiplicacion){

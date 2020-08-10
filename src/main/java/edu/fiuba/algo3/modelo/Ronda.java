@@ -19,8 +19,8 @@ public class Ronda {
 
     public Ronda(){
         numeroRonda = 0;
-        turnos = new ArrayList<Turno>();
-        respuestas = new ArrayList<Respuesta>();
+        turnos = new ArrayList<>();
+        respuestas = new ArrayList<>();
     }
 
     public void agregarTurno(Jugador jugador){

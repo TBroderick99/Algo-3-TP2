@@ -36,9 +36,9 @@ public class Partida implements Observable {
     }
 
     public void agregarJugadores(String nombreJugador1, String nombreJugador2){  //esta refactoreado abajo
-        observers = new ArrayList<Observer>();
+        observers = new ArrayList<>();
 
-        this. jugadores = new ArrayList<Jugador>();
+        this.jugadores = new ArrayList<>();
         Jugador jugador1 = new Jugador(nombreJugador1);
         Jugador jugador2 = new Jugador(nombreJugador2);
 
@@ -48,7 +48,7 @@ public class Partida implements Observable {
         this.iteradorJugadores = this.jugadores.iterator();
         this.jugadorActual = iteradorJugadores.next();
 
-        this.respuestasRonda = new ArrayList<Respuesta>();
+        this.respuestasRonda = new ArrayList<>();
 
         this.preguntas = inicializarPreguntas();
         this.iteradorPreguntas = this.preguntas.iterator();
@@ -113,7 +113,7 @@ public class Partida implements Observable {
     private void asignarPuntajes() {                      //la ronda asigna los puntajes
         // Esto se evita en un futuro refactor.
         Respuesta[] _respuestas =  new Respuesta[]{respuestasRonda.get(0), respuestasRonda.get(1)};
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>(Arrays.asList(_respuestas));
+        ArrayList<Respuesta> respuestas = new ArrayList<>(Arrays.asList(_respuestas));
 
         Jugador[] jugadores = new Jugador[]{this.jugadores.get(0), this.jugadores.get(1)};
         preguntaActual.asignarPuntajes(respuestas);
@@ -145,6 +145,6 @@ public class Partida implements Observable {
 
     @Override
     public void notifyObservers() {
-        observers.stream().forEach(observer -> observer.change());
+        observers.forEach(Observer::change);
     }
 }

@@ -20,7 +20,7 @@ public class Respuesta {
 
 
     public Respuesta(Jugador jugadorAAsociar, Pregunta pregunta){  //tambien la pregunta podria crear la respuesta
-        selecciones = new ArrayList<Seleccion>();
+        selecciones = new ArrayList<>();
         this.jugadorAsociado = jugadorAAsociar;
         this.preguntaAsociada = pregunta;
         this.booster = new BoosterMultiplicador(1);
@@ -31,7 +31,7 @@ public class Respuesta {
     }
 
     public Respuesta(Jugador jugadorAsociado){    //Creada solamente para test Modos de puntaje
-        selecciones = new ArrayList<Seleccion>();
+        selecciones = new ArrayList<>();
         this.jugadorAsociado = jugadorAsociado;
         this.booster = new BoosterMultiplicador(1);
     }
@@ -76,14 +76,18 @@ public class Respuesta {
 
     public Boolean esPerfecta(){
 
+        int correctasNoMarcadas = (int) selecciones.stream().filter(sel ->!sel.fueMarcada() && sel.debeSerMarcada()).count();
+        int incorrectasMarcadas = (int) selecciones.stream().filter(sel -> sel.fueMarcada() && !sel.esCorrecta()).count();
+        return (correctasNoMarcadas + incorrectasMarcadas) == 0;
+
         //CODIGO REPETIDO DE PUNTAJE CLASICO
-        for ( Seleccion seleccion : selecciones){
+        /*for ( Seleccion seleccion : selecciones){
             if( (seleccion.fueMarcada() && !seleccion.esCorrecta()) || (!seleccion.fueMarcada() && seleccion.debeSerMarcada()) ){
                 return false;
 
             }
         }
-        return true;
+        return true;*/
     }
 
     public void sumarPuntajeAJugador(int puntajeASumar){

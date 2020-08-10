@@ -9,6 +9,11 @@ public class PuntajeParcial extends Puntaje {
 
     @Override
     public int calcularPuntaje(Respuesta respuesta) {
+        ArrayList<Seleccion> selecciones = respuesta.getSelecciones();
+        int puntajeASumar = (int) selecciones.stream().filter(sel -> sel.fueMarcada() && sel.esCorrecta()).count();
+        int incorrectasMarcadas = (int) selecciones.stream().filter(sel -> sel.fueMarcada() && !sel.esCorrecta()).count();
+        return incorrectasMarcadas > 0 ? 0 : puntajeASumar;
+        /*
         int puntajeASumar = 0;
 
         ArrayList<Seleccion> selecciones = respuesta.getSelecciones();
@@ -23,5 +28,6 @@ public class PuntajeParcial extends Puntaje {
             }
         }
         return puntajeASumar;
+        */
     }
 }

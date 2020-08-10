@@ -9,6 +9,12 @@ public class PuntajePenalidad extends Puntaje {
 
     @Override
     public int calcularPuntaje(Respuesta respuesta) {
+        ArrayList<Seleccion> selecciones = respuesta.getSelecciones();
+        int correctasMarcadas = (int) selecciones.stream().filter(sel -> sel.fueMarcada() && sel.esCorrecta()).count();
+        int incorrectasMarcadas = (int) selecciones.stream().filter(sel -> sel.fueMarcada() && !sel.esCorrecta()).count();
+        return correctasMarcadas - incorrectasMarcadas;
+
+        /*
         int puntajeASumar = 0;
 
         ArrayList<Seleccion> selecciones = respuesta.getSelecciones();
@@ -20,5 +26,6 @@ public class PuntajePenalidad extends Puntaje {
                 puntajeASumar -= 1;
         }
         return puntajeASumar;
+        */
     }
 }
