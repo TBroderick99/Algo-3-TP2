@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
-import edu.fiuba.algo3.modelo.Booster;
-import edu.fiuba.algo3.modelo.BoosterMultiplicador;
-import edu.fiuba.algo3.modelo.BoosterExclusividad;
 
 import java.util.ArrayList;
 
@@ -49,6 +46,10 @@ public class Pregunta{
     public void setBoost(Booster boosterRecibido) {
         boosterRecibido.agregarBoost(this.booster);
         booster = boosterRecibido;
+    }
+
+    public ArrayList<Grupo> getGrupos() {
+        return null;
     }
 
 }

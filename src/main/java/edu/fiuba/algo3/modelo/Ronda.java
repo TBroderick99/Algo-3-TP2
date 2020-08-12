@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Ronda {
 
@@ -17,23 +19,23 @@ public class Ronda {
 
     private ArrayList<Respuesta> respuestas;
 
-    public Ronda(){
+    public Ronda() {
         numeroRonda = 0;
         turnos = new ArrayList<>();
         respuestas = new ArrayList<>();
     }
 
-    public void agregarTurno(Jugador jugador){
+    public void agregarTurno(Jugador jugador) {
         Turno turno = new Turno(jugador);
         turnos.add(turno);
     }
 
 
-    public void siguienteTurno(){
+    public void siguienteTurno() {
         //respuestas.add(turnoActual.getRespuesta());
         turnoActual.enviarRespuesta(this);
 
-        if(iteradorTurnos.hasNext()) {
+        if (iteradorTurnos.hasNext()) {
             turnoActual = iteradorTurnos.next();
             turnoActual.actualizar(preguntaActual);
         }
@@ -44,7 +46,7 @@ public class Ronda {
         //notifyObservers();        TO DO:  hacer el notify para ronda
     }
 
-    public void actualizar(Pregunta pregunta){
+    public void actualizar(Pregunta pregunta) {
         setPreguntaActual(pregunta);
         numeroRonda += 1;
 
@@ -54,7 +56,7 @@ public class Ronda {
     }
 
 
-    public void asignarPuntajes(){
+    public void asignarPuntajes() {
         preguntaActual.asignarPuntajes(respuestas);
     }
 
@@ -64,7 +66,8 @@ public class Ronda {
     }
 
 
-    public void setPreguntaActual(Pregunta pregunta){
+
+    public void setPreguntaActual(Pregunta pregunta) {
         preguntaActual = pregunta;
     }
 
@@ -91,5 +94,10 @@ public class Ronda {
 
     public int getNumeroDeRonda(){
         return numeroRonda;
+    }
+
+    public ArrayList<Jugador> getJugadores() {
+        List<Jugador> aux = turnos.stream().map(t -> t.getJugador()).collect(Collectors.toList());
+        return new ArrayList<>(aux);
     }
 }

@@ -24,6 +24,8 @@ public class Partida implements Observable {
 
     private ArrayList<Respuesta> respuestasRonda;         //cada turno tendria su respuesta
 
+    private Estado estado = Estado.INICIO;
+
     private Partida(){
         this.ronda = new Ronda();
     }
@@ -55,13 +57,13 @@ public class Partida implements Observable {
     public void inicializarPartida(){                   //cuando los jugadores ya fueron agregados
         this.manejadorDePreguntas = new ManejadorDePreguntas();
         ronda.actualizar(getPreguntaActual());
+        estado = Estado.JUGANDO;
     }
 
     public void agregarJugador(String nombre){
         Jugador jugador = new Jugador(nombre);
         ronda.agregarTurno(jugador);
     }
-
 
     private ArrayList<Pregunta> inicializarPreguntas() {
         return CreadorDePreguntas.crearPreguntas();
@@ -103,13 +105,13 @@ public class Partida implements Observable {
             ronda.actualizar(getPreguntaActual());
         }
         else{
-            // Terminó la partida
+            estado = Estado.FINALIZADO;
         }
 
        //notifyObservers();
     }
 
-
+    public void finalizarPartida() {}
     /*private void asignarPuntajes() {                      //la ronda asigna los puntajes
         // Esto se evita en un futuro refactor.
         Respuesta[] _respuestas =  new Respuesta[]{respuestasRonda.get(0), respuestasRonda.get(1)};
@@ -140,6 +142,9 @@ public class Partida implements Observable {
         respuestasRonda.add(respuesta);
     }
 
+    public ArrayList<Jugador> getJugadores() {
+        return ronda.getJugadores();
+    }
 
     @Override
     public void addObserver(Observer observer) {
