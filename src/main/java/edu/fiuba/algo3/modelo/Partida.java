@@ -16,7 +16,7 @@ public class Partida implements Observable {
     private ArrayList<Observer> observers = new ArrayList<>();
 
     private Ronda ronda;
-    private ManejadorDePreguntas manejadorDePreguntas;
+    public ManejadorDePreguntas manejadorDePreguntas;
 
     private ArrayList<Jugador> jugadores;                 //sacar relacionado a jugadores, se encargan los turnos
     private Iterator<Jugador> iteradorJugadores;
@@ -77,7 +77,13 @@ public class Partida implements Observable {
     }*/
 
     public void siguienteTurno(){
-        ronda.siguienteTurno();
+        if (ronda.esUltimoTurno()){
+            ronda.siguienteTurno();
+            siguienteRonda();
+        }
+        else {
+            ronda.siguienteTurno();
+        }
     }
 
 
@@ -124,6 +130,10 @@ public class Partida implements Observable {
 
     public Pregunta getPreguntaActual(){
         return manejadorDePreguntas.getPreguntaActual();
+    }
+
+    public Turno getTurnoActual(){
+        return ronda.getTurnoActual();
     }
 
     public Jugador getJugadorActual(){                        //getter para que no rompa el controlador

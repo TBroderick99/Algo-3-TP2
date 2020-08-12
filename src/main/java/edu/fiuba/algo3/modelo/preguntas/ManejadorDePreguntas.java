@@ -15,7 +15,7 @@ public class ManejadorDePreguntas {
         siguientePregunta();
     }
 
-    private ArrayList<Pregunta> inicializarPreguntas() {
+    public ArrayList<Pregunta> inicializarPreguntas() {
         return CreadorDePreguntas.crearPreguntas();
     }
 

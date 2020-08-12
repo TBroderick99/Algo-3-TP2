@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PartidaTest {
+
     /*
     // Para que esté bien testeado, habría que hacer un mock de CreadorDePreguntas
 

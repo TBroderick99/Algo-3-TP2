@@ -55,6 +55,15 @@ public class Ronda {
         //notifyObservers();        TO DO:  hacer el notify para ronda
     }
 
+    public Boolean esUltimoTurno(){
+        if (!iteradorTurnos.hasNext()) {
+            return true;
+        }
+        return false;
+
+    }
+
+
     public void actualizar(Pregunta pregunta) {
         setPreguntaActual(pregunta);
         numeroRonda += 1;

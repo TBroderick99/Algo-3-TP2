@@ -57,7 +57,8 @@ public class CreadorDePreguntas {
                 while ((lineaEntera = lector.readLine()) != null) {
                     separadoPorComas = lineaEntera.split(";");
 
-                    ArrayList<Opcion> opciones = parsearOpcionesGrupal(separadoPorComas[1]);
+                    String[] arrayTextoOpciones = separadoPorComas[1].split("~");
+                    ArrayList<Opcion> opciones = parsearOpcionesGrupal(arrayTextoOpciones);
                     Puntaje puntaje = new PuntajeClasico();
 
                     Pregunta pregunta = new Pregunta(separadoPorComas[0], opciones, puntaje);
@@ -72,11 +73,10 @@ public class CreadorDePreguntas {
         return preguntas;
     }
 
-    private static ArrayList<Opcion> parsearOpcionesGrupal(String textoOpciones) {
+    private static ArrayList<Opcion> parsearOpcionesGrupal(String[] arrayTextoOpciones) {
         ArrayList<Opcion> opciones = new ArrayList<>();
         Opcion opcion;
 
-        String[] arrayTextoOpciones = textoOpciones.split("~");
         Grupo grupo;
         int i = 0;
         for (String textoOpcion: arrayTextoOpciones){
@@ -91,6 +91,23 @@ public class CreadorDePreguntas {
 
         return opciones;
     }
+
+
+    /*private static ArrayList<Grupo> parsearGrupos(String[] arrayTextoOpciones) {
+        ArrayList<Grupo> grupos = new ArrayList<>();
+        Grupo grupo;
+
+        int i = 0;
+        for (String textoOpcion: arrayTextoOpciones){
+            i++;
+            String[] arrayTextoOpcion = textoOpcion.split("\\|");
+            grupo = new Grupo(arrayTextoOpcion[0], i);
+            grupos.add(grupo);
+        }
+
+        return grupos;
+    }*/
+
 
     private static ArrayList<Opcion> parsearOpcionesVoF(String textoOpciones, String textoOpcionesCorrectas) {
         ArrayList<Opcion> opciones = new ArrayList<>();

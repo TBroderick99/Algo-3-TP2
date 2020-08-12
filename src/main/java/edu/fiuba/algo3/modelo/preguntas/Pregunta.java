@@ -49,7 +49,7 @@ public class Pregunta{
     }
 
     public ArrayList<Grupo> getGrupos() {
-        return null;
+        return new ArrayList<>();
     }
 
 }

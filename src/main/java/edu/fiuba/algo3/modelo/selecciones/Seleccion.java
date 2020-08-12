@@ -8,7 +8,6 @@ public class Seleccion {
     protected Boolean fueMarcada;
     protected Valor valorMarcado;
     protected Opcion opcion;
-    private static int cantidadDeSeleccionadas = 0;   //TO DO: Quizas que la respuesta sepa cuantas seleccionadas hay tenga mas sentido.
 
 
     public Seleccion(Opcion unaOpcion){
@@ -28,12 +27,10 @@ public class Seleccion {
     public void marcar(Valor valorAMarcar){
         fueMarcada = true;
         this.asignarValor(valorAMarcar);
-        cantidadDeSeleccionadas += 1;
     }
 
     public void desmarcar(){
         fueMarcada = false;
-        cantidadDeSeleccionadas -= 1;
     }
 
     public Valor getValor(){ return this.valorMarcado; }
@@ -47,10 +44,6 @@ public class Seleccion {
         return opcion;
     }
 
-
-    public static int getCantidadDeSeleccionadas(){
-        return cantidadDeSeleccionadas;
-    }
 
     public Boolean debeSerMarcada(){
         return opcion.debeSerMarcada();

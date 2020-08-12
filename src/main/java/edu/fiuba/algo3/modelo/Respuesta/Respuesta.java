@@ -17,6 +17,7 @@ public class Respuesta {
     private Booster booster;
     private ArrayList<Seleccion> selecciones;
     private Jugador jugadorAsociado;
+    private int cantidadDeMarcadas;
 
 
     public Respuesta(Jugador jugadorAAsociar, Pregunta pregunta){  //tambien la pregunta podria crear la respuesta
@@ -24,6 +25,7 @@ public class Respuesta {
         this.jugadorAsociado = jugadorAAsociar;
         this.preguntaAsociada = pregunta;
         this.booster = new BoosterMultiplicador(1);
+        this.cantidadDeMarcadas = 0;
 
         for(Opcion opcion: pregunta.getOpciones()){
             this.agregarSeleccion(opcion);
@@ -40,14 +42,17 @@ public class Respuesta {
 
 
     public void marcar(Opcion opcion, Valor valorAMarcar){
-        Seleccion seleccion = getSeleccion(opcion);
 
-        seleccion.marcar(valorAMarcar);
+       Seleccion seleccion = getSeleccion(opcion);
+       seleccion.marcar(valorAMarcar);
+       cantidadDeMarcadas += 1;
+
     }
 
     public void desmarcar(Opcion opcion){
         Seleccion seleccion = getSeleccion(opcion);
         seleccion.desmarcar();
+        cantidadDeMarcadas -= 1;
     }
 
     public ArrayList<Seleccion> getSelecciones(){
@@ -96,6 +101,9 @@ public class Respuesta {
         this.jugadorAsociado.sumarPuntos(this.booster.multiplicarPuntaje(puntajeASumar));
     }
 
+    public int getCantidadDeMarcadas(){
+        return cantidadDeMarcadas;
+    }
     public void setBoost(Booster boosterASetear) {
         boosterASetear.agregarBoost(this.booster);//RESPUESTA EMPIEZA SIN BOOSTER USAR NULL?
         this.booster = boosterASetear;
