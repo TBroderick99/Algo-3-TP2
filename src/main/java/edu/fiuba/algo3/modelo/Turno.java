@@ -14,9 +14,14 @@ public class Turno {
         //TO DO: inicializar el tiempo;
     }
 
+
     public void actualizar(Pregunta pregunta){
         this.respuesta = new Respuesta(jugador, pregunta);
         //renovar el timer
+    }
+
+    public void enviarRespuesta(Ronda ronda){
+        ronda.recibirRespuesta(this.respuesta);
     }
 
     public Respuesta getRespuesta(){

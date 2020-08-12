@@ -30,34 +30,66 @@ public class Ronda {
 
 
     public void siguienteTurno(){
-        respuestas.add(turnoActual.getRespuesta());
+        //respuestas.add(turnoActual.getRespuesta());
+        turnoActual.enviarRespuesta(this);
 
         if(iteradorTurnos.hasNext()) {
             turnoActual = iteradorTurnos.next();
             turnoActual.actualizar(preguntaActual);
         }
+        /*else{
+            Partida.getInstance().siguienteRonda();
+        }*/
+
         //notifyObservers();        TO DO:  hacer el notify para ronda
     }
 
     public void actualizar(Pregunta pregunta){
-        setPreguntaActual(pregunta);                //siguientePregunta
-        this.numeroRonda += 1;                      //pasar numero de ronda
-        this.iteradorTurnos = this.turnos.iterator();    //actualizar iterador de turnos
+        setPreguntaActual(pregunta);
+        numeroRonda += 1;
+
+        this.iteradorTurnos = this.turnos.iterator();    //lleva el iterador de turnos al inicio
         this.turnoActual = this.iteradorTurnos.next();
+        this.turnoActual.actualizar(pregunta);
     }
+
 
     public void asignarPuntajes(){
         preguntaActual.asignarPuntajes(respuestas);
     }
+
+
+    public void recibirRespuesta(Respuesta respuesta){
+        respuestas.add(respuesta);
+    }
+
 
     public void setPreguntaActual(Pregunta pregunta){
         preguntaActual = pregunta;
     }
 
 
-
     public Pregunta getPreguntaActual() {
         return this.preguntaActual;
     }
 
+
+    public Turno getTurnoActual(){
+        return turnoActual;
+    }
+
+
+    public ArrayList<Turno> getTurnos(){
+        return turnos;
+    }
+
+
+    public ArrayList<Respuesta> getRespuestas(){
+        return respuestas;
+    }
+
+
+    public int getNumeroDeRonda(){
+        return numeroRonda;
+    }
 }

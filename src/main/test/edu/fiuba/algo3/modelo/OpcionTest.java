@@ -54,9 +54,7 @@ public class OpcionTest {
     @Test
     public void test04OpcionSeCreaConValorGrupalCorrecto() {
         //Arrange
-        ArrayList<String> textosGrupos = new ArrayList<String>(Arrays.asList("Autos"));
-        ArrayList<Grupo> grupos = Grupo.crearGrupos(textosGrupos);
-        Grupo autos = grupos.get(0); //ES EL GRUPO 1
+        Grupo autos = new Grupo("Autos", 1);
 
         Opcion opcionPrueba = new Opcion("Mustang", new Valor( autos ));
 

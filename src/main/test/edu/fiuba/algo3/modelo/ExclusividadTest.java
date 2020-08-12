@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Excepciones.JugadorNoTieneMasBoostersDisponiblesError;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.*;
+import edu.fiuba.algo3.modelo.Booster;
+import edu.fiuba.algo3.modelo.BoosterExclusividad;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -12,76 +13,52 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PreguntaMultipleChoiceTest {
-
+public class ExclusividadTest{
 
     @Test
-    public void test01PreguntaMultipleChoiceConPuntajeParcialSeCreaCorrectamente() {
+    public void test01ExclusividadSeCreaConFactorCorrecto(){
         //Arrange
-        Puntaje puntaje = new PuntajeParcial();
-        ArrayList<Opcion> opciones = new ArrayList<>();
-
-        Opcion opcion1 = new Opcion("falso", new Valor(false));
-        Opcion opcion2 = new Opcion("verdadero", new Valor(true));
-
-        opciones.add(opcion1);
-        opciones.add(opcion2);
-        String textoPregunta = "La UBA fue fundada en el año 1821";
-
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
-        String valor;
+        Booster boosterPor2 = new BoosterExclusividad(2);
+        Booster boosterPor3 = new BoosterExclusividad(3);
 
         //Act
-        valor = pregunta.getTextoPregunta();
+        int factorBoosterPor2 = boosterPor2.getFactor();
+        int factorBoosterPor3 = boosterPor3.getFactor();
 
         //Assert
-        assertEquals(textoPregunta, valor);
+        assertEquals(2, factorBoosterPor2);
+        assertEquals(3, factorBoosterPor3);
     }
 
     @Test
-    public void test02PreguntaMultipleChoiceClasicoRecibeRespuestasYAsignaPuntajeALosJugadores() {
+    public void test02ExclusividadSeAplicaCorrectamente(){
         //Arrange
-        Jugador jugador1 = new Jugador("Jose");
-        Jugador jugador2 = new Jugador("Lucas");
-
+        Jugador jugador = new Jugador("juan");
         Puntaje puntaje = new PuntajeClasico();
-        Opcion opcion1 = new Opcion("1", new Valor(false));
-        Opcion opcion2 = new Opcion("2", new Valor(true));
-        Opcion opcion3 = new Opcion("3", new Valor(true));
-        Opcion opcion4 = new Opcion("4", new Valor(false));
-        Opcion opcion5 = new Opcion("5", new Valor(true));
-        Opcion opcion6 = new Opcion("6", new Valor(false));
-
-        ArrayList<Opcion> opciones = new ArrayList<>(
-             Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6)
-        );
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
+        Opcion opcion1 = new Opcion("7", new Valor(true));
+
+        ArrayList<Opcion> opciones = new ArrayList<>(
+                Arrays.asList(opcion1)
+        );
 
         Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
-        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
-        respuestaJugador1.marcar(opcion1, new Valor(true));
+        Booster boosterPor2 = new BoosterExclusividad(2);
 
-        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
-        respuestaJugador2.marcar(opcion2, new Valor(true));
-        respuestaJugador2.marcar(opcion3, new Valor(true));
-        respuestaJugador2.marcar(opcion5, new Valor(true));
-
-        ArrayList<Respuesta> respuestasJugadores = new ArrayList<>();
-        respuestasJugadores.add(respuestaJugador1);
-        respuestasJugadores.add(respuestaJugador2);
+        boosterPor2.aplicarBoost(respuestaJugador);
 
         //Act
-        pregunta.asignarPuntajes(respuestasJugadores);
+        Booster boosterPregunta = pregunta.getBooster();
 
         //Assert
-        assertEquals(jugador1.getPuntaje(), 0);
-        assertEquals(jugador2.getPuntaje(), 1);
+        assertEquals(boosterPor2, boosterPregunta);
     }
 
     @Test
-    public void test03PreguntaMultipleChoiceParcialRecibeRespuestasYAsignaPuntajeALosJugadores() {
+    public void test03PreguntaBoosterExclusivoEnMultipleChoiceParcialUnoAplicaBoosterYSoloUnoConstestaBien() {
         //Arrange
         Jugador jugador1 = new Jugador("Jose");
         Jugador jugador2 = new Jugador("Lucas");
@@ -103,10 +80,13 @@ public class PreguntaMultipleChoiceTest {
         Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
-        respuestaJugador1.marcar(opcion2, new Valor(true));
+        respuestaJugador1.marcar(opcion2, new Valor(true));//solo responde una, no se duplica puntaje por booster
+
+        Booster boosterPor2 = new BoosterExclusividad(2);
+        boosterPor2.aplicarBoost(respuestaJugador1);
 
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
-        respuestaJugador2.marcar(opcion2, new Valor(true));
+        respuestaJugador2.marcar(opcion2, new Valor(true));//responde perfectamente recibe doble puntaje por booster
         respuestaJugador2.marcar(opcion3, new Valor(true));
         respuestaJugador2.marcar(opcion5, new Valor(true));
 
@@ -119,16 +99,16 @@ public class PreguntaMultipleChoiceTest {
 
         //Assert
         assertEquals(jugador1.getPuntaje(), 1);
-        assertEquals(jugador2.getPuntaje(), 3);
+        assertEquals(jugador2.getPuntaje(), 6);
     }
 
     @Test
-    public void test04PreguntaMultipleChoicePenalidadRecibeRespuestasYAsignaPuntajeALosJugadores() {
+    public void test04PreguntaBoosterExclusivoEnMultipleChoiceParcialAmbosAplicanBoosterYSoloUnoConstestaBien() {
         //Arrange
         Jugador jugador1 = new Jugador("Jose");
         Jugador jugador2 = new Jugador("Lucas");
 
-        Puntaje puntaje = new PuntajePenalidad();
+        Puntaje puntaje = new PuntajeParcial();
         Opcion opcion1 = new Opcion("1", new Valor(false));
         Opcion opcion2 = new Opcion("2", new Valor(true));
         Opcion opcion3 = new Opcion("3", new Valor(true));
@@ -145,16 +125,17 @@ public class PreguntaMultipleChoiceTest {
         Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
-        respuestaJugador1.marcar(opcion1, new Valor(true));
-        respuestaJugador1.marcar(opcion2, new Valor(true));
-        respuestaJugador1.marcar(opcion4, new Valor(true));
-        respuestaJugador1.marcar(opcion6, new Valor(true));
+        respuestaJugador1.marcar(opcion2, new Valor(true));//solo responde una, no se cuadruple puntaje por booster
+
+        Booster boosterPor2 = new BoosterExclusividad(2);
+        boosterPor2.aplicarBoost(respuestaJugador1);
 
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
-        respuestaJugador2.marcar(opcion2, new Valor(true));
+        respuestaJugador2.marcar(opcion2, new Valor(true));//responde perfectamente recibe cuadruple puntaje por booster
         respuestaJugador2.marcar(opcion3, new Valor(true));
-        respuestaJugador2.marcar(opcion4, new Valor(true));
         respuestaJugador2.marcar(opcion5, new Valor(true));
+
+        boosterPor2.aplicarBoost(respuestaJugador2);
 
         ArrayList<Respuesta> respuestasJugadores = new ArrayList<Respuesta>();
         respuestasJugadores.add(respuestaJugador1);
@@ -164,17 +145,17 @@ public class PreguntaMultipleChoiceTest {
         pregunta.asignarPuntajes(respuestasJugadores);
 
         //Assert
-        assertEquals(jugador1.getPuntaje(), -2);
-        assertEquals(jugador2.getPuntaje(), 2);
+        assertEquals(jugador1.getPuntaje(), 1);
+        assertEquals(jugador2.getPuntaje(), 12);
     }
 
     @Test
-    public void test05PreguntaMultipleChoicePenalidadConMultiplicadoresRecibeRespuestasYAsignaPuntajeALosJugadores() throws JugadorNoTieneMasBoostersDisponiblesError {
+    public void test05PreguntaBoosterExclusivoEnMultipleChoiceParcialUnoAplicaBoosterYAmbosConstestaBien() {
         //Arrange
         Jugador jugador1 = new Jugador("Jose");
         Jugador jugador2 = new Jugador("Lucas");
 
-        Puntaje puntaje = new PuntajePenalidad();
+        Puntaje puntaje = new PuntajeParcial();
         Opcion opcion1 = new Opcion("1", new Valor(false));
         Opcion opcion2 = new Opcion("2", new Valor(true));
         Opcion opcion3 = new Opcion("3", new Valor(true));
@@ -191,24 +172,16 @@ public class PreguntaMultipleChoiceTest {
         Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        respuestaJugador1.marcar(opcion2, new Valor(true));//responde perfectamente (igual que jugador 2) recibe 0 puntaje por booster
+        respuestaJugador1.marcar(opcion3, new Valor(true));
+        respuestaJugador1.marcar(opcion5, new Valor(true));
 
-        Booster booster1 = jugador1.getBoosterMultiplicador(2);
-        jugador1.consumirBooster(respuestaJugador1, booster1);
-
-
-        respuestaJugador1.marcar(opcion1, new Valor(true));
-        respuestaJugador1.marcar(opcion2, new Valor(true));
-        respuestaJugador1.marcar(opcion4, new Valor(true));
-        respuestaJugador1.marcar(opcion6, new Valor(true));
+        Booster boosterPor2 = new BoosterExclusividad(2);
+        boosterPor2.aplicarBoost(respuestaJugador1);
 
         Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
-
-        Booster booster2 = jugador2.getBoosterMultiplicador(3);
-        jugador2.consumirBooster(respuestaJugador2, booster2);
-
-        respuestaJugador2.marcar(opcion2, new Valor(true));
+        respuestaJugador2.marcar(opcion2, new Valor(true));//responde perfectamente recibe 0 puntaje por booster
         respuestaJugador2.marcar(opcion3, new Valor(true));
-        respuestaJugador2.marcar(opcion4, new Valor(true));
         respuestaJugador2.marcar(opcion5, new Valor(true));
 
         ArrayList<Respuesta> respuestasJugadores = new ArrayList<Respuesta>();
@@ -219,10 +192,58 @@ public class PreguntaMultipleChoiceTest {
         pregunta.asignarPuntajes(respuestasJugadores);
 
         //Assert
-        assertEquals(jugador1.getPuntaje(), -4);  //puntos -2, con multiplicadorx2 -4
-        assertEquals(jugador2.getPuntaje(), 6);   //puntos 2, con multiplicadorx3 6
+        assertEquals(jugador1.getPuntaje(), 0);
+        assertEquals(jugador2.getPuntaje(), 0);
     }
 
+    @Test
+    public void test06PreguntaBoosterExclusivoEnMultipleChoiceParcialAmbosAplicanBoosterYAmbosConstestaBien() {
+        //Arrange
+        Jugador jugador1 = new Jugador("Jose");
+        Jugador jugador2 = new Jugador("Lucas");
+
+        Puntaje puntaje = new PuntajeParcial();
+        Opcion opcion1 = new Opcion("1", new Valor(false));
+        Opcion opcion2 = new Opcion("2", new Valor(true));
+        Opcion opcion3 = new Opcion("3", new Valor(true));
+        Opcion opcion4 = new Opcion("4", new Valor(false));
+        Opcion opcion5 = new Opcion("5", new Valor(true));
+        Opcion opcion6 = new Opcion("6", new Valor(false));
+
+        ArrayList<Opcion> opciones = new ArrayList<>(
+                Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6)
+        );
+
+        String textoPregunta = "¿Cuáles de los siguientes números son primos?";
+
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
+        respuestaJugador1.marcar(opcion2, new Valor(true));//responde perfectamente (igual que jugador 2) recibe 0 puntaje por booster
+        respuestaJugador1.marcar(opcion3, new Valor(true));
+        respuestaJugador1.marcar(opcion5, new Valor(true));
+
+        Booster boosterPor2 = new BoosterExclusividad(2);
+        boosterPor2.aplicarBoost(respuestaJugador1);
+
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, pregunta);
+        respuestaJugador2.marcar(opcion2, new Valor(true));//responde perfectamente recibe 0 puntaje por booster
+        respuestaJugador2.marcar(opcion3, new Valor(true));
+        respuestaJugador2.marcar(opcion5, new Valor(true));
+
+        boosterPor2.aplicarBoost(respuestaJugador2);
+
+        ArrayList<Respuesta> respuestasJugadores = new ArrayList<Respuesta>();
+        respuestasJugadores.add(respuestaJugador1);
+        respuestasJugadores.add(respuestaJugador2);
+
+        //Act
+        pregunta.asignarPuntajes(respuestasJugadores);
+
+        //Assert
+        assertEquals(jugador1.getPuntaje(), 0);
+        assertEquals(jugador2.getPuntaje(), 0);
+    }
 
 
 }

@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Excepciones.JugadorNoTieneMasBoostersDisponiblesError;
-import edu.fiuba.algo3.modelo.Excepciones.SeleccionNoEstaMarcadaError;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
 import java.util.ArrayList;
@@ -19,9 +17,10 @@ public class Jugador {
         boosters = new ArrayList<>(Arrays.asList(new BoosterMultiplicador(2), new BoosterMultiplicador(3), new BoosterExclusividad(2), new BoosterExclusividad(2)));
     }
 
-    public Boolean consumirMultiplicador(Respuesta respuesta, int factorMultiplicacion){
-        for (Booster booster: boosters){
-            if( !booster.esExclusivo() && booster.getFactor() == factorMultiplicacion){
+
+    public Boolean consumirBooster(Respuesta respuesta, Booster boosterRecibido){
+        for (Booster booster: this.boosters){
+            if( booster == boosterRecibido){
                 booster.aplicarBoost(respuesta);
                 boosters.remove(booster);
                 return true;
@@ -40,4 +39,14 @@ public class Jugador {
     }
 
     public int getPuntaje() { return puntaje; }
+
+    public Booster getBoosterMultiplicador(int factorDeMultiplicacion){
+        for(Booster booster: this.boosters){
+            if(!booster.esExclusivo() && booster.tieneFactor(factorDeMultiplicacion) ){
+                return booster;
+            }
+        }
+        return null;
+    }
+
 }

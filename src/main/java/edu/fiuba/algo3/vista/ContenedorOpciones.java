@@ -63,7 +63,7 @@ public class ContenedorOpciones extends GridPane {
 
         Button botonSiguienteJugador = new Button("Siguiente Jugador");
         botonSiguienteJugador.setOnAction(e ->
-                Partida.getInstance().siguienteJugador()
+                Partida.getInstance().siguienteTurno()        //estaba siguiente jugador cambie a siguiente turno;
         );
         botones.getChildren().add(botonSiguienteJugador);
 
