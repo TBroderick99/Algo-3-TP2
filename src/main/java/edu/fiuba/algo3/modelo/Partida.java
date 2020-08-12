@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
+import edu.fiuba.algo3.modelo.preguntas.ManejadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 
 import java.util.ArrayList;
@@ -15,15 +16,11 @@ public class Partida implements Observable {
     private ArrayList<Observer> observers;
 
     private Ronda ronda;
-
+    private ManejadorDePreguntas manejadorDePreguntas;
 
     private ArrayList<Jugador> jugadores;                 //sacar relacionado a jugadores, se encargan los turnos
     private Iterator<Jugador> iteradorJugadores;
     private Jugador jugadorActual;
-
-    private ArrayList<Pregunta> preguntas;                //que se encargue un ManejadorDePreguntas quizas?
-    private Iterator<Pregunta> iteradorPreguntas;
-    private Pregunta preguntaActual;
 
     private ArrayList<Respuesta> respuestasRonda;         //cada turno tendria su respuesta
 
@@ -56,12 +53,8 @@ public class Partida implements Observable {
     }*/
 
     public void inicializarPartida(){                   //cuando los jugadores ya fueron agregados
-        this.preguntas = inicializarPreguntas();
-        this.iteradorPreguntas = this.preguntas.iterator();
-        this.preguntaActual = iteradorPreguntas.next();                //que se encargue un manejador de preguntas?
-
-        ronda.actualizar(preguntaActual);
-
+        this.manejadorDePreguntas = new ManejadorDePreguntas();
+        ronda.actualizar(getPreguntaActual());
     }
 
     public void agregarJugador(String nombre){
@@ -103,17 +96,15 @@ public class Partida implements Observable {
 
 
     public void siguienteRonda(){     //Refactor, nuevo codigo con la implementacion de ronda y turnos
-
         ronda.asignarPuntajes();
 
-        if(iteradorPreguntas.hasNext()){
-            this.preguntaActual = this.iteradorPreguntas.next();
+        if(!manejadorDePreguntas.esLaUltimaPregunta()){
+            manejadorDePreguntas.siguientePregunta();
+            ronda.actualizar(getPreguntaActual());
         }
         else{
-            //se terminaron las preguntas?, terminar partida
+            // Terminó la partida
         }
-
-        ronda.actualizar(preguntaActual);
 
        //notifyObservers();
     }
@@ -130,7 +121,7 @@ public class Partida implements Observable {
 
 
     public Pregunta getPreguntaActual(){
-        return preguntaActual;
+        return manejadorDePreguntas.getPreguntaActual();
     }
 
     public Jugador getJugadorActual(){                        //getter para que no rompa el controlador
