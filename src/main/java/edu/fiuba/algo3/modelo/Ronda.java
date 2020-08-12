@@ -61,7 +61,7 @@ public class Ronda {
 
         this.iteradorTurnos = this.turnos.iterator();    //lleva el iterador de turnos al inicio
         this.turnoActual = this.iteradorTurnos.next();
-        cancelarTimer();
+    //    cancelarTimer();
         this.turnoActual.actualizar(pregunta);
         iniciarTimer();
     }
@@ -119,5 +119,9 @@ public class Ronda {
 
     public ArrayList<Jugador> getJugadores() {
         return turnos.stream().map(Turno::getJugador).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public int cantidadTurnos() {
+        return turnos.size();
     }
 }

@@ -156,4 +156,8 @@ public class Partida implements Observable {
     public void notifyObservers() {
         observers.forEach(Observer::change);
     }
+
+    public int cantidadJugadores() {
+        return ronda.cantidadTurnos();
+    }
 }

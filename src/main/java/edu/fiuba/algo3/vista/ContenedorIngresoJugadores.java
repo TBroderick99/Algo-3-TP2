@@ -1,10 +1,18 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonSiguienteEventHandler;
 import edu.fiuba.algo3.modelo.Partida;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ContenedorIngresoJugadores extends VBox {
@@ -13,18 +21,39 @@ public class ContenedorIngresoJugadores extends VBox {
     public ContenedorIngresoJugadores(Stage stage) {
     super();
     this.stage = stage;
+    this.setAlignment(Pos.CENTER);
+    this.setPadding(new Insets(20,20,20,20));
+    this.setBackground(new Background(new BackgroundFill(Color.web("F7F5E6"), CornerRadii.EMPTY, Insets.EMPTY)));
+    this.setSpacing(20);
 
-    Label titulo = new Label("Ingrese el nombre de cada jugador:");
+    Text titulo = new Text("Ingrese su nombre:");
+    titulo.setFont(Font.font("Calibri", FontWeight.BOLD,40));
+    titulo.setFill(Color.web("333A56"));
 
-    Label etiquetaJugador1 = new Label("Jugador 1:");
-    TextField nombreJugador1 = new TextField();
-    nombreJugador1.setPromptText("Ingrese un nombre.");
-    HBox jugador1 = new HBox(20, etiquetaJugador1, nombreJugador1);
+    Text etiquetaJugador = new Text("Jugador "+ (Partida.getInstance().cantidadJugadores()+1) +":");
+    etiquetaJugador.setFont(Font.font("Calibri", FontWeight.BOLD,16));
+    etiquetaJugador.setFill(Color.web("333A56"));
+
+    TextField nombreJugador = new TextField();
+    nombreJugador.setPromptText("Ingrese un nombre.");
+    HBox jugador1 = new HBox(20, etiquetaJugador, nombreJugador);
+    jugador1.setAlignment(Pos.CENTER);
+
+    // Este es un separador
+    Region region = new Region();
+    region.setPrefHeight(100);
 
     TextField nombreJugador2 = new TextField();
     nombreJugador2.setPromptText("Ingrese un nombre.");
 
-    this.getChildren().addAll(titulo,jugador1);
+    Button botonSiguiente = new Button("Siguiente");
+    botonSiguiente.setOnAction(new BotonSiguienteEventHandler(stage, nombreJugador));
+    botonSiguiente.setPrefSize(140,70);
+    botonSiguiente.setBackground(new Background(new BackgroundFill(Color.web("52658F"), CornerRadii.EMPTY, Insets.EMPTY)));
+    botonSiguiente.setFont(Font.font("Calibri", FontWeight.BOLD,18));
+    botonSiguiente.setTextFill(Paint.valueOf("FFFFFF"));
+
+    this.getChildren().addAll(titulo,region, jugador1, botonSiguiente);
 
     }
 
