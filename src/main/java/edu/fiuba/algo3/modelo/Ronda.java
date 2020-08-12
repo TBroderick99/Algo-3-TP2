@@ -3,12 +3,18 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Ronda {
+    private final long TIEMPO = 60000;
+    private Timer timer = new Timer();
 
     private ArrayList<Turno> turnos;
     private Iterator<Turno> iteradorTurnos;
@@ -33,12 +39,15 @@ public class Ronda {
 
     public void siguienteTurno() {
         //respuestas.add(turnoActual.getRespuesta());
+        cancelarTimer();
         turnoActual.enviarRespuesta(this);
 
         if (iteradorTurnos.hasNext()) {
             turnoActual = iteradorTurnos.next();
             turnoActual.actualizar(preguntaActual);
+            iniciarTimer();
         }
+
         /*else{
             Partida.getInstance().siguienteRonda();
         }*/
@@ -52,7 +61,9 @@ public class Ronda {
 
         this.iteradorTurnos = this.turnos.iterator();    //lleva el iterador de turnos al inicio
         this.turnoActual = this.iteradorTurnos.next();
+        cancelarTimer();
         this.turnoActual.actualizar(pregunta);
+        iniciarTimer();
     }
 
 
@@ -65,7 +76,17 @@ public class Ronda {
         respuestas.add(respuesta);
     }
 
-
+    public void iniciarTimer() {
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                siguienteTurno();
+            }
+        }, TIEMPO);
+    }
+    public void cancelarTimer() {
+        timer.cancel();
+    }
 
     public void setPreguntaActual(Pregunta pregunta) {
         preguntaActual = pregunta;
@@ -97,7 +118,6 @@ public class Ronda {
     }
 
     public ArrayList<Jugador> getJugadores() {
-        List<Jugador> aux = turnos.stream().map(t -> t.getJugador()).collect(Collectors.toList());
-        return new ArrayList<>(aux);
+        return turnos.stream().map(Turno::getJugador).collect(Collectors.toCollection(ArrayList::new));
     }
 }
