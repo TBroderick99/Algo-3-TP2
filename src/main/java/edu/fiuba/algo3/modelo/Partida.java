@@ -13,7 +13,7 @@ import java.util.Iterator;
 public class Partida implements Observable {
     private static Partida INSTANCE = new Partida();
 
-    private ArrayList<Observer> observers;
+    private ArrayList<Observer> observers = new ArrayList<>();
 
     private Ronda ronda;
     private ManejadorDePreguntas manejadorDePreguntas;

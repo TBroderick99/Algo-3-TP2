@@ -60,7 +60,7 @@ public class CreadorDePreguntas {
                     ArrayList<Opcion> opciones = parsearOpcionesGrupal(separadoPorComas[1]);
                     Puntaje puntaje = new PuntajeClasico();
 
-                    Pregunta pregunta = new Pregunta(separadoPorComas[1], opciones, puntaje);
+                    Pregunta pregunta = new Pregunta(separadoPorComas[0], opciones, puntaje);
 
                     preguntas.add(pregunta);
                 }
@@ -81,7 +81,7 @@ public class CreadorDePreguntas {
         int i = 0;
         for (String textoOpcion: arrayTextoOpciones){
             i++;
-            String[] arrayTextoOpcion = textoOpcion.split("|");
+            String[] arrayTextoOpcion = textoOpcion.split("\\|");
             grupo = new Grupo(arrayTextoOpcion[0], i);
             for (int j = 1; j < arrayTextoOpcion.length; j++){
                 opcion = new Opcion(arrayTextoOpcion[j], new Valor(grupo));
