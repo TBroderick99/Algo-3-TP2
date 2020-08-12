@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class Ronda {
     private final long TIEMPO = 60000;
-    private Timer timer = new Timer();
+    private Timer timer;
 
     private ArrayList<Turno> turnos;
     private Iterator<Turno> iteradorTurnos;
@@ -77,6 +77,7 @@ public class Ronda {
     }
 
     public void iniciarTimer() {
+        timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -84,8 +85,11 @@ public class Ronda {
             }
         }, TIEMPO);
     }
+
     public void cancelarTimer() {
-        timer.cancel();
+        if (timer != null){
+            timer.cancel();
+        }
     }
 
     public void setPreguntaActual(Pregunta pregunta) {
