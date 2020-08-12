@@ -3,9 +3,11 @@ package edu.fiuba.algo3;
 import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.vista.ContenedorIngresoJugadores;
 import edu.fiuba.algo3.vista.ContenedorInicio;
+import edu.fiuba.algo3.vista.ContenedorPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -21,11 +23,12 @@ public class App extends Application {
         partida.agregarJugador("jugador2");
         partida.inicializarPartida();
 
-        Scene escenaIngresoJugadores = new Scene(new ContenedorIngresoJugadores(stage),500,700);
-        Scene escenaInicio = new Scene(new ContenedorInicio(stage, escenaIngresoJugadores), 500,700);
-//        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, partida);
+  //      Scene escenaIngresoJugadores = new Scene(new ContenedorIngresoJugadores(stage),500,700);
+        Scene escenaPrincipal = new Scene(new ContenedorPrincipal(stage, partida), 1020,768);
+        Scene escenaInicio = new Scene(new ContenedorInicio(stage, escenaPrincipal), 500,700);
 
         stage.setTitle("Kahoot!");
+        stage.getIcons().add(new Image("file:src/main/java/edu/fiuba/algo3/vista/imagenes/icon.jpg"));
         stage.setScene(escenaInicio);
         stage.show();
     }
