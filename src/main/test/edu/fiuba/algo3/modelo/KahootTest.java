@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -11,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import org.mockito.internal.util.reflection.FieldSetter;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +22,13 @@ import java.util.List;
 
 public class KahootTest {
 
+
+    @BeforeEach
+    public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Partida.class.getDeclaredField("instance");
+        instance.setAccessible(true);
+        instance.set(null, null);
+    }
 
     @Test
     public void test01DosJugadoresJueganUnaPartidaDeCuatroPreguntasSinBoosters() throws NoSuchFieldException {
@@ -109,6 +118,7 @@ public class KahootTest {
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
 
+
         respuesta.marcar(opcionCorrecta, new Valor (true));    //Jugador1. Clasico, -> Puntos totales: 1 punto
         partida.siguienteTurno();
 
@@ -137,7 +147,7 @@ public class KahootTest {
 
 
         partida.siguienteTurno();
-/*
+
         // PREGUNTA 3
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
@@ -178,13 +188,15 @@ public class KahootTest {
         respuesta.marcar(opcionSandia, new Valor(grupoFrutas));
         respuesta.marcar(opcionBerenjena, new Valor(grupoVegetales));
 
-*/
+        partida.siguienteTurno();
+
         ArrayList<Jugador> jugadores = partida.getJugadores();
         Jugador jugador1 = jugadores.get(0);
         Jugador jugador2 = jugadores.get(1);
 
+
         //Assert
-        assertEquals(2, jugador1.getPuntaje());         // 4
+        assertEquals(4, jugador1.getPuntaje());         // 4
         assertEquals(3, jugador2.getPuntaje());         // 3
     }
 

@@ -71,14 +71,7 @@ public class Respuesta {
 
     private Seleccion getSeleccion(Opcion opcion){   //nunca deberia devolver null, testear postcondicion
 
-        for(Seleccion seleccion: selecciones){
-
-            if(opcion.equals(seleccion.getOpcion())){
-                return seleccion;
-            }
-        }
-
-        return null;
+        return selecciones.stream().filter(s -> s.getOpcion() == opcion).findFirst().orElse(null);
     }
 
     public Boolean esPerfecta(){
