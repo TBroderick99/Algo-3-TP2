@@ -49,4 +49,12 @@ public class Jugador {
         return null;
     }
 
+    public Booster getBoosterExclusividad() {
+        for(Booster booster: this.boosters){
+            if(booster.esExclusivo() ){
+                return booster;
+            }
+        }
+        return null;
+    }
 }

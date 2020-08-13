@@ -129,16 +129,6 @@ public class RondaTest {
 
 
     @Test
-    public void test05RondaPasaDelUltimoTurnoPorLoTantoPasaDeRonda(){
-        //Arrange
-
-        //Act
-
-        //Assert
-        assert(true);
-    }
-
-    @Test
     public void test06RondaRecibeUnaRespuesta(){
         Ronda ronda = new Ronda();
         Jugador jugador = new Jugador("Pedro");
