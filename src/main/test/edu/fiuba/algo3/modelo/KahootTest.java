@@ -88,7 +88,7 @@ public class KahootTest {
         Pregunta pregunta4Group = new PreguntaGrupal(textoPregunta4, opciones4, puntaje4, grupos);
 
         //Preguntas
-        ArrayList<Pregunta> preguntas = new ArrayList<>(Arrays.asList(pregunta1VyFClasico, pregunta2MultiplePenalidad, pregunta3Ordered, pregunta4Group));
+        ArrayList<Pregunta> preguntas = new ArrayList<>(Arrays.asList(pregunta1VyFClasico,pregunta2MultiplePenalidad, pregunta3Ordered, pregunta4Group));
 
         ManejadorDePreguntas mnjDePreguntas = new ManejadorDePreguntas(preguntas); // Constructor especial para el test
 
@@ -119,6 +119,12 @@ public class KahootTest {
 
         partida.siguienteTurno();
 
+        ArrayList<Jugador> jugadores = partida.getJugadores();
+        Jugador jugador1 = jugadores.get(0);
+        Jugador jugador2 = jugadores.get(1);
+        System.out.println("Turno 1 - Jugador1: "+jugador1.getNombre()+ " puntaje: " +jugador1.getPuntaje());
+        System.out.println("Turno 1 - Jugador2: "+jugador2.getNombre()+ " puntaje: " +jugador2.getPuntaje());
+
         // PREGUNTA 2
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
@@ -137,7 +143,7 @@ public class KahootTest {
 
 
         partida.siguienteTurno();
-/*
+
         // PREGUNTA 3
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
@@ -178,13 +184,15 @@ public class KahootTest {
         respuesta.marcar(opcionSandia, new Valor(grupoFrutas));
         respuesta.marcar(opcionBerenjena, new Valor(grupoVegetales));
 
-*/
-        ArrayList<Jugador> jugadores = partida.getJugadores();
-        Jugador jugador1 = jugadores.get(0);
-        Jugador jugador2 = jugadores.get(1);
+
+        jugadores = partida.getJugadores();
+        jugador1 = jugadores.get(0);
+        jugador2 = jugadores.get(1);
+        System.out.println("Jugador1: "+jugador1.getNombre()+ " puntaje: " +jugador1.getPuntaje());
+        System.out.println("Jugador2: "+jugador2.getNombre()+ " puntaje: " +jugador2.getPuntaje());
 
         //Assert
-        assertEquals(2, jugador1.getPuntaje());         // 4
+        assertEquals(4, jugador1.getPuntaje());         // 4
         assertEquals(3, jugador2.getPuntaje());         // 3
     }
 
