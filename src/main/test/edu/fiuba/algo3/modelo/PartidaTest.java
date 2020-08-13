@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PartidaTest {
 
-   /*
+
 
     // Para que esté bien testeado, habría que hacer un mock de CreadorDePreguntas
 
@@ -85,6 +85,4 @@ public class PartidaTest {
         assertEquals(2, numeroDeRonda);
         assertEquals( partida.getPreguntaActual(), preguntaActual);
     }
-    */
-
 }

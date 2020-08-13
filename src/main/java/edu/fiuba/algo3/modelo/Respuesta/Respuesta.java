@@ -73,7 +73,7 @@ public class Respuesta {
 
         for(Seleccion seleccion: selecciones){
 
-            if(seleccion.getOpcion() == opcion){
+            if(opcion.equals(seleccion.getOpcion())){
                 return seleccion;
             }
         }

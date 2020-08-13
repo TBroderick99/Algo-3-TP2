@@ -67,6 +67,12 @@ public class Partida implements Observable {
         estado = Estado.JUGANDO;
     }
 
+    public void inicializarPartida(ManejadorDePreguntas manejadorDePreguntas){ //Mock
+        this.manejadorDePreguntas = manejadorDePreguntas;
+        ronda.actualizar(getPreguntaActual());
+        estado = Estado.JUGANDO;
+    }
+
     public void agregarJugador(String nombre){
         Jugador jugador = new Jugador(nombre);
         ronda.agregarTurno(jugador);

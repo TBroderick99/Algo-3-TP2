@@ -44,7 +44,7 @@ public class Ronda {
 
         if (iteradorTurnos.hasNext()) {
             turnoActual = iteradorTurnos.next();
-            turnoActual.actualizar(preguntaActual);
+            turnoActual.actualizar(preguntaActual); // aca esta el problema
             iniciarTimer();
         }
 

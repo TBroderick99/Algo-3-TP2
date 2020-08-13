@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ManejadorDePreguntas {
-    private ArrayList<Pregunta> preguntas;
+    public ArrayList<Pregunta> preguntas;
     private Iterator<Pregunta> iteradorPreguntas;
     private Pregunta preguntaActual;
     private int numeroPregunta = 0;
@@ -14,6 +14,13 @@ public class ManejadorDePreguntas {
         this.iteradorPreguntas = this.preguntas.iterator();
         siguientePregunta();
     }
+
+    public ManejadorDePreguntas(ArrayList<Pregunta> preguntas){
+        this.preguntas = preguntas;
+        this.iteradorPreguntas = this.preguntas.iterator();
+        siguientePregunta();
+    }
+
 
     public ArrayList<Pregunta> inicializarPreguntas() {
         return CreadorDePreguntas.crearPreguntas();

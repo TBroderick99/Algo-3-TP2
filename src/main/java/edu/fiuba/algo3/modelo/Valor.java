@@ -31,4 +31,5 @@ public class Valor {
     public Boolean debeSerMarcado(){
         return valor != 0;
     }
+
 }

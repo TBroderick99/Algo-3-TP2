@@ -24,4 +24,16 @@ public  class Opcion {
         return valorCorrecto.debeSerMarcado();
     }
 
+    public boolean equals(Opcion opcion){
+        return opcion.tieneTexto(textoOpcion); //&& opcion.tieneValor(this.valorCorrecto);
+    }
+
+    private boolean tieneValor(Valor valorCorrecto) {
+        return valorCorrecto.esIgual(this.valorCorrecto);
+    }
+
+    private boolean tieneTexto(String textoOpcion) {
+        return textoOpcion.equals(this.textoOpcion);
+    }
+
 }
