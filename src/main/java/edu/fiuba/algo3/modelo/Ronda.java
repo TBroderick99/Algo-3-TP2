@@ -69,12 +69,10 @@ public class Ronda {
         respuestas.clear();
         numeroRonda += 1;
 
-
         this.iteradorTurnos = this.turnos.iterator();    //lleva el iterador de turnos al inicio
         this.turnoActual = this.iteradorTurnos.next();
-        this.turnoActual.actualizar(pregunta);
         cancelarTimer();
-
+        this.turnoActual.actualizar(pregunta);
         iniciarTimer();
     }
 

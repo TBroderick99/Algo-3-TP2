@@ -22,7 +22,7 @@ public class CreadorDePreguntas {
         preguntas.addAll(cargarPreguntasOrdered());
         preguntas.addAll(cargarPreguntasGroup());
 
-        Collections.shuffle(preguntas);
+    //    Collections.shuffle(preguntas);
 
         return preguntas;
     }
@@ -58,10 +58,11 @@ public class CreadorDePreguntas {
                     separadoPorComas = lineaEntera.split(";");
 
                     String[] arrayTextoOpciones = separadoPorComas[1].split("~");
-                    ArrayList<Opcion> opciones = parsearOpcionesGrupal(arrayTextoOpciones);
+                    ArrayList<Grupo> grupos = new ArrayList<>();
+                    ArrayList<Opcion> opciones = parsearOpcionesGrupal(arrayTextoOpciones, grupos);
                     Puntaje puntaje = new PuntajeClasico();
 
-                    Pregunta pregunta = new Pregunta(separadoPorComas[0], opciones, puntaje);
+                    Pregunta pregunta = new PreguntaGrupal(separadoPorComas[0], opciones, puntaje, grupos);
 
                     preguntas.add(pregunta);
                 }
@@ -73,7 +74,7 @@ public class CreadorDePreguntas {
         return preguntas;
     }
 
-    private static ArrayList<Opcion> parsearOpcionesGrupal(String[] arrayTextoOpciones) {
+    private static ArrayList<Opcion> parsearOpcionesGrupal(String[] arrayTextoOpciones, ArrayList<Grupo> grupos) {
         ArrayList<Opcion> opciones = new ArrayList<>();
         Opcion opcion;
 
@@ -83,6 +84,7 @@ public class CreadorDePreguntas {
             i++;
             String[] arrayTextoOpcion = textoOpcion.split("\\|");
             grupo = new Grupo(arrayTextoOpcion[0], i);
+            grupos.add(grupo);
             for (int j = 1; j < arrayTextoOpcion.length; j++){
                 opcion = new Opcion(arrayTextoOpcion[j], new Valor(grupo));
                 opciones.add(opcion);

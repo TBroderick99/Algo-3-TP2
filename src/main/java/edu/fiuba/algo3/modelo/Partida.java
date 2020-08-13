@@ -18,48 +18,18 @@ public class Partida implements Observable {
     private Ronda ronda;
     public ManejadorDePreguntas manejadorDePreguntas;
 
-    private ArrayList<Jugador> jugadores;                 //sacar relacionado a jugadores, se encargan los turnos
-    private Iterator<Jugador> iteradorJugadores;
-    private Jugador jugadorActual;
-
-    private ArrayList<Respuesta> respuestasRonda;         //cada turno tendria su respuesta
-
     private Estado estado = Estado.INICIO;
 
     private Partida(){
         this.ronda = new Ronda();
     }
 
-/*    public static Partida getInstance(){
-        return instance;
-    }
-*/
     public static synchronized Partida getInstance() {
         if (instance == null) {
             instance = new Partida();
         }
         return instance;
     }
-
-    /*public void agregarJugadores(String nombreJugador1, String nombreJugador2){  //esta refactoreado abajo
-        observers = new ArrayList<>();
-
-        this.jugadores = new ArrayList<>();
-        Jugador jugador1 = new Jugador(nombreJugador1);
-        Jugador jugador2 = new Jugador(nombreJugador2);
-
-
-        jugadores.add(jugador1);
-        jugadores.add(jugador2);
-        this.iteradorJugadores = this.jugadores.iterator();
-        this.jugadorActual = iteradorJugadores.next();
-
-        this.respuestasRonda = new ArrayList<>();
-
-        this.preguntas = inicializarPreguntas();
-        this.iteradorPreguntas = this.preguntas.iterator();
-        this.preguntaActual = iteradorPreguntas.next();
-    }*/
 
     public void inicializarPartida(){                   //cuando los jugadores ya fueron agregados
         this.manejadorDePreguntas = new ManejadorDePreguntas();
@@ -78,17 +48,6 @@ public class Partida implements Observable {
         ronda.agregarTurno(jugador);
     }
 
-    private ArrayList<Pregunta> inicializarPreguntas() {
-        return CreadorDePreguntas.crearPreguntas();
-    }
-
-
-    /*public void siguienteJugador(){                   // se deberia pasar de turno, el turno tiene el jugador
-        if(iteradorJugadores.hasNext())
-            jugadorActual = iteradorJugadores.next();
-        notifyObservers();
-    }*/
-
     public void siguienteTurno(){
         if (ronda.esUltimoTurno()){
             ronda.siguienteTurno();
@@ -97,24 +56,8 @@ public class Partida implements Observable {
         else {
             ronda.siguienteTurno();
         }
-    }
-
-
-
-    /*public void siguienteRonda(){
-        asignarPuntajes();
-        this.iteradorJugadores = this.jugadores.iterator();
-        this.jugadorActual = this.iteradorJugadores.next();
-
-        if(iteradorPreguntas.hasNext()){
-            this.preguntaActual = this.iteradorPreguntas.next();
-        }
-        else{
-            //se terminaron las preguntas?
-        }
         notifyObservers();
-    }*/
-
+    }
 
     public void siguienteRonda(){     //Refactor, nuevo codigo con la implementacion de ronda y turnos
         ronda.asignarPuntajes();
@@ -159,10 +102,6 @@ public class Partida implements Observable {
 
     public Ronda getRonda(){
         return ronda;
-    }
-
-    public void guardarRespuesta(Respuesta respuesta){     //responsabilidad de la ronda
-        respuestasRonda.add(respuesta);
     }
 
     public ArrayList<Jugador> getJugadores() {
