@@ -3,16 +3,26 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PartidaTest {
 
-    /*
+   /*
+
     // Para que esté bien testeado, habría que hacer un mock de CreadorDePreguntas
+
+    @BeforeEach
+    public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Field instance = Partida.class.getDeclaredField("instance");
+        instance.setAccessible(true);
+        instance.set(null, null);
+    }
 
     @Test
     public void test01PartidaAgregaJugador(){
@@ -35,6 +45,7 @@ public class PartidaTest {
     public void test02TrasInicializarPartidaLaRondaEsLaNumero1yTienePreguntaInicial(){
         //Arrange
         Partida partida = Partida.getInstance();
+
         partida.agregarJugador("Juan");
         partida.agregarJugador("Pedro");
         Ronda ronda = partida.getRonda();
@@ -46,13 +57,11 @@ public class PartidaTest {
 
         //Assert
         assertEquals(1, numeroDeRonda);
-        assertEquals( partida.getPreguntaActual(), ronda.getPreguntaActual());
+        assertEquals(partida.getPreguntaActual(), ronda.getPreguntaActual());
 
     }
 
-
-    //Partida es singleton, se deberia resetear para cada test
-    /*@Test
+    @Test
     public void test03PartidaPasaDeRonda(){
         //Arrange
         Partida partida = Partida.getInstance();
@@ -76,6 +85,6 @@ public class PartidaTest {
         assertEquals(2, numeroDeRonda);
         assertEquals( partida.getPreguntaActual(), preguntaActual);
     }
-*/
+
 
 }

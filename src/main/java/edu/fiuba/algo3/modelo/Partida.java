@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 
 public class Partida implements Observable {
-    private static Partida INSTANCE = new Partida();
+    private static Partida instance = new Partida();
 
     private ArrayList<Observer> observers = new ArrayList<>();
 
@@ -30,8 +30,15 @@ public class Partida implements Observable {
         this.ronda = new Ronda();
     }
 
-    public static Partida getInstance(){
-        return INSTANCE;
+/*    public static Partida getInstance(){
+        return instance;
+    }
+*/
+    public static synchronized Partida getInstance() {
+        if (instance == null) {
+            instance = new Partida();
+        }
+        return instance;
     }
 
     /*public void agregarJugadores(String nombreJugador1, String nombreJugador2){  //esta refactoreado abajo
@@ -165,5 +172,9 @@ public class Partida implements Observable {
     @Override
     public void notifyObservers() {
         observers.forEach(Observer::change);
+    }
+
+    public int cantidadJugadores() {
+        return ronda.cantidadTurnos();
     }
 }
