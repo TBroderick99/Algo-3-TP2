@@ -85,7 +85,8 @@ public class Ronda {
         respuestas.add(respuesta);
     }
 
-    public void iniciarTimer() {
+
+    public void iniciarTimer(){
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -132,5 +133,9 @@ public class Ronda {
 
     public ArrayList<Jugador> getJugadores() {
         return turnos.stream().map(Turno::getJugador).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public int cantidadTurnos() {
+        return turnos.size();
     }
 }
