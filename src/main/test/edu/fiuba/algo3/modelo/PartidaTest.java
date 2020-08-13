@@ -85,6 +85,6 @@ public class PartidaTest {
         assertEquals(2, numeroDeRonda);
         assertEquals( partida.getPreguntaActual(), preguntaActual);
     }
-
+    */
 
 }
