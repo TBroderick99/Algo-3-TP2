@@ -43,17 +43,15 @@ public class ContenedorIngresoJugadores extends VBox {
     Region region = new Region();
     region.setPrefHeight(100);
 
-    TextField nombreJugador2 = new TextField();
-    nombreJugador2.setPromptText("Ingrese un nombre.");
-
     Button botonSiguiente = new Button("Siguiente");
     botonSiguiente.setOnAction(new BotonSiguienteEventHandler(stage, nombreJugador));
     botonSiguiente.setPrefSize(140,70);
     botonSiguiente.setBackground(new Background(new BackgroundFill(Color.web("52658F"), CornerRadii.EMPTY, Insets.EMPTY)));
     botonSiguiente.setFont(Font.font("Calibri", FontWeight.BOLD,18));
     botonSiguiente.setTextFill(Paint.valueOf("FFFFFF"));
+    botonSiguiente.setDefaultButton(true);
 
-    this.getChildren().addAll(titulo,region, jugador1, botonSiguiente);
+    this.getChildren().addAll(titulo, region, jugador1, botonSiguiente);
 
     }
 
