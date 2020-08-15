@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Partida;
+import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
 import edu.fiuba.algo3.vista.ContenedorIngresoJugadores;
 import edu.fiuba.algo3.vista.ContenedorPrincipal;
 import javafx.event.Event;
@@ -26,8 +27,8 @@ public class BotonSiguienteEventHandler implements EventHandler {
             return;
         }
         Partida.getInstance().agregarJugador(nombreJugador.getText());
-        if(Partida.getInstance().cantidadJugadores() == CANTIDAD_JUGADORES){
-            Partida.getInstance().inicializarPartida();
+        if(Partida.getInstance().cantidadJugadoresAgregados() == Partida.getInstance().cantidadMaximaDeJugadores()){
+            Partida.getInstance().inicializarPartida(CreadorDePreguntas.crearPreguntas());
             stage.setScene(new Scene(new ContenedorPrincipal(stage)));
             stage.show();
             return;

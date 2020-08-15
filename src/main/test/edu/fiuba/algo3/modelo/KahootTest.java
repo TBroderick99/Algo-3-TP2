@@ -5,19 +5,13 @@ import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
-import org.mockito.internal.util.reflection.FieldSetter;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
-
 
 
 public class KahootTest {
@@ -31,7 +25,7 @@ public class KahootTest {
     }
 
     @Test
-    public void test01DosJugadoresJueganUnaPartidaDeCuatroPreguntasSinBoosters() throws NoSuchFieldException {
+    public void test01DosJugadoresJueganUnaPartidaDeCuatroPreguntasSinBoosters() {
         //Pregunta 1
         Puntaje puntaje1 = new PuntajeClasico();
         ArrayList<Opcion> opciones1 = new ArrayList<>();
@@ -99,7 +93,6 @@ public class KahootTest {
         //Preguntas
         ArrayList<Pregunta> preguntas = new ArrayList<>(Arrays.asList(pregunta1VyFClasico, pregunta2MultiplePenalidad, pregunta3Ordered, pregunta4Group));
 
-        ManejadorDePreguntas mnjDePreguntas = new ManejadorDePreguntas(preguntas); // Constructor especial para el test
 
         //Test
 
@@ -107,7 +100,7 @@ public class KahootTest {
 
         partida.agregarJugador("Jose");
         partida.agregarJugador("Tomas");
-        partida.inicializarPartida(mnjDePreguntas); // Constructor especial para el test
+        partida.inicializarPartida(preguntas); // Constructor especial para el test
         //    FieldSetter.setField(partida, partida.getClass().getDeclaredField("manejadorDePreguntas"), mnjDePreguntas);
         //    ManejadorDePreguntas mnjDePreguntas = mock(ManejadorDePreguntas.class);
         //    Mockito.when(mnjDePreguntas.inicializarPreguntas()).thenReturn(preguntas);
@@ -201,7 +194,7 @@ public class KahootTest {
     }
 
     @Test
-    public void test02DosJugadoresJueganUnaPartidaDeCuatroPreguntasConBoosters() throws NoSuchFieldException {
+    public void test02DosJugadoresJueganUnaPartidaDeCuatroPreguntasConBoosters() {
         //Pregunta 1
         Puntaje puntaje1 = new PuntajeClasico();
         ArrayList<Opcion> opciones1 = new ArrayList<>();
@@ -269,7 +262,6 @@ public class KahootTest {
         //Preguntas
         ArrayList<Pregunta> preguntas = new ArrayList<>(Arrays.asList(pregunta1VyFClasico, pregunta2MultiplePenalidad, pregunta3Ordered, pregunta4Group));
 
-        ManejadorDePreguntas mnjDePreguntas = new ManejadorDePreguntas(preguntas); // Constructor especial para el test
 
         //Test
 
@@ -277,10 +269,8 @@ public class KahootTest {
 
         partida.agregarJugador("Jose");
         partida.agregarJugador("Tomas");
-        partida.inicializarPartida(mnjDePreguntas); // Constructor especial para el test
-        //    FieldSetter.setField(partida, partida.getClass().getDeclaredField("manejadorDePreguntas"), mnjDePreguntas);
-        //    ManejadorDePreguntas mnjDePreguntas = mock(ManejadorDePreguntas.class);
-        //    Mockito.when(mnjDePreguntas.inicializarPreguntas()).thenReturn(preguntas);
+        partida.inicializarPartida(preguntas);
+
 
         ArrayList<Jugador> jugadores = partida.getJugadores();
         Jugador jugador1 = jugadores.get(0);
@@ -403,7 +393,7 @@ public class KahootTest {
 
 
     @Test
-    public void test03DosJugadoresJueganUnaPartidaDeCuatroPreguntasConDistintosBoosters() throws NoSuchFieldException {
+    public void test03DosJugadoresJueganUnaPartidaDeCuatroPreguntasConDistintosBoosters() {
         //Pregunta 1
         Puntaje puntaje1 = new PuntajeClasico();
         ArrayList<Opcion> opciones1 = new ArrayList<>();
@@ -471,7 +461,6 @@ public class KahootTest {
         //Preguntas
         ArrayList<Pregunta> preguntas = new ArrayList<>(Arrays.asList(pregunta1VyFClasico, pregunta2MultiplePenalidad, pregunta3Ordered, pregunta4Group));
 
-        ManejadorDePreguntas mnjDePreguntas = new ManejadorDePreguntas(preguntas); // Constructor especial para el test
 
         //Test
 
@@ -479,10 +468,7 @@ public class KahootTest {
 
         partida.agregarJugador("Jose");
         partida.agregarJugador("Tomas");
-        partida.inicializarPartida(mnjDePreguntas); // Constructor especial para el test
-        //    FieldSetter.setField(partida, partida.getClass().getDeclaredField("manejadorDePreguntas"), mnjDePreguntas);
-        //    ManejadorDePreguntas mnjDePreguntas = mock(ManejadorDePreguntas.class);
-        //    Mockito.when(mnjDePreguntas.inicializarPreguntas()).thenReturn(preguntas);
+        partida.inicializarPartida(preguntas);
 
         ArrayList<Jugador> jugadores = partida.getJugadores();
         Jugador jugador1 = jugadores.get(0);

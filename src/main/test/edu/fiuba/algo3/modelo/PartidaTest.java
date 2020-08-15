@@ -1,13 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,13 +23,13 @@ public class PartidaTest {
     }
 
     @Test
-    public void test01PartidaAgregaJugador(){
+    public void test01PartidaAgregaJugador() {
         //Arrange
         Partida partida = Partida.getInstance();
 
         //Act
         partida.agregarJugador("Juan");
-        partida.inicializarPartida();
+        partida.inicializarPartida(CreadorDePreguntas.crearPreguntas());
         Jugador jugador = partida.getJugadorActual();
         String nombreJugador = jugador.getNombre();
 
@@ -42,7 +40,7 @@ public class PartidaTest {
 
 
     @Test
-    public void test02TrasInicializarPartidaLaRondaEsLaNumero1yTienePreguntaInicial(){
+    public void test02TrasInicializarPartidaLaRondaEsLaNumero1yTienePreguntaInicial()  {
         //Arrange
         Partida partida = Partida.getInstance();
 
@@ -51,7 +49,7 @@ public class PartidaTest {
         Ronda ronda = partida.getRonda();
 
         //Act
-        partida.inicializarPartida();
+        partida.inicializarPartida(CreadorDePreguntas.crearPreguntas());
         int numeroDeRonda = ronda.getNumeroDeRonda();
 
 
@@ -62,12 +60,12 @@ public class PartidaTest {
     }
 
     @Test
-    public void test03PartidaPasaDeRonda(){
+    public void test03PartidaPasaDeRonda()  {
         //Arrange
         Partida partida = Partida.getInstance();
         partida.agregarJugador("Juan");
         partida.agregarJugador("Pedro");
-        partida.inicializarPartida();
+        partida.inicializarPartida(CreadorDePreguntas.crearPreguntas());
         Ronda ronda = partida.getRonda();
 
         assertEquals(1, ronda.getNumeroDeRonda());

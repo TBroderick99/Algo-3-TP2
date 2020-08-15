@@ -30,7 +30,7 @@ public class ContenedorIngresoJugadores extends VBox {
     titulo.setFont(Font.font("Calibri", FontWeight.BOLD,40));
     titulo.setFill(Color.web("333A56"));
 
-    Text etiquetaJugador = new Text("Jugador "+ (Partida.getInstance().cantidadJugadores()+1) +":");
+    Text etiquetaJugador = new Text("Jugador "+ (Partida.getInstance().cantidadJugadoresAgregados()+1) +":");
     etiquetaJugador.setFont(Font.font("Calibri", FontWeight.BOLD,16));
     etiquetaJugador.setFill(Color.web("333A56"));
 

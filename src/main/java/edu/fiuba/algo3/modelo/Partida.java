@@ -1,13 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.ManejadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 
 
 public class Partida implements Observable {
@@ -17,6 +13,8 @@ public class Partida implements Observable {
 
     private Ronda ronda;
     public ManejadorDePreguntas manejadorDePreguntas;
+
+    private final int CANTIDAD_JUGADORES = 2;
 
     private Estado estado = Estado.INICIO;
 
@@ -31,21 +29,16 @@ public class Partida implements Observable {
         return instance;
     }
 
-    public void inicializarPartida(){                   //cuando los jugadores ya fueron agregados
-        this.manejadorDePreguntas = new ManejadorDePreguntas();
+    public void inicializarPartida(ArrayList<Pregunta> preguntas){                   //cuando los jugadores ya fueron agregados
+        this.manejadorDePreguntas = new ManejadorDePreguntas(preguntas);
         ronda.actualizar(getPreguntaActual());
         estado = Estado.JUGANDO;
     }
 
-    public void inicializarPartida(ManejadorDePreguntas manejadorDePreguntas){ //Mock
-        this.manejadorDePreguntas = manejadorDePreguntas;
-        ronda.actualizar(getPreguntaActual());
-        estado = Estado.JUGANDO;
-    }
-
-    public void agregarJugador(String nombre){
+    public void agregarJugador(String nombre) {
         Jugador jugador = new Jugador(nombre);
         ronda.agregarTurno(jugador);
+
     }
 
     public void siguienteTurno(){
@@ -119,7 +112,11 @@ public class Partida implements Observable {
         observers.forEach(Observer::change);
     }
 
-    public int cantidadJugadores() {
+    public int cantidadJugadoresAgregados() {
         return ronda.cantidadTurnos();
+    }
+
+    public int cantidadMaximaDeJugadores(){
+        return CANTIDAD_JUGADORES;
     }
 }

@@ -9,21 +9,11 @@ public class ManejadorDePreguntas {
     private Pregunta preguntaActual;
     private int numeroPregunta = 0;
 
-    public ManejadorDePreguntas(){
-        this.preguntas = inicializarPreguntas();
-        this.iteradorPreguntas = this.preguntas.iterator();
-        siguientePregunta();
-    }
 
     public ManejadorDePreguntas(ArrayList<Pregunta> preguntas){
         this.preguntas = preguntas;
         this.iteradorPreguntas = this.preguntas.iterator();
         siguientePregunta();
-    }
-
-
-    public ArrayList<Pregunta> inicializarPreguntas() {
-        return CreadorDePreguntas.crearPreguntas();
     }
 
     public Pregunta getPreguntaActual(){
