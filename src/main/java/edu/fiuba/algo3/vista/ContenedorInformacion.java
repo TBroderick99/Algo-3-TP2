@@ -8,8 +8,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class contenedorInformacion extends VBox {
-    public contenedorInformacion(){
+public class ContenedorInformacion extends VBox {
+    public ContenedorInformacion(){
         this.setAlignment(Pos.CENTER);
         Text numeroDeRonda = new Text("Ronda " + Partida.getInstance().getRonda().getNumeroDeRonda());
         numeroDeRonda.setFont(Font.font("Calibri", FontWeight.BOLD,30));

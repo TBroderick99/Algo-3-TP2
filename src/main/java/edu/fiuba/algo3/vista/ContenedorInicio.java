@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonAcercaDeEventHandler;
+import edu.fiuba.algo3.controlador.BotonComoJugarEventHandler;
 import edu.fiuba.algo3.controlador.BotonInicioEventHandler;
 import edu.fiuba.algo3.controlador.BotonSalirEventHandler;
 import javafx.geometry.Insets;
@@ -43,7 +44,7 @@ public class ContenedorInicio extends VBox {
         region.setPrefHeight(100);
 
         Button botonComoJugar = new BotonInicio("Cómo jugar");
-        //botonComoJugar.setOnAction();
+        botonComoJugar.setOnAction(new BotonComoJugarEventHandler());
 
         Button botonAcercaDe = new BotonInicio("Acerca De");
         botonAcercaDe.setOnAction(new BotonAcercaDeEventHandler());
