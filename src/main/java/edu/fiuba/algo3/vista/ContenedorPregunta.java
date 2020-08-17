@@ -23,12 +23,8 @@ public class ContenedorPregunta extends VBox {
 
     private void inicializarPregunta(Partida partida){
         Color color1 = Color.FORESTGREEN;
-        Text numeroPregunta = new Text( "Numero Pregunta");
-        numeroPregunta.setFont(Font.font("Arial", 18));
-        numeroPregunta.setFill(color1);
-        Text jugador = new Text("Jugador: " + partida.getNombreJugadorActual() + " Puntaje: "+ partida.getJugadorActual().getPuntaje());
         Text pregunta = new Text( partida.getPreguntaActual().getTextoPregunta());
         pregunta.setFont(Font.font("Calibri", 30));
-        getChildren().addAll(jugador, numeroPregunta, pregunta);
+        getChildren().addAll(pregunta);
     }
 }

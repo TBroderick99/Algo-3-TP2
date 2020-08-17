@@ -36,6 +36,7 @@ public class ContenedorInicio extends VBox {
         Button botonInicio = new BotonInicio("Inicio");
         botonInicio.setOnAction(new BotonInicioEventHandler(stage, proximaEscena));
         botonInicio.setFont(Font.font("Calibri", FontWeight.BOLD,30));
+        botonInicio.setDefaultButton(true);
 
         // Este es un separador
         Region region = new Region();

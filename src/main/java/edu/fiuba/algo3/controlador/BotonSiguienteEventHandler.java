@@ -31,6 +31,7 @@ public class BotonSiguienteEventHandler implements EventHandler {
             Partida.getInstance().inicializarPartida(CreadorDePreguntas.crearPreguntas());
             stage.setScene(new Scene(new ContenedorPrincipal(stage)));
             stage.show();
+            stage.setFullScreen(true);
             return;
         }
         stage.setScene(new Scene(new ContenedorIngresoJugadores(stage),500,700));

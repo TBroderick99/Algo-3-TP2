@@ -57,4 +57,33 @@ public class Jugador {
         }
         return null;
     }
+
+    public int getCantidadBoosterMultiplicadorDisponibles(int factorDeMultiplicacion){
+        int i = 0;
+        for(Booster booster: this.boosters){
+            if(!booster.esExclusivo() && booster.tieneFactor(factorDeMultiplicacion) ){
+                i++;
+            }
+        }
+        return i;
+    }
+
+    public int getCantidadBoosterExclusividadDisponibles(){
+        int i = 0;
+        for(Booster booster: this.boosters){
+            if(booster.esExclusivo()){
+                i++;
+            }
+        }
+        return i;
+    }
+
+    public Boolean tieneBoosterExclusividad(){
+        return getCantidadBoosterExclusividadDisponibles() != 0;
+    }
+
+    public Boolean tieneBoosterMultiplicador(int factorDeMultiplicacion){
+        return getCantidadBoosterMultiplicadorDisponibles(factorDeMultiplicacion) != 0;
+    }
+
 }
