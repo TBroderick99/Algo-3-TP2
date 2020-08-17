@@ -62,7 +62,7 @@ public class Partida implements Observable {
         else {
             throw new NoHaySiguienteRondaError();
         }
-       //notifyObservers();
+        notifyObservers();
     }
 
     public void asignarPuntajes() {

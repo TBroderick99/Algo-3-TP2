@@ -54,4 +54,7 @@ public class Pregunta{
         return new ArrayList<>();
     }
 
+    public String getTipoPregunta() {
+        return tipoPregunta;
+    }
 }

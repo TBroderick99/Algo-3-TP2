@@ -27,4 +27,8 @@ public class ContenedorPregunta extends VBox {
         pregunta.setFont(Font.font("Calibri", 30));
         getChildren().addAll(pregunta);
     }
+
+    public String getTipoPregunta() {
+        return partida.getPreguntaActual().getTipoPregunta();
+    }
 }
