@@ -14,7 +14,7 @@ public class BotonInicio extends Button {
     public BotonInicio(String texto){
         super(texto);
         this.setPrefSize(140,70);
-        this.setBackground(new Background(new BackgroundFill(Color.web("52658F"), CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Color.web("52658F"), new CornerRadii(4), Insets.EMPTY)));
         this.setFont(Font.font("Calibri", FontWeight.BOLD,18));
         this.setTextFill(Paint.valueOf("FFFFFF"));
     }
