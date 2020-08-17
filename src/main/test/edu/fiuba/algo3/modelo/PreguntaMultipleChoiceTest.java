@@ -28,7 +28,7 @@ public class PreguntaMultipleChoiceTest {
         opciones.add(opcion2);
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
         String valor;
 
         //Act
@@ -58,7 +58,7 @@ public class PreguntaMultipleChoiceTest {
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador1.marcar(opcion1, new Valor(true));
@@ -100,7 +100,7 @@ public class PreguntaMultipleChoiceTest {
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador1.marcar(opcion2, new Valor(true));
@@ -142,7 +142,7 @@ public class PreguntaMultipleChoiceTest {
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador1.marcar(opcion1, new Valor(true));
@@ -188,7 +188,7 @@ public class PreguntaMultipleChoiceTest {
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
 

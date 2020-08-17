@@ -1,2 +1,2 @@
-A que grupo pertenecen las siguientes opciones;Frutas|Tomate|Sandia|Banana~Verduras|Lechuga|Berenjena
-Agrupe los siguientes paises segun su lengua;Ingles|Estados Unidos|Australia~Español|Argentina|Bolivia|España
+Grupal;A que grupo pertenecen las siguientes opciones;Frutas|Tomate|Sandia|Banana~Verduras|Lechuga|Berenjena
+Grupal;Agrupe los siguientes paises segun su lengua;Ingles|Estados Unidos|Australia~Español|Argentina|Bolivia|España

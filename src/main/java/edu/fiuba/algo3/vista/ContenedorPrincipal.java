@@ -11,6 +11,7 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
 
     private Stage stage;
     private Partida partida = Partida.getInstance();
+
     public ContenedorPrincipal(Stage stage) {
         super();
         this.stage = stage;

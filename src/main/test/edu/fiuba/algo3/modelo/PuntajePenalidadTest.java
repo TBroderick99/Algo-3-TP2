@@ -26,7 +26,7 @@ public class PuntajePenalidadTest {
         Opcion opcion6 = new Opcion("6", new Valor(false));
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
 
-        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje, "dummyText");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.marcar(opcion2, new Valor(true));
@@ -51,7 +51,7 @@ public class PuntajePenalidadTest {
         Opcion opcion6 = new Opcion("6", new Valor(false));
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
 
-        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje, "dummyText");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.marcar(opcion6, new Valor(true));
@@ -77,7 +77,7 @@ public class PuntajePenalidadTest {
         Opcion opcion6 = new Opcion("6", new Valor(false));
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
 
-        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje, "dummyText");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.marcar(opcion1, new Valor(true));
@@ -103,7 +103,7 @@ public class PuntajePenalidadTest {
         Opcion opcion6 = new Opcion("6", new Valor(false));
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
 
-        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje, "dummyText");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.marcar(opcion1, new Valor(true));
@@ -134,7 +134,7 @@ public class PuntajePenalidadTest {
         Opcion opcion6 = new Opcion("6", new Valor(true));
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
 
-        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje, "dummyText");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.marcar(opcion1, new Valor(true));
@@ -165,7 +165,7 @@ public class PuntajePenalidadTest {
         Opcion opcion6 = new Opcion("6", new Valor(false));
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
 
-        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje, "dummyText");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.marcar(opcion1, new Valor(true));
@@ -196,7 +196,7 @@ public class PuntajePenalidadTest {
         Opcion opcion6 = new Opcion("6", new Valor(true));
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6));
 
-        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje, "dummyText");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.marcar(opcion1, new Valor(true));

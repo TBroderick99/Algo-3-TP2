@@ -1,1 +1,1 @@
-Ordenar por peso, de menor a mayor;Hormiga-Gato-Tigre-Elefante-Ballena
+Ordenada;Ordenar por peso, de menor a mayor;Hormiga-Gato-Tigre-Elefante-Ballena

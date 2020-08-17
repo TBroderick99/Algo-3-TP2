@@ -1,12 +1,15 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonMarcarRespuestaUnicaEventHandler;
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.Valor;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -56,11 +59,21 @@ public class ContenedorOpcionesRespuestaUnica extends GridPane {
         }
 
         Button botonEnviarRespuesta = new Button("Enviar");
-        botonEnviarRespuesta.setOnAction(e ->
-            //    if(respuesta.fueMarcada()) {
-            //    }
-                Partida.getInstance().siguienteTurno()
-                );
+        botonEnviarRespuesta.setOnAction(e -> {
+            Partida.getInstance().enviarRespuesta();
+            try {
+                Partida.getInstance().siguienteTurno();
+            }
+            catch (NoHaySiguienteTurnoError turnoError) {
+                Partida.getInstance().asignarPuntajes();
+                try {
+                    Partida.getInstance().siguienteRonda();
+                }
+                catch (NoHaySiguienteRondaError rondaError) {
+                    stage.setScene(new Scene(new ContenedorFinalPartida()));
+                }
+            }
+        });
         botones.getChildren().add(botonEnviarRespuesta);
 
 

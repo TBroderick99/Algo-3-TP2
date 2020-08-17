@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
@@ -45,10 +47,10 @@ public class RondaTest {
         opciones.add(opcionCorrecta);
         String textoPregunta1 = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta1 = new Pregunta(textoPregunta1, opciones, puntaje);
+        Pregunta pregunta1 = new Pregunta(textoPregunta1, opciones, puntaje, "dummyText");
 
         String textoPregunta2 = "La lechuga es una verdura";
-        Pregunta pregunta2 = new Pregunta(textoPregunta2, opciones, puntaje);
+        Pregunta pregunta2 = new Pregunta(textoPregunta2, opciones, puntaje, "dummyText");
 
         ronda.actualizar(pregunta1);
 
@@ -81,7 +83,7 @@ public class RondaTest {
         opciones.add(opcionCorrecta);
         String textoPregunta1 = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta1 = new Pregunta(textoPregunta1, opciones, puntaje);
+        Pregunta pregunta1 = new Pregunta(textoPregunta1, opciones, puntaje, "dummyText");
 
         //Act
         ronda.actualizar(pregunta1);
@@ -94,7 +96,7 @@ public class RondaTest {
     }
 
     @Test
-    public void test04RondaPasaDeTurno(){
+    public void test04RondaPasaDeTurno() throws NoHaySiguienteTurnoError {
         //Arrange
         Ronda ronda = new Ronda();
         Jugador jugador1 = new Jugador("Tomas");
@@ -112,7 +114,7 @@ public class RondaTest {
         opciones.add(opcionCorrecta);
         String textoPregunta1 = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta1 = new Pregunta(textoPregunta1, opciones, puntaje);
+        Pregunta pregunta1 = new Pregunta(textoPregunta1, opciones, puntaje, "dummyText");
         ronda.actualizar(pregunta1);
 
         //Act
@@ -143,7 +145,7 @@ public class RondaTest {
         opciones.add(opcionCorrecta);
         String textoPregunta1 = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta = new Pregunta(textoPregunta1, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta1, opciones, puntaje, "dummyText");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         //Act

@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.*;
@@ -25,7 +27,7 @@ public class KahootTest {
     }
 
     @Test
-    public void test01DosJugadoresJueganUnaPartidaDeCuatroPreguntasSinBoosters() {
+    public void test01DosJugadoresJueganUnaPartidaDeCuatroPreguntasSinBoosters() throws NoHaySiguienteTurnoError, NoHaySiguienteRondaError{
         //Pregunta 1
         Puntaje puntaje1 = new PuntajeClasico();
         ArrayList<Opcion> opciones1 = new ArrayList<>();
@@ -37,7 +39,7 @@ public class KahootTest {
         opciones1.add(opcionCorrecta);
         String textoPregunta1 = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta1VyFClasico = new Pregunta(textoPregunta1, opciones1, puntaje1);
+        Pregunta pregunta1VyFClasico = new Pregunta(textoPregunta1, opciones1, puntaje1, "dummyText");
 
 
         //Pregunta 2
@@ -56,7 +58,7 @@ public class KahootTest {
 
         String textoPregunta2 = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta2MultiplePenalidad = new Pregunta(textoPregunta2, opciones2, puntaje2);
+        Pregunta pregunta2MultiplePenalidad = new Pregunta(textoPregunta2, opciones2, puntaje2, "dummyText");
 
 
         //Pregunta 3
@@ -70,7 +72,7 @@ public class KahootTest {
 
         ArrayList<Opcion> opciones3 = new ArrayList<>(Arrays.asList(opcionHornear, opcionHacerLaMasa, opcionAgregarSalsa, opcionAgregarQueso));
 
-        Pregunta pregunta3Ordered = new Pregunta(textoPregunta3, opciones3, puntaje3);
+        Pregunta pregunta3Ordered = new Pregunta(textoPregunta3, opciones3, puntaje3, "dummyText");
 
 
         //Pregunta 4
@@ -88,7 +90,7 @@ public class KahootTest {
         ArrayList<Opcion> opciones4 = new ArrayList<>(Arrays.asList(opcionTomate, opcionLechuga, opcionBerenjena, opcionSandia));
         ArrayList<Grupo> grupos = new ArrayList<>(Arrays.asList(grupoFrutas, grupoVegetales));
 
-        Pregunta pregunta4Group = new PreguntaGrupal(textoPregunta4, opciones4, puntaje4, grupos);
+        Pregunta pregunta4Group = new PreguntaGrupal(textoPregunta4, opciones4, puntaje4, "dummyText", grupos);
 
         //Preguntas
         ArrayList<Pregunta> preguntas = new ArrayList<>(Arrays.asList(pregunta1VyFClasico, pregunta2MultiplePenalidad, pregunta3Ordered, pregunta4Group));
@@ -113,6 +115,9 @@ public class KahootTest {
 
 
         respuesta.marcar(opcionCorrecta, new Valor (true));    //Jugador1. Clasico, -> Puntos totales: 1 punto
+
+        partida.enviarRespuesta();
+
         partida.siguienteTurno();
 
         turnoActual = partida.getTurnoActual();
@@ -120,7 +125,9 @@ public class KahootTest {
 
         respuesta.marcar(opcionIncorrecta, new Valor(true));   //Jugador2. Clasico, -> puntos totales: 0 puntos
 
-        partida.siguienteTurno();
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        partida.siguienteRonda();
 
         // PREGUNTA 2
         turnoActual = partida.getTurnoActual();
@@ -130,7 +137,9 @@ public class KahootTest {
         respuesta.marcar(opcion2, new Valor(true));
         respuesta.marcar(opcion3, new Valor(true));
 
+        partida.enviarRespuesta();
         partida.siguienteTurno();
+
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
 
@@ -138,8 +147,9 @@ public class KahootTest {
         respuesta.marcar(opcion3, new Valor(true));
         respuesta.marcar(opcion5, new Valor(true));
 
-
-        partida.siguienteTurno();
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        partida.siguienteRonda();
 
         // PREGUNTA 3
         turnoActual = partida.getTurnoActual();
@@ -150,7 +160,9 @@ public class KahootTest {
         respuesta.marcar(opcionAgregarQueso, new Valor(respuesta.getCantidadDeMarcadas() + 1));
         respuesta.marcar(opcionHornear, new Valor(respuesta.getCantidadDeMarcadas() + 1));
 
+        partida.enviarRespuesta();
         partida.siguienteTurno();
+
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
 
@@ -160,7 +172,9 @@ public class KahootTest {
         respuesta.marcar(opcionHacerLaMasa, new Valor(respuesta.getCantidadDeMarcadas() + 1));
         respuesta.marcar(opcionAgregarSalsa, new Valor(respuesta.getCantidadDeMarcadas() + 1));
 
-        partida.siguienteTurno();
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        partida.siguienteRonda();
 
         // PREGUNTA 4
         turnoActual = partida.getTurnoActual();
@@ -172,7 +186,9 @@ public class KahootTest {
         respuesta.marcar(opcionSandia, new Valor(grupoFrutas));
         respuesta.marcar(opcionBerenjena, new Valor(grupoVegetales));
 
+        partida.enviarRespuesta();
         partida.siguienteTurno();
+
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
 
@@ -181,12 +197,17 @@ public class KahootTest {
         respuesta.marcar(opcionSandia, new Valor(grupoFrutas));
         respuesta.marcar(opcionBerenjena, new Valor(grupoVegetales));
 
-        partida.siguienteTurno();
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+
+        try {
+            partida.siguienteRonda();
+        }
+        catch (NoHaySiguienteRondaError rondaError) {}
 
         ArrayList<Jugador> jugadores = partida.getJugadores();
         Jugador jugador1 = jugadores.get(0);
         Jugador jugador2 = jugadores.get(1);
-
 
         //Assert
         assertEquals(4, jugador1.getPuntaje());         // 4
@@ -194,7 +215,7 @@ public class KahootTest {
     }
 
     @Test
-    public void test02DosJugadoresJueganUnaPartidaDeCuatroPreguntasConBoosters() {
+    public void test02DosJugadoresJueganUnaPartidaDeCuatroPreguntasConBoosters() throws NoHaySiguienteTurnoError, NoHaySiguienteRondaError{
         //Pregunta 1
         Puntaje puntaje1 = new PuntajeClasico();
         ArrayList<Opcion> opciones1 = new ArrayList<>();
@@ -206,7 +227,7 @@ public class KahootTest {
         opciones1.add(opcionCorrecta);
         String textoPregunta1 = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta1VyFClasico = new Pregunta(textoPregunta1, opciones1, puntaje1);
+        Pregunta pregunta1VyFClasico = new Pregunta(textoPregunta1, opciones1, puntaje1, "dummyText");
 
 
         //Pregunta 2
@@ -225,7 +246,7 @@ public class KahootTest {
 
         String textoPregunta2 = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta2MultiplePenalidad = new Pregunta(textoPregunta2, opciones2, puntaje2);
+        Pregunta pregunta2MultiplePenalidad = new Pregunta(textoPregunta2, opciones2, puntaje2, "dummyText");
 
 
         //Pregunta 3
@@ -239,7 +260,7 @@ public class KahootTest {
 
         ArrayList<Opcion> opciones3 = new ArrayList<>(Arrays.asList(opcionHornear, opcionHacerLaMasa, opcionAgregarSalsa, opcionAgregarQueso));
 
-        Pregunta pregunta3Ordered = new Pregunta(textoPregunta3, opciones3, puntaje3);
+        Pregunta pregunta3Ordered = new Pregunta(textoPregunta3, opciones3, puntaje3, "dummyText");
 
 
         //Pregunta 4
@@ -257,7 +278,7 @@ public class KahootTest {
         ArrayList<Opcion> opciones4 = new ArrayList<>(Arrays.asList(opcionTomate, opcionLechuga, opcionBerenjena, opcionSandia));
         ArrayList<Grupo> grupos = new ArrayList<>(Arrays.asList(grupoFrutas, grupoVegetales));
 
-        Pregunta pregunta4Group = new PreguntaGrupal(textoPregunta4, opciones4, puntaje4, grupos);
+        Pregunta pregunta4Group = new PreguntaGrupal(textoPregunta4, opciones4, puntaje4, "dummyText", grupos);
 
         //Preguntas
         ArrayList<Pregunta> preguntas = new ArrayList<>(Arrays.asList(pregunta1VyFClasico, pregunta2MultiplePenalidad, pregunta3Ordered, pregunta4Group));
@@ -285,16 +306,18 @@ public class KahootTest {
 
 
         respuesta.marcar(opcionCorrecta, new Valor (true));    //Jugador1. Clasico, -> Puntos turno: 1 Puntos totales: 1 punto
+
+        partida.enviarRespuesta();
         partida.siguienteTurno();
-
-
 
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
 
         respuesta.marcar(opcionIncorrecta, new Valor(true));   //Jugador2. Clasico, -> Puntos turno: 0 Puntos totales: 0 puntos
 
-        partida.siguienteTurno();
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        partida.siguienteRonda();
 
 
 
@@ -313,7 +336,9 @@ public class KahootTest {
         respuesta.marcar(opcion2, new Valor(true));
         respuesta.marcar(opcion3, new Valor(true));
 
+        partida.enviarRespuesta();
         partida.siguienteTurno();
+
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
         jugador2 = partida.getJugadorActual();
@@ -326,7 +351,9 @@ public class KahootTest {
         respuesta.marcar(opcion5, new Valor(true));
 
 
-        partida.siguienteTurno();
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        partida.siguienteRonda();
 
 
         // PREGUNTA 3
@@ -342,7 +369,9 @@ public class KahootTest {
         respuesta.marcar(opcionAgregarQueso, new Valor(respuesta.getCantidadDeMarcadas() + 1));
         respuesta.marcar(opcionHornear, new Valor(respuesta.getCantidadDeMarcadas() + 1));
 
+        partida.enviarRespuesta();
         partida.siguienteTurno();
+
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
 
@@ -352,7 +381,9 @@ public class KahootTest {
         respuesta.marcar(opcionHacerLaMasa, new Valor(respuesta.getCantidadDeMarcadas() + 1));
         respuesta.marcar(opcionAgregarSalsa, new Valor(respuesta.getCantidadDeMarcadas() + 1));
 
-        partida.siguienteTurno();
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        partida.siguienteRonda();
 
 
         // PREGUNTA 4
@@ -369,7 +400,9 @@ public class KahootTest {
         respuesta.marcar(opcionSandia, new Valor(grupoFrutas));
         respuesta.marcar(opcionBerenjena, new Valor(grupoVegetales));
 
+        partida.enviarRespuesta();
         partida.siguienteTurno();
+
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
 
@@ -382,7 +415,12 @@ public class KahootTest {
         respuesta.marcar(opcionSandia, new Valor(grupoFrutas));
         respuesta.marcar(opcionBerenjena, new Valor(grupoVegetales));
 
-        partida.siguienteTurno();
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        try {
+            partida.siguienteRonda();
+        }
+        catch (NoHaySiguienteRondaError rondaError) {}
 
 
 
@@ -393,7 +431,7 @@ public class KahootTest {
 
 
     @Test
-    public void test03DosJugadoresJueganUnaPartidaDeCuatroPreguntasConDistintosBoosters() {
+    public void test03DosJugadoresJueganUnaPartidaDeCuatroPreguntasConDistintosBoosters()  throws NoHaySiguienteTurnoError, NoHaySiguienteRondaError {
         //Pregunta 1
         Puntaje puntaje1 = new PuntajeClasico();
         ArrayList<Opcion> opciones1 = new ArrayList<>();
@@ -405,7 +443,7 @@ public class KahootTest {
         opciones1.add(opcionCorrecta);
         String textoPregunta1 = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta1VyFClasico = new Pregunta(textoPregunta1, opciones1, puntaje1);
+        Pregunta pregunta1VyFClasico = new Pregunta(textoPregunta1, opciones1, puntaje1, "dummyText");
 
 
         //Pregunta 2
@@ -424,7 +462,7 @@ public class KahootTest {
 
         String textoPregunta2 = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta2MultiplePenalidad = new Pregunta(textoPregunta2, opciones2, puntaje2);
+        Pregunta pregunta2MultiplePenalidad = new Pregunta(textoPregunta2, opciones2, puntaje2, "dummyText");
 
 
         //Pregunta 3
@@ -438,7 +476,7 @@ public class KahootTest {
 
         ArrayList<Opcion> opciones3 = new ArrayList<>(Arrays.asList(opcionHornear, opcionHacerLaMasa, opcionAgregarSalsa, opcionAgregarQueso));
 
-        Pregunta pregunta3Ordered = new Pregunta(textoPregunta3, opciones3, puntaje3);
+        Pregunta pregunta3Ordered = new Pregunta(textoPregunta3, opciones3, puntaje3, "dummyText");
 
 
         //Pregunta 4
@@ -456,7 +494,7 @@ public class KahootTest {
         ArrayList<Opcion> opciones4 = new ArrayList<>(Arrays.asList(opcionTomate, opcionLechuga, opcionBerenjena, opcionSandia));
         ArrayList<Grupo> grupos = new ArrayList<>(Arrays.asList(grupoFrutas, grupoVegetales));
 
-        Pregunta pregunta4Group = new PreguntaGrupal(textoPregunta4, opciones4, puntaje4, grupos);
+        Pregunta pregunta4Group = new PreguntaGrupal(textoPregunta4, opciones4, puntaje4, "dummyText", grupos);
 
         //Preguntas
         ArrayList<Pregunta> preguntas = new ArrayList<>(Arrays.asList(pregunta1VyFClasico, pregunta2MultiplePenalidad, pregunta3Ordered, pregunta4Group));
@@ -487,6 +525,8 @@ public class KahootTest {
 
 
         respuesta.marcar(opcionIncorrecta, new Valor (true));    //Jugador1. Clasico, -> Puntos turno: 0 Puntos totales: 0 punto
+
+        partida.enviarRespuesta();
         partida.siguienteTurno();
 
 
@@ -496,9 +536,9 @@ public class KahootTest {
 
         respuesta.marcar(opcionIncorrecta, new Valor(true));   //Jugador2. Clasico, -> Puntos turno: 0 Puntos totales: 0 puntos
 
-        partida.siguienteTurno();
-
-
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        partida.siguienteRonda();
 
 
         // PREGUNTA 2
@@ -515,7 +555,9 @@ public class KahootTest {
         respuesta.marcar(opcion2, new Valor(true));
         respuesta.marcar(opcion3, new Valor(true));
 
+        partida.enviarRespuesta();
         partida.siguienteTurno();
+
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
         jugador2 = partida.getJugadorActual();
@@ -527,8 +569,9 @@ public class KahootTest {
         respuesta.marcar(opcion3, new Valor(true));
         respuesta.marcar(opcion5, new Valor(true));
 
-
-        partida.siguienteTurno();
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        partida.siguienteRonda();
 
 
         // PREGUNTA 3
@@ -544,7 +587,9 @@ public class KahootTest {
         respuesta.marcar(opcionAgregarQueso, new Valor(respuesta.getCantidadDeMarcadas() + 1));
         respuesta.marcar(opcionHornear, new Valor(respuesta.getCantidadDeMarcadas() + 1));
 
+        partida.enviarRespuesta();
         partida.siguienteTurno();
+
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
 
@@ -554,7 +599,9 @@ public class KahootTest {
         respuesta.marcar(opcionAgregarQueso, new Valor(respuesta.getCantidadDeMarcadas() + 1));
         respuesta.marcar(opcionHornear, new Valor(respuesta.getCantidadDeMarcadas() + 1));
 
-        partida.siguienteTurno();
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        partida.siguienteRonda();
 
 
         // PREGUNTA 4
@@ -569,7 +616,9 @@ public class KahootTest {
         respuesta.marcar(opcionSandia, new Valor(grupoFrutas));
         respuesta.marcar(opcionBerenjena, new Valor(grupoVegetales));
 
+        partida.enviarRespuesta();
         partida.siguienteTurno();
+
         turnoActual = partida.getTurnoActual();
         respuesta = turnoActual.getRespuesta();
 
@@ -579,9 +628,12 @@ public class KahootTest {
         respuesta.marcar(opcionSandia, new Valor(grupoFrutas));
         respuesta.marcar(opcionBerenjena, new Valor(grupoVegetales));
 
-        partida.siguienteTurno();
-
-
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        try {
+            partida.siguienteRonda();
+        }
+        catch(NoHaySiguienteRondaError rondaError) {}
 
         //Assert
         assertEquals(3, jugador1.getPuntaje());         // 3

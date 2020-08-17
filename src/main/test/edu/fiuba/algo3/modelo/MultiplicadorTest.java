@@ -43,7 +43,7 @@ public class MultiplicadorTest{
                 Arrays.asList(opcion1)
         );
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         Booster boosterPor2 = new BoosterMultiplicador(2);
