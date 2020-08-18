@@ -32,13 +32,7 @@ public class Respuesta {
         }
     }
 
-    /*
-    public Respuesta(Jugador jugadorAsociado){    //Creada solamente para test Modos de puntaje
-        selecciones = new ArrayList<>();
-        this.jugadorAsociado = jugadorAsociado;
-        this.booster = new BoosterMultiplicador(1);
-    }
-    */
+
 
 
     public void marcar(Opcion opcion, Valor valorAMarcar)  {
@@ -58,6 +52,16 @@ public class Respuesta {
     public Boolean fueMarcada(Opcion opcion)  {
         Seleccion seleccion = getSeleccion(opcion);
         return seleccion.fueMarcada();
+    }
+
+    public Boolean tieneAlgunaMarcada(){
+
+        for (Seleccion seleccion: selecciones){
+            if(seleccion.fueMarcada()){
+                return true;
+            }
+        }
+        return false;
     }
 
     public ArrayList<Seleccion> getSelecciones(){
