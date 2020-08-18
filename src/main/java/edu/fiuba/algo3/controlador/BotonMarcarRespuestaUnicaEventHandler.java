@@ -5,26 +5,21 @@ import edu.fiuba.algo3.modelo.Valor;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 
-public class BotonMarcarRespuestaUnicaEventHandler implements EventHandler {
-    Respuesta respuesta;
-    Opcion opcion;
+public class BotonMarcarRespuestaUnicaEventHandler extends BotonMarcarEventHandler {
 
-    public BotonMarcarRespuestaUnicaEventHandler(Respuesta respuesta, Opcion opcion){
-        this.respuesta = respuesta;
-        this.opcion = opcion;
+
+    public BotonMarcarRespuestaUnicaEventHandler(Respuesta respuesta, Opcion opcion, Button botonEnviar){
+        super(respuesta, opcion, botonEnviar);
+
     }
     @Override
     public void handle(Event event) {
 
-        if (respuesta.fueMarcada(opcion)) {
-            respuesta.desmarcar(opcion);
-        }
-
-        else {
-            respuesta.marcar(opcion, new Valor(true)); // En este caso sirve para un VoF
-        }
-
+        Valor valor = new Valor(respuesta.getCantidadDeMarcadas() + 1);
+        marcarDesmarcar(valor);
+        actualizarBotonEnviar();
 
     }
 }

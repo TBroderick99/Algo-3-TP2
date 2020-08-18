@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonEnviarEventHandler;
 import edu.fiuba.algo3.controlador.BotonMarcarRespuestaOrdenadaEventHandler;
 import edu.fiuba.algo3.controlador.BotonMarcarRespuestaUnicaEventHandler;
 import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
@@ -20,6 +21,7 @@ public class ContenedorOpcionesRespuestaOrdenada extends GridPane {
 
     private Stage stage;
     private Partida partida;
+    private Button botonEnviar;
 
     public ContenedorOpcionesRespuestaOrdenada(Stage stage, Partida partida) {
         super();
@@ -50,30 +52,21 @@ public class ContenedorOpcionesRespuestaOrdenada extends GridPane {
             Respuesta respuesta = null;
         };
 
+        Button botonEnviarRespuesta = new Button("Enviar");
+        botonEnviarRespuesta.setOnAction(new BotonEnviarEventHandler(stage, partida));
+        botonEnviarRespuesta.setDisable(true);
+
         Respuesta respuesta = partida.getTurnoActual().getRespuesta();
+
         for(Opcion opcion : partida.getPreguntaActual().getOpciones()){
             Button botonOpcion = new Button(opcion.getTexto());
             botonOpcion.setMinSize(this.getPrefHeight(), this.getPrefWidth());
-            botonOpcion.setOnAction(new BotonMarcarRespuestaOrdenadaEventHandler(respuesta, opcion));
+            botonOpcion.setOnAction(new BotonMarcarRespuestaOrdenadaEventHandler(respuesta, opcion, botonEnviarRespuesta));
             botones.getChildren().add(botonOpcion);
         }
 
-        Button botonEnviarRespuesta = new Button("Enviar");
-        botonEnviarRespuesta.setOnAction(e -> {
-            partida.enviarRespuesta();
-            try {
-                partida.siguienteTurno();
-            }
-            catch (NoHaySiguienteTurnoError turnoError) {
-                partida.asignarPuntajes();
-                try {
-                    partida.siguienteRonda();
-                }
-                catch (NoHaySiguienteRondaError rondaError) {
-                    stage.setScene(new Scene(new ContenedorFinalPartida()));
-                }
-            }
-        });
+
+
         botones.getChildren().add(botonEnviarRespuesta);
 
 
