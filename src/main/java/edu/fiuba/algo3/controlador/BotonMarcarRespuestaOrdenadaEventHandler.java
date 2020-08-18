@@ -22,4 +22,14 @@ public class BotonMarcarRespuestaOrdenadaEventHandler  extends BotonMarcarEventH
         marcarDesmarcar(valor);
         actualizarBotonEnviar();
     }
+
+    @Override
+    public void actualizarBotonEnviar(){
+        if (respuesta.seleccionesFueronTodasMarcadas()){
+            botonEnviar.setDisable(false);
+        }
+        else{
+            botonEnviar.setDisable(true);
+        }
+    }
 }

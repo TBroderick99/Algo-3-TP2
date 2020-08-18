@@ -108,4 +108,15 @@ public class Respuesta {
     }
 
     public Pregunta getPregunta(){ return this.preguntaAsociada; }
+
+
+    public boolean seleccionesFueronTodasMarcadas() {
+        for (Seleccion seleccion: selecciones){
+            if (!seleccion.fueMarcada()){
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
