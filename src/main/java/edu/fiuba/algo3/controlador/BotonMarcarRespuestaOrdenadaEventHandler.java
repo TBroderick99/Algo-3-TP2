@@ -18,6 +18,14 @@ public class BotonMarcarRespuestaOrdenadaEventHandler  implements EventHandler {
 
     @Override
     public void handle(Event event) {
-        respuesta.marcar(opcion, new Valor(respuesta.getCantidadDeMarcadas() + 1));
+
+        if (respuesta.fueMarcada(opcion)) {
+            respuesta.desmarcar(opcion);
+        }
+
+        else { respuesta.marcar(opcion, new Valor(respuesta.getCantidadDeMarcadas() + 1));
+        }
+
+
     }
 }

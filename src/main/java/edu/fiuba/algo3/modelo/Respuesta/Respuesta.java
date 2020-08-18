@@ -41,7 +41,7 @@ public class Respuesta {
     */
 
 
-    public void marcar(Opcion opcion, Valor valorAMarcar){
+    public void marcar(Opcion opcion, Valor valorAMarcar)  {
 
        Seleccion seleccion = getSeleccion(opcion);
        seleccion.marcar(valorAMarcar);
@@ -49,10 +49,15 @@ public class Respuesta {
 
     }
 
-    public void desmarcar(Opcion opcion){
+    public void desmarcar(Opcion opcion)  {
         Seleccion seleccion = getSeleccion(opcion);
         seleccion.desmarcar();
         cantidadDeMarcadas -= 1;
+    }
+
+    public Boolean fueMarcada(Opcion opcion)  {
+        Seleccion seleccion = getSeleccion(opcion);
+        return seleccion.fueMarcada();
     }
 
     public ArrayList<Seleccion> getSelecciones(){
@@ -69,7 +74,7 @@ public class Respuesta {
 
     }
 
-    private Seleccion getSeleccion(Opcion opcion){   //nunca deberia devolver null, testear postcondicion
+    private Seleccion getSeleccion(Opcion opcion) {   //nunca deberia devolver null, testear postcondicion
 
         return selecciones.stream().filter(s -> s.getOpcion() == opcion).findFirst().orElse(null);
     }

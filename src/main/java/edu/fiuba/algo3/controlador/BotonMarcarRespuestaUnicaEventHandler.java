@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.Valor;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
@@ -17,6 +16,15 @@ public class BotonMarcarRespuestaUnicaEventHandler implements EventHandler {
     }
     @Override
     public void handle(Event event) {
-        respuesta.marcar(opcion, new Valor(true)); // En este caso sirve para un VoF
+
+        if (respuesta.fueMarcada(opcion)) {
+            respuesta.desmarcar(opcion);
+        }
+
+        else {
+            respuesta.marcar(opcion, new Valor(true)); // En este caso sirve para un VoF
+        }
+
+
     }
 }
