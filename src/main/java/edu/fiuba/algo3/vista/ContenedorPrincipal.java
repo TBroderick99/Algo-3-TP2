@@ -30,7 +30,7 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
         VBox sectorIzquierda = new VBox();
         sectorIzquierda.setPadding(new Insets(10,10,10,10));
         sectorIzquierda.setSpacing(300);
-        sectorIzquierda.setPrefWidth(190);
+        sectorIzquierda.setPrefWidth(400);
         sectorIzquierda.setBackground(new Background(new BackgroundFill(Color.web("F7F5E6"), CornerRadii.EMPTY, Insets.EMPTY)));
 
         VBox sectorInformacion = new ContenedorInformacion();
