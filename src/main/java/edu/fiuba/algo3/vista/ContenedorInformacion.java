@@ -9,14 +9,15 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class ContenedorInformacion extends VBox {
-    public ContenedorInformacion(){
+    private Partida partida;
+    public ContenedorInformacion(Partida partida){
         this.setAlignment(Pos.CENTER);
-        Text numeroDeRonda = new Text("Ronda " + Partida.getInstance().getRonda().getNumeroDeRonda());
+        Text numeroDeRonda = new Text("Ronda " + partida.getRonda().getNumeroDeRonda());
         numeroDeRonda.setFont(Font.font("Calibri", FontWeight.BOLD,30));
         numeroDeRonda.setFill(Color.web("333A56"));
         Text jugador = new Text("Turno de : " +
-                        Partida.getInstance().getNombreJugadorActual() +
-                        "\nPuntaje: "+ Partida.getInstance().getJugadorActual().getPuntaje()
+                partida.getNombreJugadorActual() +
+                        "\nPuntaje: "+ partida.getJugadorActual().getPuntaje()
         );
         jugador.setFont(Font.font("Calibri", FontWeight.BOLD,22));
         jugador.setFill(Color.web("333A56"));

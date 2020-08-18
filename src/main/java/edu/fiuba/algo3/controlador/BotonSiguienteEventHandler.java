@@ -12,11 +12,13 @@ import javafx.stage.Stage;
 
 public class BotonSiguienteEventHandler implements EventHandler {
     Stage stage;
+    Partida partida;
     TextField nombreJugador;
     private final int CANTIDAD_JUGADORES = 2;
 
-    public BotonSiguienteEventHandler(Stage stage, TextField nombreJugador) {
+    public BotonSiguienteEventHandler(Stage stage, Partida partida, TextField nombreJugador) {
         this.stage = stage;
+        this.partida = partida;
         this.nombreJugador = nombreJugador;
     }
 
@@ -26,15 +28,15 @@ public class BotonSiguienteEventHandler implements EventHandler {
             cambiarColorTexto(nombreJugador);
             return;
         }
-        Partida.getInstance().agregarJugador(nombreJugador.getText());
-        if(Partida.getInstance().cantidadJugadoresAgregados() == Partida.getInstance().cantidadMaximaDeJugadores()){
-            Partida.getInstance().inicializarPartida(CreadorDePreguntas.crearPreguntas());
-            stage.setScene(new Scene(new ContenedorPrincipal(stage)));
+        partida.agregarJugador(nombreJugador.getText());
+        if(partida.cantidadJugadoresAgregados() == partida.cantidadMaximaDeJugadores()){
+            partida.inicializarPartida(CreadorDePreguntas.crearPreguntas());
+            stage.setScene(new Scene(new ContenedorPrincipal(stage, partida)));
             stage.show();
             stage.setFullScreen(true);
             return;
         }
-        stage.setScene(new Scene(new ContenedorIngresoJugadores(stage),500,700));
+        stage.setScene(new Scene(new ContenedorIngresoJugadores(stage, partida),500,700));
         stage.show();
     }
 

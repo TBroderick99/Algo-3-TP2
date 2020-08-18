@@ -13,21 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PartidaTest {
 
-
-
-    // Para que esté bien testeado, habría que hacer un mock de CreadorDePreguntas
-
-    @BeforeEach
-    public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
-        Field instance = Partida.class.getDeclaredField("instance");
-        instance.setAccessible(true);
-        instance.set(null, null);
-    }
-
     @Test
     public void test01PartidaAgregaJugador() {
         //Arrange
-        Partida partida = Partida.getInstance();
+        Partida partida = new Partida();
 
         //Act
         partida.agregarJugador("Juan");
@@ -44,7 +33,7 @@ public class PartidaTest {
     @Test
     public void test02TrasInicializarPartidaLaRondaEsLaNumero1yTienePreguntaInicial()  {
         //Arrange
-        Partida partida = Partida.getInstance();
+        Partida partida = new Partida();
 
         partida.agregarJugador("Juan");
         partida.agregarJugador("Pedro");
@@ -64,7 +53,7 @@ public class PartidaTest {
     @Test
     public void test03PartidaPasaDeRonda() throws NoHaySiguienteTurnoError, NoHaySiguienteRondaError {
         //Arrange
-        Partida partida = Partida.getInstance();
+        Partida partida = new Partida();
         partida.agregarJugador("Juan");
         partida.agregarJugador("Pedro");
         partida.inicializarPartida(CreadorDePreguntas.crearPreguntas());

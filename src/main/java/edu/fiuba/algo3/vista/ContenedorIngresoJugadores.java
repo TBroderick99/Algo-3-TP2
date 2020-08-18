@@ -17,10 +17,12 @@ import javafx.stage.Stage;
 
 public class ContenedorIngresoJugadores extends VBox {
     private Stage stage;
+    private Partida partida;
 
-    public ContenedorIngresoJugadores(Stage stage) {
+    public ContenedorIngresoJugadores(Stage stage, Partida partida) {
     super();
     this.stage = stage;
+    this.partida = partida;
     this.setAlignment(Pos.CENTER);
     this.setPadding(new Insets(20,20,20,20));
     this.setBackground(new Background(new BackgroundFill(Color.web("F7F5E6"), CornerRadii.EMPTY, Insets.EMPTY)));
@@ -30,7 +32,7 @@ public class ContenedorIngresoJugadores extends VBox {
     titulo.setFont(Font.font("Calibri", FontWeight.BOLD,40));
     titulo.setFill(Color.web("333A56"));
 
-    Text etiquetaJugador = new Text("Jugador "+ (Partida.getInstance().cantidadJugadoresAgregados()+1) +":");
+    Text etiquetaJugador = new Text("Jugador "+ (partida.cantidadJugadoresAgregados()+1) +":");
     etiquetaJugador.setFont(Font.font("Calibri", FontWeight.BOLD,16));
     etiquetaJugador.setFill(Color.web("333A56"));
 
@@ -44,7 +46,7 @@ public class ContenedorIngresoJugadores extends VBox {
     region.setPrefHeight(100);
 
     Button botonSiguiente = new Button("Siguiente");
-    botonSiguiente.setOnAction(new BotonSiguienteEventHandler(stage, nombreJugador));
+    botonSiguiente.setOnAction(new BotonSiguienteEventHandler(stage, partida, nombreJugador));
     botonSiguiente.setPrefSize(140,70);
     botonSiguiente.setBackground(new Background(new BackgroundFill(Color.web("52658F"), CornerRadii.EMPTY, Insets.EMPTY)));
     botonSiguiente.setFont(Font.font("Calibri", FontWeight.BOLD,18));

@@ -21,9 +21,11 @@ import java.util.ArrayList;
 public class ContenedorOpcionesRespuestaUnica extends GridPane {
 
     private Stage stage;
+    private Partida partida;
 
     public ContenedorOpcionesRespuestaUnica(Stage stage, Partida partida) {
         super();
+        this.partida = partida;
         this.stage = stage;
         inicializarOpciones();
     }
@@ -50,8 +52,8 @@ public class ContenedorOpcionesRespuestaUnica extends GridPane {
             Respuesta respuesta = null;
         };
 
-        Respuesta respuesta = Partida.getInstance().getTurnoActual().getRespuesta();
-        for(Opcion opcion : Partida.getInstance().getPreguntaActual().getOpciones()){
+        Respuesta respuesta = partida.getTurnoActual().getRespuesta();
+        for(Opcion opcion : partida.getPreguntaActual().getOpciones()){
             Button botonOpcion = new Button(opcion.getTexto());
             botonOpcion.setMinSize(this.getPrefHeight(), this.getPrefWidth());
             botonOpcion.setOnAction(new BotonMarcarRespuestaUnicaEventHandler(respuesta, opcion));
@@ -60,14 +62,14 @@ public class ContenedorOpcionesRespuestaUnica extends GridPane {
 
         Button botonEnviarRespuesta = new Button("Enviar");
         botonEnviarRespuesta.setOnAction(e -> {
-            Partida.getInstance().enviarRespuesta();
+            partida.enviarRespuesta();
             try {
-                Partida.getInstance().siguienteTurno();
+                partida.siguienteTurno();
             }
             catch (NoHaySiguienteTurnoError turnoError) {
-                Partida.getInstance().asignarPuntajes();
+                partida.asignarPuntajes();
                 try {
-                    Partida.getInstance().siguienteRonda();
+                    partida.siguienteRonda();
                 }
                 catch (NoHaySiguienteRondaError rondaError) {
                     stage.setScene(new Scene(new ContenedorFinalPartida()));

@@ -11,11 +11,12 @@ import javafx.stage.Stage;
 public class ContenedorPrincipal extends BorderPane implements Observer {
 
     private Stage stage;
-    private Partida partida = Partida.getInstance();
+    private Partida partida;
 
-    public ContenedorPrincipal(Stage stage) {
+    public ContenedorPrincipal(Stage stage, Partida partida) {
         super();
         this.stage = stage;
+        this.partida = partida;
     //    this.setPadding(new Insets(0,20,20,20));
 
         partida.addObserver(this);
@@ -42,12 +43,12 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
         sectorIzquierda.setPrefWidth(400);
         sectorIzquierda.setBackground(new Background(new BackgroundFill(Color.web("F7F5E6"), CornerRadii.EMPTY, Insets.EMPTY)));
 
-        VBox sectorInformacion = new ContenedorInformacion();
+        VBox sectorInformacion = new ContenedorInformacion(partida);
 
         VBox contenedorCentral = new VBox();
         contenedorCentral.getChildren().addAll(pregunta, opciones);
 
-        ContenedorBoosters sectorBooster = new ContenedorBoosters();
+        ContenedorBoosters sectorBooster = new ContenedorBoosters(partida);
 
         sectorIzquierda.getChildren().addAll(sectorInformacion, sectorBooster);
 

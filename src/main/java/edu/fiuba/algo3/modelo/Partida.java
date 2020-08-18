@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 
 public class Partida implements Observable {
-    private static Partida instance = new Partida();
 
     private ArrayList<Observer> observers = new ArrayList<>();
 
@@ -18,16 +17,10 @@ public class Partida implements Observable {
 
     private final int CANTIDAD_JUGADORES = 2;
 
-    private Partida(){
+    public Partida(){
         this.ronda = new Ronda();
     }
 
-    public static synchronized Partida getInstance() {
-        if (instance == null) {
-            instance = new Partida();
-        }
-        return instance;
-    }
 
     public void inicializarPartida(ArrayList<Pregunta> preguntas){                   //cuando los jugadores ya fueron agregados
         this.manejadorDePreguntas = new ManejadorDePreguntas(preguntas);

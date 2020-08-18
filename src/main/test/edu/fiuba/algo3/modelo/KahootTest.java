@@ -19,13 +19,6 @@ import java.util.Arrays;
 public class KahootTest {
 
 
-    @BeforeEach
-    public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
-        Field instance = Partida.class.getDeclaredField("instance");
-        instance.setAccessible(true);
-        instance.set(null, null);
-    }
-
     @Test
     public void test01DosJugadoresJueganUnaPartidaDeCuatroPreguntasSinBoosters() throws NoHaySiguienteTurnoError, NoHaySiguienteRondaError{
         //Pregunta 1
@@ -98,7 +91,7 @@ public class KahootTest {
 
         //Test
 
-        Partida partida = Partida.getInstance();
+        Partida partida = new Partida();
 
         partida.agregarJugador("Jose");
         partida.agregarJugador("Tomas");
@@ -286,7 +279,7 @@ public class KahootTest {
 
         //Test
 
-        Partida partida = Partida.getInstance();
+        Partida partida = new Partida();
 
         partida.agregarJugador("Jose");
         partida.agregarJugador("Tomas");
@@ -502,7 +495,7 @@ public class KahootTest {
 
         //Test
 
-        Partida partida = Partida.getInstance();
+        Partida partida = new Partida();
 
         partida.agregarJugador("Jose");
         partida.agregarJugador("Tomas");
