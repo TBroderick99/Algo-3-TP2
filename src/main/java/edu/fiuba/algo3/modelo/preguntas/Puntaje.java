@@ -12,5 +12,5 @@ public abstract class Puntaje {
 
     public abstract int calcularPuntaje(Respuesta respuesta);
 
-
+    public abstract String getTipo();
 }

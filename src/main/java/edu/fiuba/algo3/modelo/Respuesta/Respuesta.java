@@ -84,15 +84,6 @@ public class Respuesta {
         int correctasNoMarcadas = (int) selecciones.stream().filter(sel ->!sel.fueMarcada() && sel.debeSerMarcada()).count();
         int incorrectasMarcadas = (int) selecciones.stream().filter(sel -> sel.fueMarcada() && !sel.esCorrecta()).count();
         return (correctasNoMarcadas + incorrectasMarcadas) == 0;
-
-        //CODIGO REPETIDO DE PUNTAJE CLASICO
-        /*for ( Seleccion seleccion : selecciones){
-            if( (seleccion.fueMarcada() && !seleccion.esCorrecta()) || (!seleccion.fueMarcada() && seleccion.debeSerMarcada()) ){
-                return false;
-
-            }
-        }
-        return true;*/
     }
 
     public void sumarPuntajeAJugador(int puntajeASumar){

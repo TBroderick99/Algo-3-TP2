@@ -57,4 +57,8 @@ public class Pregunta{
     public String getTipoPregunta() {
         return tipoPregunta;
     }
+
+    public String getTipoPuntaje(){
+        return puntaje.getTipo();
+    }
 }
