@@ -97,6 +97,7 @@ public class Respuesta {
     public int getCantidadDeMarcadas(){
         return cantidadDeMarcadas;
     }
+
     public void setBoost(Booster boosterASetear) {
         boosterASetear.agregarBoost(this.booster);//RESPUESTA EMPIEZA SIN BOOSTER USAR NULL?
         this.booster = boosterASetear;

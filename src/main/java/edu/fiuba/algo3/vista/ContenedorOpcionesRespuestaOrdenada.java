@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.BotonMarcarRespuestaOrdenadaEventHandler;
 import edu.fiuba.algo3.controlador.BotonMarcarRespuestaUnicaEventHandler;
 import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
 import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
@@ -53,7 +54,7 @@ public class ContenedorOpcionesRespuestaOrdenada extends GridPane {
         for(Opcion opcion : partida.getPreguntaActual().getOpciones()){
             Button botonOpcion = new Button(opcion.getTexto());
             botonOpcion.setMinSize(this.getPrefHeight(), this.getPrefWidth());
-            botonOpcion.setOnAction(new BotonMarcarRespuestaUnicaEventHandler(respuesta, opcion));
+            botonOpcion.setOnAction(new BotonMarcarRespuestaOrdenadaEventHandler(respuesta, opcion));
             botones.getChildren().add(botonOpcion);
         }
 
