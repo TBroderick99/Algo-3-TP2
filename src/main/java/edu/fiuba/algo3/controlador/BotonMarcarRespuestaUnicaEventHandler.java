@@ -17,14 +17,8 @@ public class BotonMarcarRespuestaUnicaEventHandler extends BotonMarcarEventHandl
     @Override
     public void handle(Event event) {
 
-        if (respuesta.fueMarcada(opcion)) {
-            respuesta.desmarcar(opcion);
-        }
-
-        else {
-            respuesta.marcar(opcion, new Valor(true)); // En este caso sirve para un VoF
-        }
-
+        Valor valor = new Valor(respuesta.getCantidadDeMarcadas() + 1);
+        marcarDesmarcar(valor);
         actualizarBotonEnviar();
 
     }
