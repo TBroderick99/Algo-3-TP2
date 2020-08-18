@@ -31,7 +31,7 @@ public class PreguntaOrdenadaTest {
 
     ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4));
 
-    Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+    Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
     Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
 
@@ -41,7 +41,7 @@ public class PreguntaOrdenadaTest {
     respuestaJugador1.marcar(opcion4,new Valor(3));
 
 
-    ArrayList<Respuesta> respuestasJugadores = new ArrayList<Respuesta>();
+    ArrayList<Respuesta> respuestasJugadores = new ArrayList<>();
         respuestasJugadores.add(respuestaJugador1);
 
     //Act
@@ -68,7 +68,7 @@ public class PreguntaOrdenadaTest {
 
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4));
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
 
@@ -105,7 +105,7 @@ public class PreguntaOrdenadaTest {
 
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2, opcion3, opcion4));
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
 
@@ -115,7 +115,7 @@ public class PreguntaOrdenadaTest {
         respuestaJugador1.marcar(opcion4,new Valor(2));
 
 
-        ArrayList<Respuesta> respuestasJugadores = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestasJugadores = new ArrayList<>();
         respuestasJugadores.add(respuestaJugador1);
 
         //Act

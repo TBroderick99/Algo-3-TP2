@@ -1,20 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class Ronda {
-    private final long TIEMPO = 60000;
-    private Timer timer;
 
     private ArrayList<Turno> turnos;
     private Iterator<Turno> iteradorTurnos;
@@ -37,22 +33,21 @@ public class Ronda {
     }
 
 
-    public void siguienteTurno() {
-        //respuestas.add(turnoActual.getRespuesta());
-        cancelarTimer();
-        turnoActual.enviarRespuesta(this);
+    public void siguienteTurno() throws NoHaySiguienteTurnoError {
 
         if (iteradorTurnos.hasNext()) {
             turnoActual = iteradorTurnos.next();
             turnoActual.actualizar(preguntaActual); // aca esta el problema
-            iniciarTimer();
+        }
+        else{
+            throw new NoHaySiguienteTurnoError();
         }
 
-        /*else{
-            Partida.getInstance().siguienteRonda();
-        }*/
-
         //notifyObservers();        TO DO:  hacer el notify para ronda
+    }
+
+    public void enviarRespuesta() {
+        turnoActual.enviarRespuesta(this);
     }
 
     public Boolean esUltimoTurno(){
@@ -71,9 +66,7 @@ public class Ronda {
 
         this.iteradorTurnos = this.turnos.iterator();    //lleva el iterador de turnos al inicio
         this.turnoActual = this.iteradorTurnos.next();
-        cancelarTimer();
         this.turnoActual.actualizar(pregunta);
-        iniciarTimer();
     }
 
 
@@ -84,23 +77,6 @@ public class Ronda {
 
     public void recibirRespuesta(Respuesta respuesta){
         respuestas.add(respuesta);
-    }
-
-
-    public void iniciarTimer(){
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                siguienteTurno();
-            }
-        }, TIEMPO);
-    }
-
-    public void cancelarTimer() {
-        if (timer != null){
-            timer.cancel();
-        }
     }
 
     public void setPreguntaActual(Pregunta pregunta) {

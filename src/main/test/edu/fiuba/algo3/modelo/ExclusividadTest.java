@@ -43,7 +43,7 @@ public class ExclusividadTest{
                 Arrays.asList(opcion1)
         );
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
         Respuesta respuestaJugador = new Respuesta(jugador, pregunta);
 
         Booster boosterPor2 = new BoosterExclusividad(2);
@@ -77,7 +77,7 @@ public class ExclusividadTest{
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador1.marcar(opcion2, new Valor(true));//solo responde una, no se duplica puntaje por booster
@@ -122,7 +122,7 @@ public class ExclusividadTest{
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador1.marcar(opcion2, new Valor(true));//solo responde una, no se cuadruple puntaje por booster
@@ -169,7 +169,7 @@ public class ExclusividadTest{
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador1.marcar(opcion2, new Valor(true));//responde perfectamente (igual que jugador 2) recibe 0 puntaje por booster
@@ -216,7 +216,7 @@ public class ExclusividadTest{
 
         String textoPregunta = "¿Cuáles de los siguientes números son primos?";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador1.marcar(opcion2, new Valor(true));//responde perfectamente (igual que jugador 2) recibe 0 puntaje por booster

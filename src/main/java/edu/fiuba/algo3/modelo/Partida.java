@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.preguntas.ManejadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 
@@ -16,8 +18,6 @@ public class Partida implements Observable {
 
     private final int CANTIDAD_JUGADORES = 2;
 
-    private Estado estado = Estado.INICIO;
-
     private Partida(){
         this.ronda = new Ronda();
     }
@@ -32,7 +32,6 @@ public class Partida implements Observable {
     public void inicializarPartida(ArrayList<Pregunta> preguntas){                   //cuando los jugadores ya fueron agregados
         this.manejadorDePreguntas = new ManejadorDePreguntas(preguntas);
         ronda.actualizar(getPreguntaActual());
-        estado = Estado.JUGANDO;
     }
 
     public void agregarJugador(String nombre) {
@@ -41,41 +40,34 @@ public class Partida implements Observable {
 
     }
 
-    public void siguienteTurno(){
-        if (ronda.esUltimoTurno()){
-            ronda.siguienteTurno();
-            siguienteRonda();
-        }
-        else {
-            ronda.siguienteTurno();
-        }
+    public void siguienteTurno() throws NoHaySiguienteTurnoError {
+        ronda.siguienteTurno();
         notifyObservers();
     }
 
-    public void siguienteRonda(){     //Refactor, nuevo codigo con la implementacion de ronda y turnos
-        ronda.asignarPuntajes();
+    public Boolean esUltimoTurno() {
+        return ronda.esUltimoTurno();
+    }
+
+    public void enviarRespuesta() {
+        ronda.enviarRespuesta();
+    }
+
+    public void siguienteRonda() throws NoHaySiguienteRondaError {
 
         if(!manejadorDePreguntas.esLaUltimaPregunta()){
             manejadorDePreguntas.siguientePregunta();
             ronda.actualizar(getPreguntaActual());
         }
-        else{
-            estado = Estado.FINALIZADO;
+        else {
+            throw new NoHaySiguienteRondaError();
         }
-
-       //notifyObservers();
+        notifyObservers();
     }
 
-    public void finalizarPartida() {}
-    /*private void asignarPuntajes() {                      //la ronda asigna los puntajes
-        // Esto se evita en un futuro refactor.
-        Respuesta[] _respuestas =  new Respuesta[]{respuestasRonda.get(0), respuestasRonda.get(1)};
-        ArrayList<Respuesta> respuestas = new ArrayList<>(Arrays.asList(_respuestas));
-
-        Jugador[] jugadores = new Jugador[]{this.jugadores.get(0), this.jugadores.get(1)};
-        preguntaActual.asignarPuntajes(respuestas);
-    }*/
-
+    public void asignarPuntajes() {
+        ronda.asignarPuntajes();
+    }
 
     public Pregunta getPreguntaActual(){
         return manejadorDePreguntas.getPreguntaActual();

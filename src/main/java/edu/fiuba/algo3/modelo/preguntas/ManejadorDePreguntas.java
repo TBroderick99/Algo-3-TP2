@@ -24,6 +24,8 @@ public class ManejadorDePreguntas {
         return !iteradorPreguntas.hasNext();
     }
 
+
+
     public void siguientePregunta() {
         this.preguntaActual = iteradorPreguntas.next();
         this.numeroPregunta += 1;

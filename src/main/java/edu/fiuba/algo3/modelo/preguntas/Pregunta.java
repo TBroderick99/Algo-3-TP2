@@ -13,12 +13,14 @@ public class Pregunta{
     private Puntaje puntaje;
     private Booster booster;
     private ArrayList<Opcion> opciones;
+    private String tipoPregunta;
 
-    public Pregunta(String textoPregunta, ArrayList<Opcion> opciones, Puntaje modoDePuntaje){
+    public Pregunta(String textoPregunta, ArrayList<Opcion> opciones, Puntaje modoDePuntaje, String tipoPregunta){
         this.textoPregunta = textoPregunta;
         this.puntaje = modoDePuntaje;
         this.opciones = opciones;
         this.booster = new BoosterMultiplicador(1);
+        this.tipoPregunta = tipoPregunta;
     }
 
     public String getTextoPregunta(){
@@ -52,4 +54,7 @@ public class Pregunta{
         return new ArrayList<>();
     }
 
+    public String getTipoPregunta() {
+        return tipoPregunta;
+    }
 }

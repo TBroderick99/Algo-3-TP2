@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
 import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.Valor;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -16,13 +15,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-
-public class ContenedorOpcionesRespuestaUnica extends GridPane {
+public class ContenedorOpcionesRespuestaOrdenada extends GridPane {
 
     private Stage stage;
 
-    public ContenedorOpcionesRespuestaUnica(Stage stage, Partida partida) {
+    public ContenedorOpcionesRespuestaOrdenada(Stage stage, Partida partida) {
         super();
         this.stage = stage;
         inicializarOpciones();

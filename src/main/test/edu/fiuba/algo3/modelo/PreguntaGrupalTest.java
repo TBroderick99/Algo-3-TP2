@@ -33,7 +33,7 @@ public class PreguntaGrupalTest {
 
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcionTomate, opcionLechuga, opcionBerenjena, opcionSandia));
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
 
@@ -74,7 +74,7 @@ public class PreguntaGrupalTest {
 
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcionTomate, opcionLechuga, opcionBerenjena, opcionSandia, opcionBanana, opcionPapaya));
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
 
@@ -115,7 +115,7 @@ public class PreguntaGrupalTest {
 
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcionTomate, opcionLechuga, opcionBerenjena, opcionSandia, opcionBanana));
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
 
@@ -157,7 +157,7 @@ public class PreguntaGrupalTest {
 
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcionTomate, opcionLechuga, opcionBerenjena, opcionSandia, opcionMilka, opcionAguila));
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
 
@@ -202,7 +202,7 @@ public class PreguntaGrupalTest {
 
         ArrayList<Grupo> grupos = new ArrayList<>(Arrays.asList(grupoFrutas, grupoChocolates, grupoVegetales));
 
-        Pregunta pregunta = new PreguntaGrupal(textoPregunta, opciones, puntaje, grupos);
+        Pregunta pregunta = new PreguntaGrupal(textoPregunta, opciones, puntaje, "dummyText", grupos);
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
 
@@ -238,7 +238,7 @@ public class PreguntaGrupalTest {
 
         ArrayList<Grupo> grupos = new ArrayList<>(Arrays.asList(grupoFrutas, grupoChocolates, grupoVegetales));
 
-        Pregunta pregunta = new PreguntaGrupal(textoPregunta, opciones, puntaje, grupos);
+        Pregunta pregunta = new PreguntaGrupal(textoPregunta, opciones, puntaje, "dummyText", grupos);
         assertEquals(grupos, pregunta.getGrupos());
     }
 }

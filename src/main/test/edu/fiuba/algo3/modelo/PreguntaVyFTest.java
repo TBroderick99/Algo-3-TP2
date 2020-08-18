@@ -29,7 +29,7 @@ public class PreguntaVyFTest {
         opciones.add(opcion2);
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
         String valor;
 
         //Act
@@ -52,7 +52,7 @@ public class PreguntaVyFTest {
         opciones.add(opcionCorrecta);
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
 
 
@@ -85,7 +85,7 @@ public class PreguntaVyFTest {
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador1.marcar(opcionIncorrecta, new Valor(true));
@@ -125,7 +125,7 @@ public class PreguntaVyFTest {
         opciones.add(opcionCorrecta);
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         Respuesta respuestaJugador1 = new Respuesta(jugador1, pregunta);
         respuestaJugador1.marcar(opcionIncorrecta, new Valor(true));
@@ -140,7 +140,7 @@ public class PreguntaVyFTest {
 
         respuestaJugador2.marcar(opcionCorrecta, new Valor(true));
 
-        ArrayList<Respuesta> respuestasJugadores = new ArrayList<Respuesta>();
+        ArrayList<Respuesta> respuestasJugadores = new ArrayList<>();
         respuestasJugadores.add(respuestaJugador1);
         respuestasJugadores.add(respuestaJugador2);
 

@@ -7,11 +7,10 @@ import java.util.ArrayList;
 
 public class PreguntaGrupal extends Pregunta{
 
-
     private final ArrayList<Grupo> grupos;
 
-    public PreguntaGrupal(String textoPregunta, ArrayList<Opcion> opciones, Puntaje modoDePuntaje, ArrayList<Grupo> grupos) {
-        super(textoPregunta, opciones, modoDePuntaje);
+    public PreguntaGrupal(String textoPregunta, ArrayList<Opcion> opciones, Puntaje modoDePuntaje, String tipoPregunta, ArrayList<Grupo> grupos) {
+        super(textoPregunta, opciones, modoDePuntaje, tipoPregunta);
         this.grupos = grupos;
     }
 

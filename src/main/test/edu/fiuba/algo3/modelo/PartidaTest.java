@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
+import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import org.junit.jupiter.api.BeforeEach;
@@ -60,7 +62,7 @@ public class PartidaTest {
     }
 
     @Test
-    public void test03PartidaPasaDeRonda()  {
+    public void test03PartidaPasaDeRonda() throws NoHaySiguienteTurnoError, NoHaySiguienteRondaError {
         //Arrange
         Partida partida = Partida.getInstance();
         partida.agregarJugador("Juan");
@@ -70,9 +72,7 @@ public class PartidaTest {
 
         assertEquals(1, ronda.getNumeroDeRonda());
 
-
-        ronda.siguienteTurno();
-        ronda.siguienteTurno();
+        partida.siguienteTurno();
         partida.siguienteRonda();
 
         //Act

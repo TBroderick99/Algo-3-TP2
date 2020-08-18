@@ -29,7 +29,7 @@ public class CreadorDePreguntas {
 
     private static ArrayList<Pregunta> cargarPreguntasGroup() {
         /*  FORMATO ARCHIVO
-            TextoPregunta ; Opciones
+            TipoPregunta ; TextoPregunta ; Opciones
 
             TIPO PUNTAJE
             Por consigna las group son clásicas
@@ -56,13 +56,13 @@ public class CreadorDePreguntas {
 
                 while ((lineaEntera = lector.readLine()) != null) {
                     separadoPorComas = lineaEntera.split(";");
-
-                    String[] arrayTextoOpciones = separadoPorComas[1].split("~");
+                    String tipoPregunta = separadoPorComas[0];
+                    String[] arrayTextoOpciones = separadoPorComas[2].split("~");
                     ArrayList<Grupo> grupos = new ArrayList<>();
                     ArrayList<Opcion> opciones = parsearOpcionesGrupal(arrayTextoOpciones, grupos);
                     Puntaje puntaje = new PuntajeClasico();
 
-                    Pregunta pregunta = new PreguntaGrupal(separadoPorComas[0], opciones, puntaje, grupos);
+                    Pregunta pregunta = new PreguntaGrupal(separadoPorComas[1], opciones, puntaje, tipoPregunta, grupos);
 
                     preguntas.add(pregunta);
                 }
@@ -127,7 +127,7 @@ public class CreadorDePreguntas {
 
     private static ArrayList<Pregunta> cargarPreguntasVoF(){
         /*  FORMATO ARCHIVO
-            TipoPuntaje ; TextoPregunta ; Opciones ; OpcionesCorrectas
+            TipoPregunta ; TipoPuntaje ; TextoPregunta ; Opciones ; OpcionesCorrectas
 
             FORMATO OPCIONES
             Opcion1 - Opcion2 - Opcion3 ...
@@ -152,11 +152,14 @@ public class CreadorDePreguntas {
                 while ((lineaEntera = lector.readLine()) != null) {
                     separadoPorComas = lineaEntera.split(";");
 
-                    ArrayList<Opcion> opciones = parsearOpcionesVoF(separadoPorComas[2], separadoPorComas[3]);
+                    ArrayList<Opcion> opciones = parsearOpcionesVoF(separadoPorComas[3], separadoPorComas[4]);
                     Puntaje puntaje;
 
+                    //Leo el tipoPregunta
+                    String tipoPregunta = separadoPorComas[0];
+
                     //Leo el TipoPuntaje
-                    switch (separadoPorComas[0]) {
+                    switch (separadoPorComas[1]) {
                         case "clasico":
                             puntaje = new PuntajeClasico();
                             break;
@@ -170,7 +173,7 @@ public class CreadorDePreguntas {
                             throw new FalloAlLeerRespuestaArchivoError();
                     }
 
-                    Pregunta pregunta = new Pregunta(separadoPorComas[1], opciones, puntaje);
+                    Pregunta pregunta = new Pregunta(separadoPorComas[2], opciones, puntaje, tipoPregunta);
 
                     preguntas.add(pregunta);
                 }
@@ -184,7 +187,7 @@ public class CreadorDePreguntas {
 
     private static ArrayList<Pregunta> cargarPreguntasOrdered(){
         /*  FORMATO ARCHIVO
-            TextoPregunta ; Opciones
+            TipoPregunta ; TextoPregunta ; Opciones
 
             TIPO PUNTAJE
             Por consigna las ordered son clásicas
@@ -212,11 +215,11 @@ public class CreadorDePreguntas {
 
                 while ((lineaEntera = lector.readLine()) != null) {
                     separadoPorComas = lineaEntera.split(";");
-
-                    ArrayList<Opcion> opciones = parsearOpcionesOrdered(separadoPorComas[1]);
+                    String tipoPregunta = separadoPorComas[0];
+                    ArrayList<Opcion> opciones = parsearOpcionesOrdered(separadoPorComas[2]);
                     Puntaje puntaje = new PuntajeClasico();
 
-                    Pregunta pregunta = new Pregunta(separadoPorComas[0], opciones, puntaje);
+                    Pregunta pregunta = new Pregunta(separadoPorComas[1], opciones, puntaje, tipoPregunta);
 
                     preguntas.add(pregunta);
                 }

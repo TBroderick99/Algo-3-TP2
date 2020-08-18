@@ -45,7 +45,7 @@ public class TurnoTest {
 
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
 
         turno.actualizar(pregunta);
         Respuesta respuesta = turno.getRespuesta();
@@ -83,7 +83,7 @@ public class TurnoTest {
 
         String textoPregunta = "La UBA fue fundada en el año 1821";
 
-        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje);
+        Pregunta pregunta = new Pregunta(textoPregunta, opciones, puntaje, "dummyText");
         ronda.actualizar(pregunta);
 
         //Act

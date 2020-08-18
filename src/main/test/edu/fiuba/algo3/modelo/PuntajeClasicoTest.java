@@ -23,7 +23,7 @@ public class PuntajeClasicoTest {
         Opcion opcion2 = new Opcion("Falso", new Valor(false));
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2));
 
-        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje, "dummyText");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
         respuesta.marcar(opcion1, new Valor(true));
 
@@ -44,7 +44,7 @@ public class PuntajeClasicoTest {
         Opcion opcion2 = new Opcion("Falso", new Valor (false));
         ArrayList<Opcion> opciones = new ArrayList<>(Arrays.asList(opcion1, opcion2));
 
-        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje);
+        Pregunta pregunta = new Pregunta("Texto", opciones, puntaje, "dummyText");
         Respuesta respuesta = new Respuesta(jugador, pregunta);
 
         respuesta.marcar(opcion2, new Valor(true));

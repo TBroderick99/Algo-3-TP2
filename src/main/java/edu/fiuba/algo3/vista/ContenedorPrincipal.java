@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Partida;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -11,6 +12,7 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
 
     private Stage stage;
     private Partida partida = Partida.getInstance();
+
     public ContenedorPrincipal(Stage stage) {
         super();
         this.stage = stage;
@@ -22,10 +24,17 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
 
     private void actualizarVista() {
         ContenedorPregunta pregunta = new ContenedorPregunta(stage, partida);
-
-       // if(pregunta.esDeRespuestaUnica())
-
-        ContenedorOpcionesRespuestaUnica opciones = new ContenedorOpcionesRespuestaUnica(stage, partida);
+        GridPane opciones;
+        switch (pregunta.getTipoPregunta()) {
+           case "Ordenada":
+               opciones = new ContenedorOpcionesRespuestaOrdenada(stage, partida);
+               break;
+           case "Grupal":
+               opciones = new ContenedorOpcionesRespuestaGrupal(stage, partida);
+               break;
+           default: // Acá entra Verdadero o Falso y Multiple Choice.
+               opciones = new ContenedorOpcionesRespuestaUnica(stage, partida);
+        }
 
         VBox sectorIzquierda = new VBox();
         sectorIzquierda.setPadding(new Insets(10,10,10,10));
@@ -36,7 +45,7 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
         VBox sectorInformacion = new ContenedorInformacion();
 
         VBox contenedorCentral = new VBox();
-        contenedorCentral.getChildren().addAll(pregunta,opciones);
+        contenedorCentral.getChildren().addAll(pregunta, opciones);
 
         ContenedorBoosters sectorBooster = new ContenedorBoosters();
 
