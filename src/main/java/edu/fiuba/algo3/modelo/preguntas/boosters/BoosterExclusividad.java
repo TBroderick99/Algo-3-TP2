@@ -1,10 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.preguntas.boosters;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Respuesta;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class BoosterExclusividad extends Booster{
 

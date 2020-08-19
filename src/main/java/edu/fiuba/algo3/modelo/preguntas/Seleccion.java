@@ -1,8 +1,6 @@
-package edu.fiuba.algo3.modelo.selecciones;
+package edu.fiuba.algo3.modelo.preguntas;
 
-import edu.fiuba.algo3.modelo.Valor;
-import edu.fiuba.algo3.modelo.Excepciones.SeleccionNoEstaMarcadaError;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.excepciones.SeleccionNoEstaMarcadaError;
 
 public class Seleccion {
     protected Boolean fueMarcada;

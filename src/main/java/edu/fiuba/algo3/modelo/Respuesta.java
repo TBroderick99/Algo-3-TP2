@@ -1,10 +1,12 @@
-package edu.fiuba.algo3.modelo.Respuesta;
+package edu.fiuba.algo3.modelo;
 
 
-import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.boosters.Booster;
+import edu.fiuba.algo3.modelo.preguntas.boosters.BoosterMultiplicador;
+import edu.fiuba.algo3.modelo.preguntas.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.selecciones.Seleccion;
+import edu.fiuba.algo3.modelo.preguntas.Seleccion;
+import edu.fiuba.algo3.modelo.preguntas.Valor;
 
 import java.util.ArrayList;
 

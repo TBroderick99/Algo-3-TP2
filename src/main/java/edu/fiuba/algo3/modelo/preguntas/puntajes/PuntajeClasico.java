@@ -1,9 +1,6 @@
-package edu.fiuba.algo3.modelo.preguntas;
+package edu.fiuba.algo3.modelo.preguntas.puntajes;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.selecciones.Seleccion;
-
-import java.util.ArrayList;
+import edu.fiuba.algo3.modelo.Respuesta;
 
 public class PuntajeClasico extends Puntaje {
     private final String tipoPuntaje = "Clásico";

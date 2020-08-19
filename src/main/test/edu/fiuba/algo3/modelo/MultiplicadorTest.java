@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.boosters.Booster;
+import edu.fiuba.algo3.modelo.preguntas.boosters.BoosterMultiplicador;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.preguntas.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.*;
 import edu.fiuba.algo3.modelo.preguntas.*;
-import edu.fiuba.algo3.modelo.Booster;
-import edu.fiuba.algo3.modelo.BoosterMultiplicador;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

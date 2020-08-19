@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 
 

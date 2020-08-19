@@ -1,17 +1,14 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
 
-import edu.fiuba.algo3.modelo.Excepciones.FalloAlLeerRespuestaArchivoError;
-import edu.fiuba.algo3.modelo.Excepciones.FalloLaInicializacionDelArchivoError;
-import edu.fiuba.algo3.modelo.Grupo;
-import edu.fiuba.algo3.modelo.Valor;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.excepciones.FalloAlLeerRespuestaArchivoError;
+import edu.fiuba.algo3.modelo.excepciones.FalloLaInicializacionDelArchivoError;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class CreadorDePreguntas {
 

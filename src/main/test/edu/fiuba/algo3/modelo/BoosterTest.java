@@ -1,12 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.*;
+import edu.fiuba.algo3.modelo.preguntas.boosters.Booster;
+import edu.fiuba.algo3.modelo.preguntas.boosters.BoosterMultiplicador;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

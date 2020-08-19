@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Observer;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.Opcion;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
-import java.util.ArrayList;
 
 public class ContenedorRespuestasMarcadas extends VBox implements Observer {
     private Respuesta respuesta;

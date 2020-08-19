@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.Valor;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.Valor;
+import edu.fiuba.algo3.modelo.preguntas.Opcion;
 import edu.fiuba.algo3.vista.BotonOpcion;
 import javafx.event.Event;
 import javafx.scene.control.Button;

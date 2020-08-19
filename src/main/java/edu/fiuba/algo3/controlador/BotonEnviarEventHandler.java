@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
-import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
+import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteRondaError;
+import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.Partida;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.vista.ContenedorFinalPartida;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

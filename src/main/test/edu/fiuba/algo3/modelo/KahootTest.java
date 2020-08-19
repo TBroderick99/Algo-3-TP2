@@ -1,17 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
-import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.boosters.Booster;
+import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteRondaError;
+import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteTurnoError;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.preguntas.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.*;
 import edu.fiuba.algo3.modelo.preguntas.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -96,9 +95,6 @@ public class KahootTest {
         partida.agregarJugador("Jose");
         partida.agregarJugador("Tomas");
         partida.inicializarPartida(preguntas); // Constructor especial para el test
-        //    FieldSetter.setField(partida, partida.getClass().getDeclaredField("manejadorDePreguntas"), mnjDePreguntas);
-        //    ManejadorDePreguntas mnjDePreguntas = mock(ManejadorDePreguntas.class);
-        //    Mockito.when(mnjDePreguntas.inicializarPreguntas()).thenReturn(preguntas);
 
         Turno turnoActual;
         Respuesta respuesta;

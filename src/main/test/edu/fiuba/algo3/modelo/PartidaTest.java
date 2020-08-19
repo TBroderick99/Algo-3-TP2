@@ -1,13 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
-import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
+import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteRondaError;
+import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

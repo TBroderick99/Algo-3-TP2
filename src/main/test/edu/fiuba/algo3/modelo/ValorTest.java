@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Valor;
+import edu.fiuba.algo3.modelo.preguntas.Grupo;
+import edu.fiuba.algo3.modelo.preguntas.Valor;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

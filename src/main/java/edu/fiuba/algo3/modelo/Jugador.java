@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.boosters.Booster;
+import edu.fiuba.algo3.modelo.preguntas.boosters.BoosterExclusividad;
+import edu.fiuba.algo3.modelo.preguntas.boosters.BoosterMultiplicador;
 
 import java.util.ArrayList;
 import java.util.Arrays;

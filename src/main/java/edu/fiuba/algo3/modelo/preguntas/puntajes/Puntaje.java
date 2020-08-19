@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo.preguntas;
+package edu.fiuba.algo3.modelo.preguntas.puntajes;
 
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuesta;
 
 public abstract class Puntaje {
 

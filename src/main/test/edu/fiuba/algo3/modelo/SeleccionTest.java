@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.opciones.Opcion;
-import edu.fiuba.algo3.modelo.selecciones.Seleccion;
-import edu.fiuba.algo3.modelo.Valor;
+import edu.fiuba.algo3.modelo.preguntas.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.Seleccion;
+import edu.fiuba.algo3.modelo.preguntas.Valor;
 import org.junit.jupiter.api.Test;
 
 

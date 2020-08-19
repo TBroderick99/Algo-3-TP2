@@ -1,6 +1,4 @@
-package edu.fiuba.algo3.modelo.opciones;
-
-import edu.fiuba.algo3.modelo.Valor;
+package edu.fiuba.algo3.modelo.preguntas;
 
 public  class Opcion {
 

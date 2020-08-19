@@ -2,17 +2,11 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonEnviarEventHandler;
 import edu.fiuba.algo3.controlador.BotonMarcarRespuestaUnicaEventHandler;
-import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteRondaError;
-import edu.fiuba.algo3.modelo.Excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.Partida;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opciones.Opcion;
-import javafx.geometry.HPos;
+import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.Opcion;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
