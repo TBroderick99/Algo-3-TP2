@@ -1,15 +1,20 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorTimer;
+import edu.fiuba.algo3.modelo.Partida;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class ContenedorTimer extends VBox {
-    public ContenedorTimer(){
+    public ContenedorTimer(Stage stage, Partida partida){
+        ControladorTimer.iniciarTimer(stage, partida);
+
         Text titulo = new TextoClaro("Tiempo restante:", 30);
 
         HBox tiempo = new HBox();

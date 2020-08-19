@@ -9,18 +9,21 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class ContenedorPregunta extends VBox {
-    //private Partida partida;
-    public ContenedorPregunta (Partida partida) {
+    private Partida partida;
+    private Stage stage;
+    public ContenedorPregunta (Stage stage, Partida partida) {
         super();
-        //this.partida = partida;
+        this.partida = partida;
+        this.stage = stage;
         this.setSpacing(30);
         this.setPadding(new Insets(20,20,0,20));
-        inicializarPregunta(partida);
+        inicializarPregunta();
     }
 
-    private void inicializarPregunta(Partida partida){
+    private void inicializarPregunta(){
         BorderPane sectorInformacionPregunta = new BorderPane();
 //        sectorInformacionPregunta.setAlignment(Pos.CENTER);
         String tipoPregunta = "Pregunta: " + partida.getPreguntaActual().getTipoPregunta();
@@ -28,7 +31,7 @@ public class ContenedorPregunta extends VBox {
 
         String textoPuntaje = "Tipo puntaje: " + partida.getPreguntaActual().getTipoPuntaje();
         Text textoTipoPuntaje = new TextoClaro(textoPuntaje, 30);
-        ContenedorTimer contenedorTimer = new ContenedorTimer();
+        ContenedorTimer contenedorTimer = new ContenedorTimer(stage, partida);
 
         sectorInformacionPregunta.setLeft(textoTipoPregunta);
         sectorInformacionPregunta.setCenter(textoTipoPuntaje);

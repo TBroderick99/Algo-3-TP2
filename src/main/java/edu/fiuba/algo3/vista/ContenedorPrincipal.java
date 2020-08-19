@@ -47,7 +47,7 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
         VBox sectorInformacion = new ContenedorInformacion(partida);
 
         BorderPane contenedorCentral = new BorderPane();
-        ContenedorPregunta pregunta = new ContenedorPregunta(partida);
+        ContenedorPregunta pregunta = new ContenedorPregunta(stage, partida);
         ContenedorRespuestasMarcadas respuestasMarcadas = new ContenedorRespuestasMarcadas(partida.getRonda().getTurnoActual().getRespuesta());
         contenedorCentral.setTop(pregunta);
         contenedorCentral.setCenter(opciones);
