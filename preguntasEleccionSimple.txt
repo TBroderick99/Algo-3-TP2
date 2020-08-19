@@ -1,2 +1,3 @@
+Multiple;clasico;Cuáles de los siguientes fueron integrantes de Los Beatles;John Lennon-Madonna-Paul McCartney-Elvis Presley;John Lennon-Paul McCartney
 Verdadero o Falso;clasico;La UBA fue fundada en el año 1821;Verdadero-Falso;Verdadero
 Verdadero o Falso;conPenalidad;La UBA no fue fundada en el año 1821;Verdadero-Falso;Falso

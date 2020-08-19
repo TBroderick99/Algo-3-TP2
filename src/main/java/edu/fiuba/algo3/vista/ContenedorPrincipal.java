@@ -3,9 +3,6 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Partida;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
-import javafx.scene.Scene;
-import javafx.scene.control.Separator;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -34,7 +31,10 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
             case "Grupal":
                 opciones = new ContenedorOpcionesRespuestaGrupal(stage, partida);
                 break;
-            default: // Acá entra Verdadero o Falso y Multiple Choice.
+            case "Multiple":
+                opciones = new ContenedorOpcionesRespuestaMultiple(stage, partida);
+                break;
+            default: // Acá entra Verdadero o Falso
                 opciones = new ContenedorOpcionesRespuestaUnica(stage, partida);
         }
 

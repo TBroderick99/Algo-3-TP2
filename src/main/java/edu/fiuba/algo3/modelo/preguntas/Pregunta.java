@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.Respuesta;
 
 import java.util.ArrayList;
 
-public class Pregunta{
+public class Pregunta {
 
     private String textoPregunta;
     private Puntaje puntaje;
@@ -15,7 +15,7 @@ public class Pregunta{
     private ArrayList<Opcion> opciones;
     private String tipoPregunta;
 
-    public Pregunta(String textoPregunta, ArrayList<Opcion> opciones, Puntaje modoDePuntaje, String tipoPregunta){
+    public Pregunta(String textoPregunta, ArrayList<Opcion> opciones, Puntaje modoDePuntaje, String tipoPregunta) {
         this.textoPregunta = textoPregunta;
         this.puntaje = modoDePuntaje;
         this.opciones = opciones;
@@ -23,19 +23,19 @@ public class Pregunta{
         this.tipoPregunta = tipoPregunta;
     }
 
-    public String getTextoPregunta(){
+    public String getTextoPregunta() {
         return textoPregunta;
     }
 
 
-    public ArrayList<Opcion> getOpciones(){
+    public ArrayList<Opcion> getOpciones() {
         return opciones;
     }
 
-    public void asignarPuntajes(ArrayList<Respuesta> respuestasUsuarios){
+    public void asignarPuntajes(ArrayList<Respuesta> respuestasUsuarios) {
         this.booster.analizarRespuestas(respuestasUsuarios);
 
-        for (Respuesta respuesta: respuestasUsuarios){
+        for (Respuesta respuesta : respuestasUsuarios) {
             puntaje.asignarPuntaje(respuesta);
         }
 
@@ -58,7 +58,7 @@ public class Pregunta{
         return tipoPregunta;
     }
 
-    public String getTipoPuntaje(){
+    public String getTipoPuntaje() {
         return puntaje.getTipo();
     }
 }

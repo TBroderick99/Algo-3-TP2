@@ -1,18 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.preguntas.boosters.Booster;
 import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteRondaError;
 import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteTurnoError;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.Puntaje;
-import edu.fiuba.algo3.modelo.preguntas.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.puntajes.*;
 import edu.fiuba.algo3.modelo.preguntas.*;
+import edu.fiuba.algo3.modelo.preguntas.boosters.Booster;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
+import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalidad;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class KahootTest {

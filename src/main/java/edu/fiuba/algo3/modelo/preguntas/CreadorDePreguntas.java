@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CreadorDePreguntas {
 
@@ -113,9 +114,10 @@ public class CreadorDePreguntas {
         Opcion opcion;
 
         String[] arrayTextoOpciones = textoOpciones.split("-");
-
+        String[] arrayTextoOpcionesCorrectas = textoOpcionesCorrectas.split("-");
+        ArrayList<String> arr = new ArrayList(Arrays.asList(arrayTextoOpcionesCorrectas));
         for (String textoOpcion: arrayTextoOpciones){
-            opcion = new Opcion(textoOpcion, new Valor(textoOpcionesCorrectas.contains(textoOpcion)) );
+            opcion = new Opcion(textoOpcion, new Valor(arr.contains(textoOpcion)) );
             opciones. add(opcion);
         }
 

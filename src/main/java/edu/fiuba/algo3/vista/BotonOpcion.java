@@ -11,7 +11,8 @@ import javafx.scene.text.FontWeight;
 public class BotonOpcion extends Button {
     public BotonOpcion(String texto){
         super(texto);
-        this.setPrefSize(100,200);
+        this.setPrefSize(140,70);
+//        this.setMaxSize(100,200);
         this.setBackground(new Background(new BackgroundFill(Color.web("52658F"), new CornerRadii(4), Insets.EMPTY)));
         this.setFont(Font.font("Calibri", FontWeight.BOLD,18));
         this.setTextFill(Paint.valueOf("FFFFFF"));
