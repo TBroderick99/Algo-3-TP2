@@ -1,19 +1,23 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonEnviarEventHandler;
-import edu.fiuba.algo3.controlador.BotonMarcarRespuestaMultipleEventHandler;
-import edu.fiuba.algo3.controlador.BotonOpcionZoomInEventHandler;
-import edu.fiuba.algo3.controlador.BotonOpcionZoomOutEventHandler;
+import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.preguntas.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class ContenedorOpcionesRespuestaMultiple extends VBox {
 
@@ -32,7 +36,6 @@ public class ContenedorOpcionesRespuestaMultiple extends VBox {
     }
 
     private void inicializarOpciones(){
-
         VBox botones = new VBox();
         botones.setAlignment(Pos.CENTER);
         botones.setSpacing(10);
@@ -58,4 +61,5 @@ public class ContenedorOpcionesRespuestaMultiple extends VBox {
 
         this.getChildren().addAll(botones);
     }
+
 }
