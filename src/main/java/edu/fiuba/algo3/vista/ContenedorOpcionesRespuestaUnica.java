@@ -2,6 +2,8 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonEnviarEventHandler;
 import edu.fiuba.algo3.controlador.BotonMarcarRespuestaUnicaEventHandler;
+import edu.fiuba.algo3.controlador.BotonOpcionZoomInEventHandler;
+import edu.fiuba.algo3.controlador.BotonOpcionZoomOutEventHandler;
 import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.Opcion;
@@ -42,6 +44,10 @@ public class ContenedorOpcionesRespuestaUnica extends VBox {
         for(Opcion opcion : partida.getPreguntaActual().getOpciones()){
             BotonOpcion botonOpcion = new BotonOpcion(opcion.getTexto());
             botonOpcion.setMinSize(this.getPrefHeight(), this.getPrefWidth());
+
+            botonOpcion.setOnMouseEntered(new BotonOpcionZoomInEventHandler(botonOpcion));
+            botonOpcion.setOnMouseExited(new BotonOpcionZoomOutEventHandler(botonOpcion));
+
             botonOpcion.setOnAction(new BotonMarcarRespuestaUnicaEventHandler(respuesta, opcion, botonOpcion, botones, botonEnviarRespuesta));
             botones.getChildren().add(botonOpcion);
         }
