@@ -12,10 +12,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ControladorTimer {
-    private static final long TIME_MILIS = 60000;
+    private static Timer timer;
 
-    public static void iniciarTimer(Stage stage, Partida partida){
-        Timer timer = new Timer();
+    public static void iniciarTimer(Stage stage, Partida partida, final long delay){
+        timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -29,13 +29,17 @@ public class ControladorTimer {
                         partida.asignarPuntajes();
                         try {
                             partida.siguienteRonda();
-                        }
-                        catch (NoHaySiguienteRondaError rondaError) {
+                        } catch (NoHaySiguienteRondaError rondaError) {
                             stage.setScene(new Scene(new ContenedorFinalPartida()));
                         }
                     }
+                    ControladorTimer.cancelarTimer();
                 });
             }
-        }, TIME_MILIS);
+        }, delay);
+    }
+
+    public static void cancelarTimer(){
+        timer.cancel();
     }
 }

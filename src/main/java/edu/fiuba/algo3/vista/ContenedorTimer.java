@@ -12,14 +12,15 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class ContenedorTimer extends VBox {
+    private final long DELAY_MILIS = 30000;
     public ContenedorTimer(Stage stage, Partida partida){
-        ControladorTimer.iniciarTimer(stage, partida);
+        ControladorTimer.iniciarTimer(stage, partida, DELAY_MILIS);
 
         Text titulo = new TextoClaro("Tiempo restante:", 30);
 
         HBox tiempo = new HBox();
 
-        Text contador = new TextoClaro("60", 30); // Obtener el tiempo con un getter desde el modelo
+        Text contador = new TextoClaro(Integer.toString(Math.toIntExact(DELAY_MILIS / 1000)), 30); // Obtener el tiempo con un getter desde el modelo
         Text textoSegundos = new TextoClaro(" segundos", 30);
 
         tiempo.getChildren().addAll(contador, textoSegundos);
@@ -32,7 +33,7 @@ public class ContenedorTimer extends VBox {
 
                 })
         );
-        timeline.setCycleCount(60);
+        timeline.setCycleCount(Math.toIntExact(DELAY_MILIS / 1000));
         timeline.play();
 
         this.getChildren().addAll(titulo, tiempo);
