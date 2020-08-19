@@ -28,7 +28,6 @@ public class ContenedorOpcionesRespuestaUnica extends VBox {
     }
 
     private void inicializarOpciones(){
-
         VBox botones = new VBox();
         botones.setAlignment(Pos.CENTER);
         botones.setSpacing(10);
