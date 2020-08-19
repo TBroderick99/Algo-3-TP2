@@ -12,6 +12,7 @@ public class ContenedorRespuestasMarcadas extends VBox implements Observer {
     private Respuesta respuesta;
     public ContenedorRespuestasMarcadas(Respuesta respuesta){
         this.respuesta = respuesta;
+        this.setMinHeight(100);
         respuesta.addObserver(this);
         mostrarMarcadas();
     }

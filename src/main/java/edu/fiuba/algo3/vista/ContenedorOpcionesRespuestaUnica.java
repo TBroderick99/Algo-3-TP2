@@ -10,6 +10,7 @@ import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.Valor;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,14 +32,17 @@ public class ContenedorOpcionesRespuestaUnica extends VBox {
         super();
         this.partida = partida;
         this.stage = stage;
+        this.setPadding(new Insets(50,0,50,0));
+        this.setSpacing(100);
+        this.setAlignment(Pos.CENTER);
+        this.setPrefSize(100, 150);
         inicializarOpciones();
     }
 
     private void inicializarOpciones(){
-        this.setAlignment(Pos.CENTER);
-        this.setPrefSize(100, 200);
 
         VBox botones = new VBox();
+        botones.setAlignment(Pos.CENTER);
         botones.setSpacing(10);
 
         Button botonEnviarRespuesta = new Button("Enviar");
@@ -56,8 +60,6 @@ public class ContenedorOpcionesRespuestaUnica extends VBox {
 
         botones.getChildren().add(botonEnviarRespuesta);
 
-        ContenedorRespuestasMarcadas respuestasMarcadas = new ContenedorRespuestasMarcadas(partida.getRonda().getTurnoActual().getRespuesta());
-
-        this.getChildren().addAll(botones, respuestasMarcadas);
+        this.getChildren().addAll(botones);
     }
 }

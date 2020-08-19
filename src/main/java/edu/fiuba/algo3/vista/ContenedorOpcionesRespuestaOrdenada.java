@@ -27,14 +27,16 @@ public class ContenedorOpcionesRespuestaOrdenada extends VBox {
         super();
         this.stage = stage;
         this.partida = partida;
+        this.setSpacing(30);
+        this.setAlignment(Pos.CENTER);
+        this.setPrefSize(100, 150);
         inicializarOpciones();
     }
 
     private void inicializarOpciones(){
-        this.setAlignment(Pos.CENTER);
-        this.setPrefSize(100, 200);
 
         VBox botones = new VBox();
+        botones.setAlignment(Pos.CENTER);
         botones.setSpacing(10);
 
         Button botonEnviarRespuesta = new Button("Enviar");
@@ -53,10 +55,7 @@ public class ContenedorOpcionesRespuestaOrdenada extends VBox {
         botones.getChildren().add(botonEnviarRespuesta);
 
 
-
-        ContenedorRespuestasMarcadas respuestasMarcadas = new ContenedorRespuestasMarcadas(partida.getRonda().getTurnoActual().getRespuesta());
-
-        this.getChildren().addAll(botones, respuestasMarcadas);
+        this.getChildren().addAll(botones);
 
     }
 }
