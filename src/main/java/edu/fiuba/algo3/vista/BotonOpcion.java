@@ -25,7 +25,7 @@ public class BotonOpcion extends Button {
     }
 
     public void marcar() {
-        this.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(4), new BorderWidths(5))));
+        this.setBorder(new Border(new BorderStroke(Color.web("333A56"), BorderStrokeStyle.SOLID, new CornerRadii(4), new BorderWidths(5))));
     }
 
     public void desmarcar() {

@@ -6,13 +6,17 @@ import edu.fiuba.algo3.modelo.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.Grupo;
 import edu.fiuba.algo3.modelo.preguntas.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -54,6 +58,19 @@ public class ContenedorOpcionesRespuestaGrupal extends VBox {
 
             RadioButton radioButton1 = new RadioButton(grupo1.getNombre());
             RadioButton radioButton2 = new RadioButton(grupo2.getNombre());
+
+            radioButton1.setFont(Font.font("Calibri", FontWeight.BOLD,18));
+            radioButton1.setTextFill(Paint.valueOf("FFFFFF"));
+            radioButton1.setBackground(new Background(new BackgroundFill(Color.web("333A56"), new CornerRadii(4), Insets.EMPTY)));
+            radioButton1.setPrefSize(200,100);
+            radioButton1.setAlignment(Pos.CENTER);
+
+            radioButton2.setFont(Font.font("Calibri", FontWeight.BOLD,18));
+            radioButton2.setTextFill(Paint.valueOf("FFFFFF"));
+            radioButton2.setBackground(new Background(new BackgroundFill(Color.web("333A56"), new CornerRadii(4), Insets.EMPTY)));
+            radioButton2.setPrefSize(200,100);
+            radioButton2.setAlignment(Pos.CENTER);
+
             radioButton1.setToggleGroup(group);
             radioButton2.setToggleGroup(group);
 
@@ -65,6 +82,7 @@ public class ContenedorOpcionesRespuestaGrupal extends VBox {
 
             HBox contenedorCheckBoxesYOpcion = new HBox(radioButton1, botonOpcion, radioButton2);
             contenedorCheckBoxesYOpcion.setSpacing(20);
+            contenedorCheckBoxesYOpcion.setAlignment(Pos.CENTER);
 
             botones.getChildren().add(contenedorCheckBoxesYOpcion);
         }
