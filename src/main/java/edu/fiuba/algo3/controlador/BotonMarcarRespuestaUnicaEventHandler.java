@@ -7,12 +7,12 @@ import edu.fiuba.algo3.vista.BotonOpcion;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 
 public class BotonMarcarRespuestaUnicaEventHandler extends BotonMarcarEventHandler {
 
-
-    public BotonMarcarRespuestaUnicaEventHandler(Respuesta respuesta, Opcion opcion, BotonOpcion botonOpcion, Button botonEnviar){
-        super(respuesta, opcion, botonOpcion, botonEnviar);
+    public BotonMarcarRespuestaUnicaEventHandler(Respuesta respuesta, Opcion opcion, BotonOpcion botonOpcion, VBox botones, Button botonEnviar){
+        super(respuesta, opcion, botonOpcion, botones, botonEnviar);
 
     }
     @Override
@@ -22,5 +22,24 @@ public class BotonMarcarRespuestaUnicaEventHandler extends BotonMarcarEventHandl
         marcarDesmarcar(valor);
         actualizarBotonEnviar();
 
+    }
+
+    public void marcarDesmarcar(Valor valor){
+        if (respuesta.fueMarcada(opcion)) {
+            respuesta.desmarcar(opcion);
+            botonOpcion.desmarcar();
+            botones.getChildren().forEach(e->{
+                e.setDisable(false);
+            });
+        }
+        else {
+            respuesta.marcar(opcion, valor);
+            botonOpcion.marcar();
+            botones.getChildren().forEach(e->{
+                if(!e.equals(botonOpcion)){
+                    e.setDisable(true);
+                }
+            });
+        }
     }
 }

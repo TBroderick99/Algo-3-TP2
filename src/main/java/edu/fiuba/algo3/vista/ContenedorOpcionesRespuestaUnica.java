@@ -50,7 +50,7 @@ public class ContenedorOpcionesRespuestaUnica extends VBox {
         for(Opcion opcion : partida.getPreguntaActual().getOpciones()){
             BotonOpcion botonOpcion = new BotonOpcion(opcion.getTexto());
             botonOpcion.setMinSize(this.getPrefHeight(), this.getPrefWidth());
-            botonOpcion.setOnAction(new BotonMarcarRespuestaUnicaEventHandler(respuesta, opcion, botonOpcion, botonEnviarRespuesta));
+            botonOpcion.setOnAction(new BotonMarcarRespuestaUnicaEventHandler(respuesta, opcion, botonOpcion, botones, botonEnviarRespuesta));
             botones.getChildren().add(botonOpcion);
         }
 

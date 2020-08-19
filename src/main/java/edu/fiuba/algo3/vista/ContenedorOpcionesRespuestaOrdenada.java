@@ -46,11 +46,13 @@ public class ContenedorOpcionesRespuestaOrdenada extends VBox {
         for(Opcion opcion : partida.getPreguntaActual().getOpciones()){
             BotonOpcion botonOpcion = new BotonOpcion(opcion.getTexto());
             botonOpcion.setMinSize(this.getPrefHeight(), this.getPrefWidth());
-            botonOpcion.setOnAction(new BotonMarcarRespuestaOrdenadaEventHandler(respuesta, opcion, botonOpcion, botonEnviarRespuesta));
+            botonOpcion.setOnAction(new BotonMarcarRespuestaOrdenadaEventHandler(respuesta, opcion, botonOpcion, botones, botonEnviarRespuesta));
             botones.getChildren().add(botonOpcion);
         }
 
         botones.getChildren().add(botonEnviarRespuesta);
+
+
 
         ContenedorRespuestasMarcadas respuestasMarcadas = new ContenedorRespuestasMarcadas(partida.getRonda().getTurnoActual().getRespuesta());
 

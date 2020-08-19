@@ -5,14 +5,13 @@ import edu.fiuba.algo3.modelo.Valor;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.vista.BotonOpcion;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 
 public class BotonMarcarRespuestaOrdenadaEventHandler  extends BotonMarcarEventHandler {
 
-
-    public BotonMarcarRespuestaOrdenadaEventHandler(Respuesta respuesta, Opcion opcion, BotonOpcion botonOpcion, Button botonEnviar){
-        super(respuesta, opcion, botonOpcion, botonEnviar);
+    public BotonMarcarRespuestaOrdenadaEventHandler(Respuesta respuesta, Opcion opcion, BotonOpcion botonOpcion, VBox botones, Button botonEnviar){
+        super(respuesta, opcion, botonOpcion, botones, botonEnviar);
 
     }
 
