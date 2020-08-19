@@ -1,18 +1,16 @@
 package edu.fiuba.algo3.modelo.Respuesta;
 
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Valor;
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.opciones.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.selecciones.Seleccion;
-import edu.fiuba.algo3.modelo.Booster;
-import edu.fiuba.algo3.modelo.BoosterMultiplicador;
 
 import java.util.ArrayList;
 
-public class Respuesta {
+public class Respuesta implements Observable {
 
+    private ArrayList<Observer> observers = new ArrayList<>();
     private Pregunta preguntaAsociada;
     private Booster booster;
     private ArrayList<Seleccion> selecciones;
@@ -32,21 +30,20 @@ public class Respuesta {
         }
     }
 
-
-
-
     public void marcar(Opcion opcion, Valor valorAMarcar)  {
-
        Seleccion seleccion = getSeleccion(opcion);
        seleccion.marcar(valorAMarcar);
        cantidadDeMarcadas += 1;
 
+       notifyObservers();
     }
 
     public void desmarcar(Opcion opcion)  {
         Seleccion seleccion = getSeleccion(opcion);
         seleccion.desmarcar();
         cantidadDeMarcadas -= 1;
+
+        notifyObservers();
     }
 
     public Boolean fueMarcada(Opcion opcion)  {
@@ -55,7 +52,6 @@ public class Respuesta {
     }
 
     public Boolean tieneAlgunaMarcada(){
-
         for (Seleccion seleccion: selecciones){
             if(seleccion.fueMarcada()){
                 return true;
@@ -79,12 +75,10 @@ public class Respuesta {
     }
 
     private Seleccion getSeleccion(Opcion opcion) {   //nunca deberia devolver null, testear postcondicion
-
         return selecciones.stream().filter(s -> s.getOpcion() == opcion).findFirst().orElse(null);
     }
 
     public Boolean esPerfecta(){
-
         int correctasNoMarcadas = (int) selecciones.stream().filter(sel ->!sel.fueMarcada() && sel.debeSerMarcada()).count();
         int incorrectasMarcadas = (int) selecciones.stream().filter(sel -> sel.fueMarcada() && !sel.esCorrecta()).count();
         return (correctasNoMarcadas + incorrectasMarcadas) == 0;
@@ -116,7 +110,25 @@ public class Respuesta {
                 return false;
             }
         }
-
         return true;
+    }
+
+    public ArrayList<Opcion> getOpcionesMarcadas(){
+        ArrayList<Opcion> opcionesMarcadas = new ArrayList<>();
+        for( Seleccion seleccion : selecciones)
+            if(seleccion.fueMarcada()) {
+                opcionesMarcadas.add(seleccion.getOpcion());
+            }
+        return opcionesMarcadas;
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(Observer::change);
     }
 }

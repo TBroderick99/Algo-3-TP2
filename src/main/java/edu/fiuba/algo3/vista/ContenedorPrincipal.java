@@ -3,7 +3,9 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.Observer;
 import edu.fiuba.algo3.modelo.Partida;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -24,17 +26,16 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
     }
 
     private void actualizarVista() {
-        ContenedorPregunta pregunta = new ContenedorPregunta(stage, partida);
-        GridPane opciones;
-        switch (pregunta.getTipoPregunta()) {
-           case "Ordenada":
-               opciones = new ContenedorOpcionesRespuestaOrdenada(stage, partida);
-               break;
-           case "Grupal":
-               opciones = new ContenedorOpcionesRespuestaGrupal(stage, partida);
-               break;
-           default: // Acá entra Verdadero o Falso y Multiple Choice.
-               opciones = new ContenedorOpcionesRespuestaUnica(stage, partida);
+        VBox opciones;
+        switch (partida.getPreguntaActual().getTipoPregunta()) {
+            case "Ordenada":
+                opciones = new ContenedorOpcionesRespuestaOrdenada(stage, partida);
+                break;
+            case "Grupal":
+                opciones = new ContenedorOpcionesRespuestaGrupal(stage, partida);
+                break;
+            default: // Acá entra Verdadero o Falso y Multiple Choice.
+                opciones = new ContenedorOpcionesRespuestaUnica(stage, partida);
         }
 
         VBox sectorIzquierda = new VBox();
@@ -46,6 +47,7 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
         VBox sectorInformacion = new ContenedorInformacion(partida);
 
         VBox contenedorCentral = new VBox();
+        ContenedorPregunta pregunta = new ContenedorPregunta(partida);
         contenedorCentral.getChildren().addAll(pregunta, opciones);
 
         ContenedorBoosters sectorBooster = new ContenedorBoosters(partida);

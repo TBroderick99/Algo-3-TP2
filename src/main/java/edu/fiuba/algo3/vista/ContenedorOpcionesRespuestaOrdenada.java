@@ -17,7 +17,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ContenedorOpcionesRespuestaOrdenada extends GridPane {
+public class ContenedorOpcionesRespuestaOrdenada extends VBox {
 
     private Stage stage;
     private Partida partida;
@@ -34,23 +34,8 @@ public class ContenedorOpcionesRespuestaOrdenada extends GridPane {
         this.setAlignment(Pos.CENTER);
         this.setPrefSize(100, 200);
 
-        ColumnConstraints columna1 = new ColumnConstraints();
-        columna1.setHalignment(HPos.RIGHT);
-        this.getColumnConstraints().add(columna1);
-
-        ColumnConstraints columna2 = new ColumnConstraints();
-        columna2.setHalignment(HPos.LEFT);
-        this.getColumnConstraints().add(columna2);
-
-        this.setVgap(20);
-        this.setHgap(20);
-
         VBox botones = new VBox();
         botones.setSpacing(10);
-
-        var ref = new Object() {
-            Respuesta respuesta = null;
-        };
 
         Button botonEnviarRespuesta = new Button("Enviar");
         botonEnviarRespuesta.setOnAction(new BotonEnviarEventHandler(stage, partida));
@@ -59,18 +44,17 @@ public class ContenedorOpcionesRespuestaOrdenada extends GridPane {
         Respuesta respuesta = partida.getTurnoActual().getRespuesta();
 
         for(Opcion opcion : partida.getPreguntaActual().getOpciones()){
-            Button botonOpcion = new Button(opcion.getTexto());
+            BotonOpcion botonOpcion = new BotonOpcion(opcion.getTexto());
             botonOpcion.setMinSize(this.getPrefHeight(), this.getPrefWidth());
-            botonOpcion.setOnAction(new BotonMarcarRespuestaOrdenadaEventHandler(respuesta, opcion, botonEnviarRespuesta));
+            botonOpcion.setOnAction(new BotonMarcarRespuestaOrdenadaEventHandler(respuesta, opcion, botonOpcion, botonEnviarRespuesta));
             botones.getChildren().add(botonOpcion);
         }
 
-
-
         botones.getChildren().add(botonEnviarRespuesta);
 
+        ContenedorRespuestasMarcadas respuestasMarcadas = new ContenedorRespuestasMarcadas(partida.getRonda().getTurnoActual().getRespuesta());
 
-        this.add(botones, 0, 2, 2, 1);
+        this.getChildren().addAll(botones, respuestasMarcadas);
 
     }
 }

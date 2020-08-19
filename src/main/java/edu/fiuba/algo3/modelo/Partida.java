@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 
 public class Partida implements Observable {
-
     private ArrayList<Observer> observers = new ArrayList<>();
 
     private Ronda ronda;
