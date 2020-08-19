@@ -9,7 +9,7 @@ package edu.fiuba.algo3.controlador;
         import javafx.scene.layout.VBox;
 
 public class BotonMarcarRespuestaMultipleEventHandler extends BotonMarcarEventHandler {
-
+    private final int VALOR_MARCADA = 1;
     public BotonMarcarRespuestaMultipleEventHandler(Respuesta respuesta, Opcion opcion, BotonOpcion botonOpcion, VBox botones, Button botonEnviar){
         super(respuesta, opcion, botonOpcion, botones, botonEnviar);
 
@@ -17,7 +17,7 @@ public class BotonMarcarRespuestaMultipleEventHandler extends BotonMarcarEventHa
     @Override
     public void handle(Event event) {
 
-        Valor valor = new Valor(respuesta.getCantidadDeMarcadas() + 1);
+        Valor valor = new Valor(VALOR_MARCADA);
         marcarDesmarcar(valor);
         actualizarBotonEnviar();
 

@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 public class BotonMarcarRespuestaUnicaEventHandler extends BotonMarcarEventHandler {
-
+    private final int VALOR_MARCADA = 1;
     public BotonMarcarRespuestaUnicaEventHandler(Respuesta respuesta, Opcion opcion, BotonOpcion botonOpcion, VBox botones, Button botonEnviar){
         super(respuesta, opcion, botonOpcion, botones, botonEnviar);
 
@@ -17,7 +17,7 @@ public class BotonMarcarRespuestaUnicaEventHandler extends BotonMarcarEventHandl
     @Override
     public void handle(Event event) {
 
-        Valor valor = new Valor(respuesta.getCantidadDeMarcadas() + 1);
+        Valor valor = new Valor(VALOR_MARCADA);
         marcarDesmarcar(valor);
         actualizarBotonEnviar();
 

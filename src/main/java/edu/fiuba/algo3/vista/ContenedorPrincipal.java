@@ -53,8 +53,6 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
         contenedorCentral.setCenter(opciones);
         contenedorCentral.setBottom(respuestasMarcadas);
 
-     //   contenedorCentral.getChildren().addAll(pregunta, opciones, respuestasMarcadas);
-
         ContenedorBoosters sectorBooster = new ContenedorBoosters(partida);
 
         sectorIzquierda.getChildren().addAll(sectorInformacion, sectorBooster);
