@@ -37,13 +37,15 @@ public class ContenedorFinalPartida extends StackPane {
 
         HBox hBox = new HBox(textoNumeroJugador, textoNombre, textoPuntaje);
         hBox.setMaxWidth(350);
-        hBox.setPrefHeight(50);
+        hBox.setPrefSize(350, 50);
+
         hBox.setMargin(textoNumeroJugador, new Insets(10,10,10,10));
         hBox.setMargin(textoNombre, new Insets(10,10,10,10));
         hBox.setMargin(textoPuntaje, new Insets(10,10,10,10));
 
         hBox.setBackground(new Background(new BackgroundFill(Color.web("333A56"), new CornerRadii(4), Insets.EMPTY)));
         hBox.setSpacing(20);
+        hBox.setAlignment(Pos.TOP_CENTER);
         puntajes.getChildren().add(hBox);
         int numeroDeJugador = 1;
         for (Jugador jugador: jugadores){
@@ -54,7 +56,7 @@ public class ContenedorFinalPartida extends StackPane {
 
             hBox = new HBox(textoNumeroJugador, textoNombre, textoPuntaje);
             hBox.setMaxWidth(350);
-            hBox.setPrefHeight(50);
+            hBox.setPrefSize(350, 50);
 
             hBox.setMargin(textoNumeroJugador, new Insets(10,10,10,10));
             hBox.setMargin(textoNombre, new Insets(10,10,10,10));
@@ -62,7 +64,8 @@ public class ContenedorFinalPartida extends StackPane {
 
 
             hBox.setBackground(new Background(new BackgroundFill(Color.web("333A56"), new CornerRadii(4), Insets.EMPTY)));
-            hBox.setSpacing(20);
+            hBox.setSpacing(50);
+            hBox.setAlignment(Pos.TOP_CENTER);
             puntajes.getChildren().add(hBox);
 
             numeroDeJugador += 1;
