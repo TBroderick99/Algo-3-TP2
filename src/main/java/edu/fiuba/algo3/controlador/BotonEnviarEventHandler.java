@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.PuntajeSorter;
 import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteRondaError;
 import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteTurnoError;
 import edu.fiuba.algo3.modelo.Partida;
@@ -8,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.util.ArrayList;
 
 public class BotonEnviarEventHandler implements EventHandler<ActionEvent> {
 
@@ -34,7 +37,9 @@ public class BotonEnviarEventHandler implements EventHandler<ActionEvent> {
                 partida.siguienteRonda();
             }
             catch (NoHaySiguienteRondaError rondaError) {
-                stage.setScene(new Scene(new ContenedorFinalPartida(stage, partida.getJugadores()), 500, 700));
+                ArrayList<Jugador> jugadores = partida.getJugadores();
+                jugadores.sort(new PuntajeSorter());
+                stage.setScene(new Scene(new ContenedorFinalPartida(stage, jugadores ), 500, 700));
             }
         }
     }

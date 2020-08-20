@@ -66,6 +66,10 @@ public class Partida implements Observable {
         return ronda.getTurnoActual();
     }
 
+    public Ronda getRonda(){
+        return ronda;
+    }
+
     public Jugador getJugadorActual(){                        //getter para que no rompa el controlador
         return ronda.getTurnoActual().getJugador();
     }
@@ -74,12 +78,16 @@ public class Partida implements Observable {
         return ronda.getTurnoActual().getJugador().getNombre();
     }
 
-    public Ronda getRonda(){
-        return ronda;
-    }
-
     public ArrayList<Jugador> getJugadores() {
         return ronda.getJugadores();
+    }
+
+    public int cantidadJugadoresAgregados() {
+        return ronda.cantidadTurnos();
+    }
+
+    public int cantidadMaximaDeJugadores(){
+        return CANTIDAD_JUGADORES;
     }
 
     @Override
@@ -93,11 +101,5 @@ public class Partida implements Observable {
         observers.forEach(Observer::change);
     }
 
-    public int cantidadJugadoresAgregados() {
-        return ronda.cantidadTurnos();
-    }
 
-    public int cantidadMaximaDeJugadores(){
-        return CANTIDAD_JUGADORES;
-    }
 }
