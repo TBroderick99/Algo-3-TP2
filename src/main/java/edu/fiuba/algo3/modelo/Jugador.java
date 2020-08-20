@@ -19,6 +19,7 @@ public class Jugador {
         boosters = new ArrayList<>(Arrays.asList(new BoosterMultiplicador(2), new BoosterMultiplicador(3), new BoosterExclusividad(2), new BoosterExclusividad(2)));
     }
 
+    public Jugador() {}
 
     public Boolean consumirBooster(Respuesta respuesta, Booster boosterRecibido){
         for (Booster booster: this.boosters){
@@ -40,6 +41,9 @@ public class Jugador {
         puntaje += cantidadPuntos;
     }
 
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
+    }
     public int getPuntaje() { return puntaje; }
 
     public Booster getBoosterMultiplicador(int factorDeMultiplicacion){
