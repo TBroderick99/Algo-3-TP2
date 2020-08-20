@@ -35,27 +35,31 @@ public class ContenedorBoosters extends VBox {
 
         this.getChildren().addAll(separator, textoBooster);
 
-        for(int i = 0; i< partida.getJugadorActual().getCantidadBoosterMultiplicadorDisponibles(2); i++){
-            Button botonBooster = new BotonInicio("x2");
-            botonBooster.setPrefSize(140,40);
-            botonBooster.setFont(Font.font("Calibri", FontWeight.BOLD,16));
-            botonBooster.setOnAction(new BotonConsumirBoosterX2EventHandler(botonBooster, partida.getTurnoActual()));
-            this.getChildren().add(botonBooster);
-        }
+        if (partida.getPreguntaActual().getTipoPuntaje().equals("Penalidad")) {
+            for (int i = 0; i < partida.getJugadorActual().getCantidadBoosterMultiplicadorDisponibles(2); i++) {
+                Button botonBooster = new BotonInicio("x2");
+                botonBooster.setPrefSize(140, 40);
+                botonBooster.setFont(Font.font("Calibri", FontWeight.BOLD, 16));
+                botonBooster.setOnAction(new BotonConsumirBoosterX2EventHandler(botonBooster, partida.getTurnoActual()));
+                this.getChildren().add(botonBooster);
+            }
 
-        for(int i=0; i< partida.getJugadorActual().getCantidadBoosterMultiplicadorDisponibles(3); i++){
-            Button botonBooster = new BotonInicio("x3");
-            botonBooster.setPrefSize(140,40);
-            botonBooster.setFont(Font.font("Calibri", FontWeight.BOLD,16));
-            botonBooster.setOnAction(new BotonConsumirBoosterX3EventHandler(botonBooster, partida.getTurnoActual()));
-            this.getChildren().add(botonBooster);
+            for (int i = 0; i < partida.getJugadorActual().getCantidadBoosterMultiplicadorDisponibles(3); i++) {
+                Button botonBooster = new BotonInicio("x3");
+                botonBooster.setPrefSize(140, 40);
+                botonBooster.setFont(Font.font("Calibri", FontWeight.BOLD, 16));
+                botonBooster.setOnAction(new BotonConsumirBoosterX3EventHandler(botonBooster, partida.getTurnoActual()));
+                this.getChildren().add(botonBooster);
+            }
         }
-        for(int i=0; i< partida.getJugadorActual().getCantidadBoosterExclusividadDisponibles(); i++){
-            Button botonBooster = new BotonInicio("Exclusividad");
-            botonBooster.setPrefSize(140,40);
-            botonBooster.setFont(Font.font("Calibri", FontWeight.BOLD,16));
-            botonBooster.setOnAction(new BotonConsumirBoosterExclusividadEventHandler(botonBooster, partida.getTurnoActual()));
-            this.getChildren().add(botonBooster);
+        else {
+            for (int i = 0; i < partida.getJugadorActual().getCantidadBoosterExclusividadDisponibles(); i++) {
+                Button botonBooster = new BotonInicio("Exclusividad");
+                botonBooster.setPrefSize(140, 40);
+                botonBooster.setFont(Font.font("Calibri", FontWeight.BOLD, 16));
+                botonBooster.setOnAction(new BotonConsumirBoosterExclusividadEventHandler(botonBooster, partida.getTurnoActual()));
+                this.getChildren().add(botonBooster);
+            }
         }
     }
 }
