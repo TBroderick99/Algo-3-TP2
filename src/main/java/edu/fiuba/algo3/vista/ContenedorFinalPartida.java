@@ -2,18 +2,11 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonInicioEventHandler;
 import edu.fiuba.algo3.controlador.BotonSalirEventHandler;
-import edu.fiuba.algo3.controlador.BotonZoomInEventHandler;
-import edu.fiuba.algo3.controlador.BotonZoomOutEventHandler;
 import edu.fiuba.algo3.modelo.Jugador;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -50,7 +43,7 @@ public class ContenedorFinalPartida extends StackPane {
         int numeroDeJugador = 1;
         for (Jugador jugador: jugadores){
 
-            textoNumeroJugador = new TextoBeige(Integer.toString(numeroDeJugador), 30);
+            textoNumeroJugador = new TextoBeige(Integer.toString(numeroDeJugador)+"°", 30);
             textoNombre = new TextoBeige(jugador.getNombre(), 30);
             textoPuntaje = new TextoBeige(Integer.toString(jugador.getPuntaje()), 30);
 
