@@ -36,7 +36,7 @@ public class ContenedorOpcionesRespuestaGrupal extends VBox {
         botones.setAlignment(Pos.CENTER);
         botones.setSpacing(10);
 
-        Button botonEnviarRespuesta = new Button("Enviar");
+        BotonInicio botonEnviarRespuesta = new BotonInicio("Enviar", 100, 60, 110,60, Color.web("52658F"), Color.web("333A56"));
         botonEnviarRespuesta.setOnAction(new BotonEnviarEventHandler(stage, partida));
         botonEnviarRespuesta.setDisable(true);
 
