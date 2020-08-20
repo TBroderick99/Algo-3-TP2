@@ -38,6 +38,7 @@ public class ContenedorPrincipal extends BorderPane implements Observer {
                 opciones = new ContenedorOpcionesRespuestaUnica(stage, partida);
         }
 
+
         VBox sectorIzquierda = new VBox();
         sectorIzquierda.setPadding(new Insets(10,10,10,10));
         sectorIzquierda.setSpacing(300);

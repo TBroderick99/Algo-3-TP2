@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -30,9 +31,9 @@ public class ContenedorFinalPartida extends StackPane {
         puntajes.setBackground(new Background(new BackgroundFill(Color.web("52658F"), new CornerRadii(14), Insets.EMPTY)));
 
 
-        TextoBeige textoNumeroJugador = new TextoBeige("Posición", 30);
-        TextoBeige textoNombre = new TextoBeige("Usuario", 30);
-        TextoBeige textoPuntaje = new TextoBeige("Puntaje", 30);
+        TextoBeige textoNumeroJugador = new TextoBeige("Posición", 20);
+        TextoBeige textoNombre = new TextoBeige("Usuario", 20);
+        TextoBeige textoPuntaje = new TextoBeige("Puntaje", 20);
 
         HBox hBox = new HBox(textoNumeroJugador, textoNombre, textoPuntaje);
         hBox.setMaxWidth(350);
@@ -54,9 +55,11 @@ public class ContenedorFinalPartida extends StackPane {
             hBox = new HBox(textoNumeroJugador, textoNombre, textoPuntaje);
             hBox.setMaxWidth(350);
             hBox.setPrefHeight(50);
+
             hBox.setMargin(textoNumeroJugador, new Insets(10,10,10,10));
             hBox.setMargin(textoNombre, new Insets(10,10,10,10));
             hBox.setMargin(textoPuntaje, new Insets(10,10,10,10));
+
 
             hBox.setBackground(new Background(new BackgroundFill(Color.web("333A56"), new CornerRadii(4), Insets.EMPTY)));
             hBox.setSpacing(20);

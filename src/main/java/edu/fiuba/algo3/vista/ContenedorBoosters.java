@@ -37,20 +37,23 @@ public class ContenedorBoosters extends VBox {
 
         if (partida.getPreguntaActual().getTipoPuntaje().equals("Penalidad")) {
             for (int i = 0; i < partida.getJugadorActual().getCantidadBoosterMultiplicadorDisponibles(2); i++) {
-                Button botonBooster = new BotonInicio("x2", 140, 40, 150, 40, Color.web("52658F"), Color.web("333A56"));
+                Button botonBooster = new BotonInicio("x2", 150, 40, 160, 40, Color.web("52658F"), Color.web("333A56"));
+                botonBooster.setFont(Font.font("Calibri", FontWeight.BOLD,16));
                 botonBooster.setOnAction(new BotonConsumirBoosterX2EventHandler(botonBooster, partida.getTurnoActual()));
                 this.getChildren().add(botonBooster);
             }
 
             for (int i = 0; i < partida.getJugadorActual().getCantidadBoosterMultiplicadorDisponibles(3); i++) {
-                Button botonBooster = new BotonInicio("x3", 140, 40, 150, 40, Color.web("52658F"), Color.web("333A56"));
+                Button botonBooster = new BotonInicio("x3", 150, 40, 160, 40, Color.web("52658F"), Color.web("333A56"));
+                botonBooster.setFont(Font.font("Calibri", FontWeight.BOLD,16));
                 botonBooster.setOnAction(new BotonConsumirBoosterX3EventHandler(botonBooster, partida.getTurnoActual()));
                 this.getChildren().add(botonBooster);
             }
         }
         else {
             for (int i = 0; i < partida.getJugadorActual().getCantidadBoosterExclusividadDisponibles(); i++) {
-                Button botonBooster = new BotonInicio("Exclusividad", 140, 40, 150, 40, Color.web("52658F"), Color.web("333A56"));
+                Button botonBooster = new BotonInicio("Exclusividad", 150, 40, 160, 40, Color.web("52658F"), Color.web("333A56"));
+                botonBooster.setFont(Font.font("Calibri", FontWeight.BOLD,16));
                 botonBooster.setOnAction(new BotonConsumirBoosterExclusividadEventHandler(botonBooster, partida.getTurnoActual()));
                 this.getChildren().add(botonBooster);
             }
