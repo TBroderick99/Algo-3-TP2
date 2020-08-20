@@ -36,13 +36,12 @@ public class Ronda {
 
         if (iteradorTurnos.hasNext()) {
             turnoActual = iteradorTurnos.next();
-            turnoActual.actualizar(preguntaActual); // aca esta el problema
+            turnoActual.actualizar(preguntaActual);
         }
         else{
             throw new NoHaySiguienteTurnoError();
         }
 
-        //notifyObservers();        TO DO:  hacer el notify para ronda
     }
 
     public void enviarRespuesta() {

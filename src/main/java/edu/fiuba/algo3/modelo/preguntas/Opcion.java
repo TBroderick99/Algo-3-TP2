@@ -2,8 +2,8 @@ package edu.fiuba.algo3.modelo.preguntas;
 
 public  class Opcion {
 
-    protected String textoOpcion;    //cambiar a private
-    protected Valor valorCorrecto;
+    private String textoOpcion;
+    private Valor valorCorrecto;
 
     public Opcion(String textoOpcion, Valor valor){
         this.textoOpcion = textoOpcion;

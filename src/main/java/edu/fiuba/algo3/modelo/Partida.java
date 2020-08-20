@@ -37,9 +37,6 @@ public class Partida implements Observable {
         notifyObservers();
     }
 
-    public Boolean esUltimoTurno() {
-        return ronda.esUltimoTurno();
-    }
 
     public void enviarRespuesta() {
         ronda.enviarRespuesta();
