@@ -30,7 +30,7 @@ public class ControladorTimer {
                         try {
                             partida.siguienteRonda();
                         } catch (NoHaySiguienteRondaError rondaError) {
-                            stage.setScene(new Scene(new ContenedorFinalPartida()));
+                            stage.setScene(new Scene(new ContenedorFinalPartida(partida.getJugadores()), 500, 700));
                         }
                     }
                     ControladorTimer.cancelarTimer();

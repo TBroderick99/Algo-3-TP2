@@ -34,7 +34,7 @@ public class BotonEnviarEventHandler implements EventHandler<ActionEvent> {
                 partida.siguienteRonda();
             }
             catch (NoHaySiguienteRondaError rondaError) {
-                stage.setScene(new Scene(new ContenedorFinalPartida()));
+                stage.setScene(new Scene(new ContenedorFinalPartida(partida.getJugadores()), 500, 700));
             }
         }
     }
