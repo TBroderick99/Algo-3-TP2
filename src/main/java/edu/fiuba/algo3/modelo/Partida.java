@@ -59,7 +59,6 @@ public class Partida implements Observable {
 
     public void asignarPuntajes() {
         ronda.asignarPuntajes();
-     //   notifyObservers();
     }
 
     public Pregunta getPreguntaActual(){
