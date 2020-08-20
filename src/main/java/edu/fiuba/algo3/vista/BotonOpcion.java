@@ -12,7 +12,6 @@ public class BotonOpcion extends BotonZoomeable {
 
     public BotonOpcion(String texto, double anchoDefault, double altoDefault, double anchoZoom, double altoZoom, Paint colorDefault, Paint colorZoom){
         super(texto, anchoDefault, altoDefault, anchoZoom, altoZoom, colorDefault, colorZoom);
-//        this.setMaxSize(100,200);
         this.setFont(Font.font("Calibri", FontWeight.BOLD,18));
         this.setTextFill(Paint.valueOf("FFFFFF"));
     }

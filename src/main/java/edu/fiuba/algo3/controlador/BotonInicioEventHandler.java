@@ -20,6 +20,6 @@ public class BotonInicioEventHandler implements EventHandler {
 
     @Override
     public void handle(Event event) {
-        stage.setScene( new Scene(new ContenedorIngresoJugadores(stage, new Partida())));
+        stage.setScene( new Scene(new ContenedorIngresoJugadores(stage, new Partida()), 500,700));
     }
 }
