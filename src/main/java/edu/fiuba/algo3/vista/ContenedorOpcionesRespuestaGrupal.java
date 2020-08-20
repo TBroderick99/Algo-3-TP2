@@ -77,7 +77,7 @@ public class ContenedorOpcionesRespuestaGrupal extends VBox {
             radioButton1.setOnAction(new CheckBoxMarcarGrupoEventHandler(respuesta, opcion, botonEnviarRespuesta, radioButton1, grupo1));
             radioButton2.setOnAction(new CheckBoxMarcarGrupoEventHandler(respuesta, opcion, botonEnviarRespuesta, radioButton2, grupo2));
 
-            BotonOpcion botonOpcion = new BotonOpcion(opcion.getTexto());
+            BotonOpcion botonOpcion = new BotonOpcion(opcion.getTexto(), 250 , 70, 270, 100, Color.web("52658F"), Color.web("333A56"));
             botonOpcion.setMinSize(this.getPrefHeight(), this.getPrefWidth());
 
             HBox contenedorCheckBoxesYOpcion = new HBox(radioButton1, botonOpcion, radioButton2);

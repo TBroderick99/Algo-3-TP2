@@ -10,10 +10,13 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class BotonInicio extends BotonZoomeable {
-    public BotonInicio(String texto, double anchoDefault, double altoDefault, double anchoZoom, double altoZoom, Paint colorDefault, Paint colorZoom){
+public class BotonFinal extends BotonZoomeable {
+
+    public BotonFinal(String texto, double anchoDefault, double altoDefault, double anchoZoom, double altoZoom, Paint colorDefault, Paint colorZoom){
         super(texto, anchoDefault, altoDefault, anchoZoom, altoZoom, colorDefault, colorZoom);
         this.setFont(Font.font("Calibri", FontWeight.BOLD,18));
-        this.setTextFill(Paint.valueOf("FFFFFF"));
+        this.setTextFill(Paint.valueOf("F7F5E6"));
     }
+
+
 }

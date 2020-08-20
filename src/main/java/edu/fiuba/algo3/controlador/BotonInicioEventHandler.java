@@ -11,17 +11,15 @@ import javafx.stage.Stage;
 
 public class BotonInicioEventHandler implements EventHandler {
     Stage stage;
-    Scene proximaEscena;
-    Partida partida;
 
-    public BotonInicioEventHandler(Stage stage, Scene proximaEscena) {
+    public BotonInicioEventHandler(Stage stage) {
         super();
         this.stage = stage;
-        this.proximaEscena = proximaEscena;
+
     }
 
     @Override
     public void handle(Event event) {
-        stage.setScene( this.proximaEscena);
+        stage.setScene( new Scene(new ContenedorIngresoJugadores(stage, new Partida())));
     }
 }

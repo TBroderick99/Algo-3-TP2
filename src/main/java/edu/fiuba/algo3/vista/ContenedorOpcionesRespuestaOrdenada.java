@@ -2,14 +2,15 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonEnviarEventHandler;
 import edu.fiuba.algo3.controlador.BotonMarcarRespuestaOrdenadaEventHandler;
-import edu.fiuba.algo3.controlador.BotonOpcionZoomInEventHandler;
-import edu.fiuba.algo3.controlador.BotonOpcionZoomOutEventHandler;
+import edu.fiuba.algo3.controlador.BotonZoomInEventHandler;
+import edu.fiuba.algo3.controlador.BotonZoomOutEventHandler;
 import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.Opcion;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class ContenedorOpcionesRespuestaOrdenada extends VBox {
@@ -41,11 +42,8 @@ public class ContenedorOpcionesRespuestaOrdenada extends VBox {
         Respuesta respuesta = partida.getTurnoActual().getRespuesta();
 
         for(Opcion opcion : partida.getPreguntaActual().getOpciones()){
-            BotonOpcion botonOpcion = new BotonOpcion(opcion.getTexto());
+            BotonOpcion botonOpcion = new BotonOpcion(opcion.getTexto(), 250 , 70, 270, 100, Color.web("52658F"), Color.web("333A56"));
             botonOpcion.setMinSize(this.getPrefHeight(), this.getPrefWidth());
-
-            botonOpcion.setOnMouseEntered(new BotonOpcionZoomInEventHandler(botonOpcion));
-            botonOpcion.setOnMouseExited(new BotonOpcionZoomOutEventHandler(botonOpcion));
 
             botonOpcion.setOnAction(new BotonMarcarRespuestaOrdenadaEventHandler(respuesta, opcion, botonOpcion, botones, botonEnviarRespuesta));
             botones.getChildren().add(botonOpcion);

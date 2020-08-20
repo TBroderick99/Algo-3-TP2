@@ -18,16 +18,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 
-/*        Partida partida = Partida.getInstance();
-        partida.agregarJugador("jugador1");
-        partida.agregarJugador("jugador2");
-        partida.inicializarPartida();
-*/
-        Partida partida = new Partida();
-
-        Scene escenaIngresoJugadores = new Scene(new ContenedorIngresoJugadores(stage, partida),500,700);
-    //    Scene escenaPrincipal = new Scene(new ContenedorPrincipal(stage), 1020,768);
-        Scene escenaInicio = new Scene(new ContenedorInicio(stage, escenaIngresoJugadores), 500,700);
+        Scene escenaInicio = new Scene(new ContenedorInicio(stage), 500,700);
 
         stage.setTitle("Kahoot!");
         stage.getIcons().add(new Image("file:src/main/java/edu/fiuba/algo3/vista/imagenes/icon.jpg"));

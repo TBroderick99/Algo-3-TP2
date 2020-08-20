@@ -8,18 +8,11 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class BotonOpcion extends Button {
-    private double anchoDefault = 250;
-    private double altoDefault = 70;
+public class BotonOpcion extends BotonZoomeable {
 
-    private double anchoZoom = 280;
-    private double altoZoom = 100;
-
-    public BotonOpcion(String texto){
-        super(texto);
-        this.setPrefSize(anchoDefault,altoDefault);
+    public BotonOpcion(String texto, double anchoDefault, double altoDefault, double anchoZoom, double altoZoom, Paint colorDefault, Paint colorZoom){
+        super(texto, anchoDefault, altoDefault, anchoZoom, altoZoom, colorDefault, colorZoom);
 //        this.setMaxSize(100,200);
-        this.setBackground(new Background(new BackgroundFill(Color.web("52658F"), new CornerRadii(4), Insets.EMPTY)));
         this.setFont(Font.font("Calibri", FontWeight.BOLD,18));
         this.setTextFill(Paint.valueOf("FFFFFF"));
     }
@@ -32,13 +25,6 @@ public class BotonOpcion extends Button {
         this.setBorder(Border.EMPTY);
     }
 
-    public void zoomIn(){
-        this.setPrefSize(anchoZoom,altoZoom);
-    }
-
-    public void zoomOut(){
-        this.setPrefSize(anchoDefault,altoDefault);
-    }
 
 }
 
