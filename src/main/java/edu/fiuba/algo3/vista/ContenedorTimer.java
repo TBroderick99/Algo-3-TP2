@@ -12,9 +12,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class ContenedorTimer extends VBox {
-    private final long DELAY_MILIS = 30000;
+    private final long DELAY_MILIS = ControladorTimer.getDelay();
     public ContenedorTimer(Stage stage, Partida partida){
-        ControladorTimer.iniciarTimer(stage, partida, DELAY_MILIS);
+    //    ControladorTimer.iniciarTimer(stage, partida, DELAY_MILIS);
 
         Text titulo = new TextoClaro("Tiempo restante:", 30);
 

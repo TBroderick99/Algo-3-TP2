@@ -13,8 +13,8 @@ import java.util.TimerTask;
 
 public class ControladorTimer {
     private static Timer timer;
-
-    public static void iniciarTimer(Stage stage, Partida partida, final long delay){
+    private static final long DELAY_MILIS = 30000;
+    public static void iniciarTimer(Stage stage, Partida partida){
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -34,12 +34,18 @@ public class ControladorTimer {
                         }
                     }
                     ControladorTimer.cancelarTimer();
+                    ControladorTimer.iniciarTimer(stage, partida);
                 });
             }
-        }, delay);
+        }, DELAY_MILIS);
     }
 
     public static void cancelarTimer(){
-        timer.cancel();
+        if (timer != null)
+            timer.cancel();
+    }
+
+    public static long getDelay() {
+        return DELAY_MILIS;
     }
 }

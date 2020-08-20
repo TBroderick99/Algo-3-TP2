@@ -23,7 +23,7 @@ public class BotonEnviarEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         ControladorTimer.cancelarTimer();
-
+        ControladorTimer.iniciarTimer(stage, partida);
         partida.enviarRespuesta();
         try {
             partida.siguienteTurno();

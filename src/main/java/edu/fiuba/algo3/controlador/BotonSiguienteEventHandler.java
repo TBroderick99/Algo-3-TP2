@@ -34,6 +34,7 @@ public class BotonSiguienteEventHandler implements EventHandler {
             stage.setScene(new Scene(new ContenedorPrincipal(stage, partida)));
             stage.show();
             stage.setFullScreen(true);
+            ControladorTimer.iniciarTimer(stage, partida);
             return;
         }
         stage.setScene(new Scene(new ContenedorIngresoJugadores(stage, partida),500,700));

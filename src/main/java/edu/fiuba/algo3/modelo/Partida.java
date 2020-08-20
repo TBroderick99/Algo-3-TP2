@@ -46,18 +46,20 @@ public class Partida implements Observable {
     }
 
     public void siguienteRonda() throws NoHaySiguienteRondaError {
-        notifyObservers();
         if(!manejadorDePreguntas.esLaUltimaPregunta()){
             manejadorDePreguntas.siguientePregunta();
             ronda.actualizar(getPreguntaActual());
+            notifyObservers();
         }
         else {
+            notifyObservers();
             throw new NoHaySiguienteRondaError();
         }
     }
 
     public void asignarPuntajes() {
         ronda.asignarPuntajes();
+     //   notifyObservers();
     }
 
     public Pregunta getPreguntaActual(){
