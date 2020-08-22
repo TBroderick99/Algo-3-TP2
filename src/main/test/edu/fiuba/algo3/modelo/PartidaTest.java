@@ -2,7 +2,10 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteRondaError;
 import edu.fiuba.algo3.modelo.excepciones.NoHaySiguienteTurnoError;
-import edu.fiuba.algo3.modelo.preguntas.*;
+import edu.fiuba.algo3.modelo.preguntas.CreadorDePreguntas;
+import edu.fiuba.algo3.modelo.preguntas.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.Valor;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.Puntaje;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajeClasico;
 import edu.fiuba.algo3.modelo.preguntas.puntajes.PuntajePenalidad;
@@ -149,4 +152,52 @@ public class PartidaTest {
         });
     }
 
+    @Test
+    public void test06() throws NoHaySiguienteRondaError, NoHaySiguienteTurnoError {
+        //Arrange
+        Partida partida = new Partida();
+        partida.agregarJugador("Juan");
+        partida.agregarJugador("Pedro");
+
+        partida.inicializarPartida(CreadorDePreguntas.crearPreguntas());
+
+        Turno turnoActual;
+        Respuesta respuesta;
+        Jugador jugador1;
+        // PREGUNTA 1
+        turnoActual = partida.getTurnoActual();
+        respuesta = turnoActual.getRespuesta();
+        jugador1 = partida.getJugadorActual();
+
+
+        respuesta.marcar(partida.getPreguntaActual().getOpciones().get(0), new Valor (1));
+        respuesta.marcar(partida.getPreguntaActual().getOpciones().get(1), new Valor (2));
+        respuesta.marcar(partida.getPreguntaActual().getOpciones().get(2), new Valor (3));
+        respuesta.marcar(partida.getPreguntaActual().getOpciones().get(3), new Valor (4));
+        respuesta.marcar(partida.getPreguntaActual().getOpciones().get(4), new Valor (5));
+
+        partida.enviarRespuesta();
+        partida.siguienteTurno();
+
+        turnoActual = partida.getTurnoActual();
+        respuesta = turnoActual.getRespuesta();
+        jugador1 = partida.getJugadorActual();
+
+
+        respuesta.marcar(partida.getPreguntaActual().getOpciones().get(0), new Valor (1));
+        respuesta.marcar(partida.getPreguntaActual().getOpciones().get(1), new Valor (2));
+        respuesta.marcar(partida.getPreguntaActual().getOpciones().get(2), new Valor (3));
+        respuesta.marcar(partida.getPreguntaActual().getOpciones().get(3), new Valor (4));
+        respuesta.marcar(partida.getPreguntaActual().getOpciones().get(4), new Valor (5));
+
+        partida.enviarRespuesta();
+        partida.asignarPuntajes();
+        try {
+            partida.siguienteRonda();
+        }
+        catch(NoHaySiguienteRondaError rondaError) {}
+
+        assertEquals(1, partida.getJugadores().get(0).getPuntaje());
+        assertEquals(1, partida.getJugadores().get(1).getPuntaje());
+    }
 }

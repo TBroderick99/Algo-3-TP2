@@ -27,6 +27,7 @@ public class BotonEnviarEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         ControladorTimer.cancelarTimer();
         ControladorTimer.iniciarTimer(stage, partida);
+        BotonMarcarRespuestaOrdenadaEventHandler.reiniciarContador();
         partida.enviarRespuesta();
         try {
             partida.siguienteTurno();

@@ -10,17 +10,28 @@ import javafx.scene.layout.VBox;
 
 public class BotonMarcarRespuestaOrdenadaEventHandler  extends BotonMarcarEventHandler {
 
+    private static int orden = 0;
+
     public BotonMarcarRespuestaOrdenadaEventHandler(Respuesta respuesta, Opcion opcion, BotonOpcion botonOpcion, VBox botones, Button botonEnviar){
         super(respuesta, opcion, botonOpcion, botones, botonEnviar);
+    }
 
+    public static void reiniciarContador() {
+        orden = 0;
     }
 
     @Override
     public void handle(Event event) {
-
-        Valor valor = new Valor(true);
+        sumarRestar();
+        System.out.println(orden);
+        Valor valor = new Valor(orden);
         marcarDesmarcar(valor);
         actualizarBotonEnviar();
+    }
+
+    private void sumarRestar() {
+        if (!respuesta.fueMarcada(opcion))
+            this.orden = orden + 1;
     }
 
     @Override
@@ -30,6 +41,19 @@ public class BotonMarcarRespuestaOrdenadaEventHandler  extends BotonMarcarEventH
         }
         else{
             botonEnviar.setDisable(true);
+        }
+    }
+
+    @Override
+    public void marcarDesmarcar(Valor valor){
+        if (respuesta.fueMarcada(opcion)) {
+            respuesta.desmarcar(opcion);
+            botonOpcion.desmarcar();
+            this.orden = orden - 1;
+        }
+        else {
+            respuesta.marcar(opcion, valor);
+            botonOpcion.marcar();
         }
     }
 }
