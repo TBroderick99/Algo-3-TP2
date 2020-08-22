@@ -23,7 +23,6 @@ public class BotonMarcarRespuestaOrdenadaEventHandler  extends BotonMarcarEventH
     @Override
     public void handle(Event event) {
         sumarRestar();
-        System.out.println(orden);
         Valor valor = new Valor(orden);
         marcarDesmarcar(valor);
         actualizarBotonEnviar();
